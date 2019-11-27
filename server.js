@@ -1,11 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const menus = require("./routes/api/menus");
 
 const app = express();
+
+// BOdy parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //DB Config
 const db = require("./config/keys").mongoURI;
@@ -27,7 +32,7 @@ app.get("/", (req, res) => res.send("hello!!!!!"));
 // Use Routes
 app.use("/users", users);
 app.use("/profile", profile);
-app.use("/menus", menus);
+app.use("/menu s", menus);
 
 const port = process.env.PORT || 5000;
 
