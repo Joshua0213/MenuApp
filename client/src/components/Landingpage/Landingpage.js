@@ -5,14 +5,15 @@ class Landingpage extends Component {
   render() {
     return (
       <div className="landing">
-        <div className="dark-overlay landing-inner">
+        <div className="dark-overlay">
           <div className="l-landing__container">
             <h1 className="header">Menu Maker</h1>
             <p className="paragraph"> Easily create your custom Menu</p>
             <div className="buttoncontainer">
               <a href="register.html" className="c-landing__button">
-                Sign Up
+                Sign-Up
               </a>
+
               <div className="l-landing__buttonseperator"></div>
               <a href="login.html" className="c-landing__button">
                 Login

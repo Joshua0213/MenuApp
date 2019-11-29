@@ -1,0 +1,10 @@
+@import "../../SiteColorMap.scss";
+
+.c-footer {
+  background-color: $navbarcolors;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  color: white;
+}

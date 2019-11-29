@@ -4,37 +4,20 @@ img {
 /*
 
 */
-.landing {
-  position: relative;
-  background: url("./img/showcase2.jpg") no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 81vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
-}
 
-.landing-inner {
-  padding-top: 80px;
-  color: #bbb;
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .buttonRegister {
   margin-right: 2;
 }
-
-.dark-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
+/*
 .card-form {
   opacity: 0.9;
-}
+}*/
 
 .latest-profiles-img {
   width: 40px;
@@ -44,13 +27,19 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
-
+/*
 .navbar {
-  background-color: chocolate;
-  height: 10vh;
+  background-color: rgb(56, 104, 106);
+  height: 40px;
 }
 
-.footer {
-  background-color: chocolate;
-  height: 10vh;
-}
+.c-footer {
+  background-color: rgb(56, 104, 106);
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding-top: 5px;
+}*/
+
+/*****Landing Page 2 *******/
