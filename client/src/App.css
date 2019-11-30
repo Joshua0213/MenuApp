@@ -11,6 +11,11 @@ img {
   flex-direction: column;
 }
 
+h1 {
+  font-size: 5em;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
 .buttonRegister {
   margin-right: 2;
 }

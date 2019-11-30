@@ -44,7 +44,7 @@ class Register extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
+              <h1 className="text-center">Sign Up</h1>
               <p className="lead text-center">Create your Menu Maker account</p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
