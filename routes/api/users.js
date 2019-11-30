@@ -17,7 +17,7 @@ const User = require("../../models/User");
 // @access  Public
 router.get("/test", (req, res) => res.json({ msg: "User is working" }));
 
-// @route   GET /users/test
+// @route   Post /users/test
 // @desc    Register user
 // @access  Public
 router.post("/register", (req, res) => {
@@ -51,7 +51,7 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @route   GET /users/login
+// @route   POST /users/login
 // @desc    Login user then return JWT Token
 // @access  Public
 router.post("/login", (req, res) => {

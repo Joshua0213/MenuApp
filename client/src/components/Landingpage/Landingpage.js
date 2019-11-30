@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./CSSLandingpage.css";
 
 class Landingpage extends Component {
@@ -10,14 +11,14 @@ class Landingpage extends Component {
             <h1 className="header">Menu Maker</h1>
             <p className="paragraph"> Easily create your custom Menu</p>
             <div className="buttoncontainer">
-              <a href="register.html" className="c-landing__button">
+              <Link to="/register" className="c-landing__button">
                 Sign-Up
-              </a>
+              </Link>
 
               <div className="l-landing__buttonseperator"></div>
-              <a href="login.html" className="c-landing__button">
+              <Link to="/login" className="c-landing__button">
                 Login
-              </a>
+              </Link>
             </div>
           </div>
         </div>

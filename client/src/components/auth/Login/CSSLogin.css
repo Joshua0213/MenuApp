@@ -1,0 +1,16 @@
+.login {
+  height: 90vh;
+  background-color: #e8e8e8;
+  margin-top: -23px;
+}
+
+.c-register__button {
+  width: 100%;
+}
+
+.c-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=CSSLogin.css.map */
