@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./CSSRegister.css";
-import axios from 'axios';
 import classnames from 'classnames';
+import {connect} from 'react-redux';
+import {registerUser} from '../../../actions/authActions';
+import PropTypes from 'prop-types';
 
 class Register extends Component {
   constructor() {
@@ -18,6 +20,21 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  // UNSAFE_componentWillReceiveProps(nextProps){
+  //   if(nextProps.errors){
+  //     this.setState({errors: nextProps.error});
+  //   }
+  // }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+      if(nextProps.errors){
+        return{
+          errors: nextProps.errors
+        };
+      }
+      return null;
+  }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -31,16 +48,18 @@ class Register extends Component {
             password2: this.state.password
         }
 
-      axios.post('/users/register', newUser)
-        .then(res => console.log(res.data))
-        .catch(err => this.setState({errors: err.response.data}))
+        this.props.registerUser(newUser);
   }
 
   render() {
     const {errors} = this.state;
+    console.log(errors);
+
+    
 
     return (
       <div className="register">
+        
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -112,4 +131,15 @@ class Register extends Component {
   }
 }
 
-export default Register;
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, {registerUser})(Register);
