@@ -1,7 +1,7 @@
 .register {
-  height: 120vh;
-  background-color: #e8e8e8;
+  height: 115vh;
   margin-top: -25px;
+  background-color: #f8f8fa;
 }
 
 .c-register__button {
@@ -14,8 +14,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: blue;
 }
 /*# sourceMappingURL=CSSRegister.css.map */

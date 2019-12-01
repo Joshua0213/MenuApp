@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "SiteColorMap.scss"
+    ],
+    "names": [],
+    "file": "SiteColorMap.css"
+}
