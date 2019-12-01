@@ -16,8 +16,15 @@ const User = require("../../models/User");
 // @desc    Tests users route
 // @access  Public
 router.get("/test", (req, res) => res.json({ msg: "User is working" }));
-
-// @route   Post /users/test
+//
+//
+//
+//
+//
+//
+//
+//
+// @route   Post /users/register
 // @desc    Register user
 // @access  Public
 router.post("/register", (req, res) => {
@@ -26,15 +33,16 @@ router.post("/register", (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
-  User.findOne({ email: req.body.email }).then(user => {
+  const emailRegular = req.body.email;
+  const emailLower = emailRegular.toLowerCase();
+  User.findOne({ email: emailLower }).then(user => {
     if (user) {
       errors.email = "Email already exists";
       return res.status(400).json(errors);
     } else {
       const newUser = new User({
         name: req.body.name,
-        email: req.body.email,
+        email: emailLower,
         password: req.body.password
       });
       bcrypt.genSalt(10, (err, salt) => {
@@ -43,7 +51,27 @@ router.post("/register", (req, res) => {
           newUser.password = hash;
           newUser
             .save()
-            .then(user => res.json(user))
+            .then(
+              //////////
+
+              user => {
+                const payload = { id: user.id, name: user.name };
+
+                // Sign Token
+                jwt.sign(
+                  payload,
+                  secret.secret,
+                  { expiresIn: 86400 },
+                  (err, token) => {
+                    res.json({
+                      success: true,
+                      token: "Bearer " + token
+                    });
+                  }
+                );
+              }
+              /////////////
+            )
             .catch(err => console.log(err));
         });
       });
@@ -61,11 +89,12 @@ router.post("/login", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  const email = req.body.email;
+  const emailRegular = req.body.email;
+  const emailLower = emailRegular.toLowerCase();
   const password = req.body.password;
 
   //Find user by email
-  User.findOne({ email }).then(user => {
+  User.findOne({ email: emailLower }).then(user => {
     //Check for user
     if (!user) {
       errors.email = "User not found";

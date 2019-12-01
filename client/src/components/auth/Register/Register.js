@@ -20,20 +20,38 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // UNSAFE_componentWillReceiveProps(nextProps){
-  //   if(nextProps.errors){
-  //     this.setState({errors: nextProps.error});
+ // componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+  //   if (this.props.errors !== prevProps.errors) {
+  //     this.;
   //   }
   // }
 
-  static getDerivedStateFromProps(nextProps, prevState){
-      if(nextProps.errors){
-        return{
-          errors: nextProps.errors
-        };
-      }
-      return null;
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.errors !== prevProps.errors) {
+      this.setState({ errors: this.props.errors });
+    }
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
+    return null;
   }
+
+  componentDidMount(){
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
+    return null;
+  }
+
+  // static getDerivedStateFromProps(nextProps, prevState){
+  //     if(nextProps.errors){
+  //       return{
+  //         errors: nextProps.errors
+  //       };
+  //     }
+  //     return null;
+  // }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -45,7 +63,7 @@ class Register extends Component {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            password2: this.state.password
+            password2: this.state.password2
         }
 
         this.props.registerUser(newUser);
@@ -53,7 +71,7 @@ class Register extends Component {
 
   render() {
     const {errors} = this.state;
-    console.log(errors);
+    
 
     
 

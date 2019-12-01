@@ -28,6 +28,13 @@ class Login extends Component {
     return null;
   }
 
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
+    return null;
+  }
+
   // static getDerivedStateFromProps(nextProps, prevState) {
   //   if (nextProps.auth.isAuthenticated) {
   //     return {

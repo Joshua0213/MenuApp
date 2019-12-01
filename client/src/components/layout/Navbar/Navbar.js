@@ -14,9 +14,14 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
+    const { name } = user;
+    let upper = "";
+    if (name) {
+      upper = name.charAt(0).toUpperCase() + name.substring(1);
+    }
     const authLinks = (
       <ul className="navbar-nav ml-auto">
-        <li>Hello {user.name}</li>
+        <li>Hello {upper}</li>
         <li className="nav-item">
           <a
             href="/"
