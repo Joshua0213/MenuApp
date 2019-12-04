@@ -17,6 +17,7 @@ import PrivateRoute from "./components/Common/PrivateRoute";
 import { clearCurrentProfile } from "./actions/dashboardActions";
 
 //Check for token
+
 if (localStorage.jwtToken) {
   //Set the auth token header auth
   setAuthToken(localStorage.jwtToken);

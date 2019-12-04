@@ -14,9 +14,7 @@ const User = require("../../models/User");
 // @access  Private
 router.get(
   "/",
-  passport.authenticate("jwt", {
-    session: false
-  }),
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const errors = {};
     Profile.findOne({ user: req.user.id })
