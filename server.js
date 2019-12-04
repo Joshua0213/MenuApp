@@ -3,12 +3,22 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
+const csp = require("helmet-csp");
 
 const users = require("./routes/api/users");
 const dashboard = require("./routes/api/dashboard");
 const menus = require("./routes/api/menus");
 
 const app = express();
+
+app.use(
+  csp({
+    directives: {
+      defaultSrc: [`'self'`],
+      imgSrc: [`'self'`, `imgur.com`]
+    }
+  })
+);
 
 // Body parser middleware
 app.use(
