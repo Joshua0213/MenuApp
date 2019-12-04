@@ -23,24 +23,18 @@ class Login extends Component {
       this.setState({ errors: this.props.errors });
     }
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push("/dashboard");
+      window.location.reload(false);
     }
-    return null;
   }
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push("/dashboard");
+      window.location.reload(false);
     }
     return null;
   }
-
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   if (nextProps.auth.isAuthenticated) {
-  //     return {
-  //       nextProps: nextProps.history.push("/")
-  //     };
-  //   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });

@@ -1,6 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { clearCurrentProfile } from "./dashboardActions";
 
 import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS } from "./types";
 
@@ -18,7 +19,7 @@ export const registerUser = userData => dispatch => {
       //Decode token for user data
       const decoded = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
-      //dispatch(clearError());
+      dispatch(clearError());
     })
     .catch(err =>
       dispatch({
@@ -77,4 +78,7 @@ export const logoutUser = () => dispatch => {
   // Set current user to {} and isAuthenticated to false
   dispatch(setCurrentUser({}));
   dispatch(clearError());
+  console.log("about to call clearcurrentprof");
+  dispatch(clearCurrentProfile());
+  console.log("called clearcurrentprof");
 };

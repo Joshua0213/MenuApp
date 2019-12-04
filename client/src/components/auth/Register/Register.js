@@ -13,45 +13,32 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
-      errors: {}
+      errors: {},
+      profile:{mainheader:'My Menu'}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
- // componentDidUpdate(prevProps) {
-  // Typical usage (don't forget to compare props):
-  //   if (this.props.errors !== prevProps.errors) {
-  //     this.;
-  //   }
-  // }
-
   componentDidUpdate(prevProps, prevState) {
     if (this.props.errors !== prevProps.errors) {
       this.setState({ errors: this.props.errors });
     }
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push("/dashboard");
+      window.location.reload(false);
     }
     return null;
   }
 
   componentDidMount(){
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push("/dashboard");
+      window.location.reload(false);
     }
     return null;
   }
-
-  // static getDerivedStateFromProps(nextProps, prevState){
-  //     if(nextProps.errors){
-  //       return{
-  //         errors: nextProps.errors
-  //       };
-  //     }
-  //     return null;
-  // }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -63,7 +50,8 @@ class Register extends Component {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            password2: this.state.password2
+            password2: this.state.password2,
+            profile:this.state.profile
         }
 
         this.props.registerUser(newUser);
@@ -72,9 +60,6 @@ class Register extends Component {
   render() {
     const {errors} = this.state;
     
-
-    
-
     return (
       <div className="register">
         

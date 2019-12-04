@@ -10,12 +10,13 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 //Bring in User model
-const User = require("../../models/User");
 
+const User = require("../../models/User");
+const Profile = require("../../models/Profile");
 // @route   GET /users/test
 // @desc    Tests users route
 // @access  Public
-router.get("/test", (req, res) => res.json({ msg: "User is working" }));
+router.get("/", (req, res) => res.json({ msg: "User is working" }));
 //
 //
 //
@@ -38,12 +39,13 @@ router.post("/register", (req, res) => {
   User.findOne({ email: emailLower }).then(user => {
     if (user) {
       errors.email = "Email already exists";
-      return res.status(400).json(errors);
+      return res.json(errors);
     } else {
       const newUser = new User({
         name: req.body.name,
         email: emailLower,
-        password: req.body.password
+        password: req.body.password,
+        profile: req.body.profile
       });
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -52,10 +54,15 @@ router.post("/register", (req, res) => {
           newUser
             .save()
             .then(
-              //////////
-
               user => {
-                const payload = { id: user.id, name: user.name };
+                const payload = {
+                  id: user.id,
+                  name: user.name
+                };
+
+                //////////
+
+                /////////
 
                 // Sign Token
                 jwt.sign(

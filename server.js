@@ -5,7 +5,7 @@ const passport = require("passport");
 const path = require("path");
 
 const users = require("./routes/api/users");
-const profile = require("./routes/api/profile");
+const dashboard = require("./routes/api/dashboard");
 const menus = require("./routes/api/menus");
 
 const app = express();
@@ -28,7 +28,7 @@ mongoose
   )
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
-
+mongoose.set("useFindAndModify", false);
 // Passport middleware
 app.use(passport.initialize());
 
@@ -37,7 +37,7 @@ require("./config/passport.js")(passport);
 
 // Use Routes
 app.use("/users", users);
-app.use("/profile", profile);
+app.use("/dashboard", dashboard);
 app.use("/menus", menus);
 
 // Serve static assets if in production
