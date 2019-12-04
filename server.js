@@ -30,6 +30,7 @@ mongoose
   .catch(err => console.log(err));
 mongoose.set("useFindAndModify", false);
 // Passport middleware
+app.use(express.static(__dirname + "/dist/app-name"));
 app.use(passport.initialize());
 
 //Passport config
