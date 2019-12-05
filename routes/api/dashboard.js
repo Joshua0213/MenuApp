@@ -43,6 +43,7 @@ router.post(
   (req, res) => {
     const profileFields = {};
     if (req.body.newheader) profileFields.mainheader = req.body.newheader;
+    if (req.body.newhandle) profileFields.handle = req.body.newhandle;
     profileFields.user = req.user.id;
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
@@ -53,15 +54,15 @@ router.post(
           { $set: profileFields },
           { new: true }
         ).then(profile => {
-          console.log(profileFields);
-          console.log(req.body);
+          console.log(profile.mainheader);
           res.json(profile.mainheader);
         });
       } else {
         //create
+        profileFields.handle = req.user.id;
         new Profile(profileFields)
           .save()
-          .then(profile => res.json(profile.mainheader));
+          .then(profile => res.json(profile.handle));
       }
     });
   }

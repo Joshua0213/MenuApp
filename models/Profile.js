@@ -10,6 +10,10 @@ const ProfileSchema = new Schema({
   mainheader: {
     type: String,
     default: "My Menu"
+  },
+  handle: {
+    type: String,
+    default: ""
   }
 });
 

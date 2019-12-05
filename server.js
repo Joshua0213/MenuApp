@@ -1,9 +1,9 @@
+const { getCSP } = require("csp-header");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
-const csp = require("helmet-csp");
 
 const users = require("./routes/api/users");
 const dashboard = require("./routes/api/dashboard");
@@ -11,14 +11,13 @@ const menus = require("./routes/api/menus");
 
 const app = express();
 
-app.use(
-  csp({
-    directives: {
-      defaultSrc: [`'self'`],
-      imgSrc: [`'self'`, `imgur.com`]
-    }
-  })
-);
+// getCSP({
+//   directives: {
+//     "script-src": ["self", "*.bootstrapcdn.com"],
+//     "style-src": ["self"],
+//     "img-src": ["self"]
+//   }
+// });
 
 // Body parser middleware
 app.use(
@@ -57,7 +56,7 @@ require("./config/passport.js")(passport);
 // Use Routes
 app.use("/users", users);
 app.use("/dashboard", dashboard);
-app.use("/menus", menus);
+app.use("/menu", menus);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {

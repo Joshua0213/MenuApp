@@ -12,6 +12,7 @@ import Landingpage from "./components/Landingpage/Landingpage";
 import Footer from "./components/layout/Footer/Footer";
 import Register from "./components/auth/Register/Register";
 import Login from "./components/auth/Login/Login";
+import Menu from "./components/Menu/Menu";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/Common/PrivateRoute";
 import { clearCurrentProfile } from "./actions/dashboardActions";
@@ -46,6 +47,7 @@ function App() {
           <Route exact path="/" component={Landingpage} />
           <div className="routecontaner">
             <Route exact path="/register" component={Register} />
+            <Route exact path="/menu/:handle" component={Menu} />
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
