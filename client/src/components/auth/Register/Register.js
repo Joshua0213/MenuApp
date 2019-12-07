@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./CSSRegister.css";
 import {connect} from 'react-redux';
 import {registerUser} from '../../../actions/authActions';
 import PropTypes from 'prop-types';
@@ -61,14 +60,12 @@ class Register extends Component {
     const {errors} = this.state;
     
     return (
-      <div className="register">
+      <div className="register flex justify-center min-h-screen bg-gray-100">
         
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="text-center">Sign Up</h1>
-              <p className="lead text-center">Create your Menu Maker account</p>
-              <form onSubmit={this.onSubmit}>
+        <div className="container flex flex-col items-center pt-1">
+              <h1 className="text-center font-display text-6xl font-medium">Sign Up</h1>
+              <p className="text-lg text-center">Create your Root Maker account</p>
+              <form className=" sm:w-10/12 w-11/12 lg:w-7/12" onSubmit={this.onSubmit}>
               <TextFieldGroup
                   placeholder="Name"
                   name="name"
@@ -102,11 +99,10 @@ class Register extends Component {
                   error={errors.password2}
                 />
                
-                <input type="submit" className=/*"btn btn-info btn-block mt-4"*/'c-landing__button c-register__button' />
+                <input type="submit" className=/*"btn btn-info btn-block mt-4"*/'text-white font-medium bg-teal-700 w-full rounded  mt-5 py-3 hover:bg-teal-800 mb-32' />
               </form>
-            </div>
-          </div>
         </div>
+        <div className='h-20'></div>
       </div>
     );
   }

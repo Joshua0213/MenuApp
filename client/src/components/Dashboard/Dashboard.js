@@ -53,7 +53,7 @@ class Dashboard extends Component {
       console.log(this.props.dashboard);
       dashboardContent = 
       <div>
-        <h1 className="display-4">Hello {user.name}</h1>
+        <h3 className=" text-sm  ">Hello {user.name}</h3>
         <h4>{newHeader ? newHeader : mainHeader}</h4>
         <form onSubmit={this.onSubmit}> 
                 <TextFieldGroup
@@ -64,7 +64,7 @@ class Dashboard extends Component {
                   onChange={this.onChange}
                   error={errors.name}
                 />
-                {newHeader &&  <input type="submit" className=/*"btn btn-info btn-block mt-4"*/'c-landing__button c-register__button' value="Save Changes" />}
+                {newHeader &&  <input type="submit" className=/*"btn btn-info btn-block mt-4"*/'text-white font-medium bg-teal-700 w-full rounded  mt-5 py-3 hover:bg-teal-800 mb-32' value="Save Changes" />}
               </form>
       </div>;
     }

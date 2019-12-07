@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.m-h-20 {
+  min-height: 20vh;
+}
+
+.m-h-30 {
+  min-height: 30vh;
+}
+
+.m-h-40 {
+  min-height: 40vh;
+}
+
+.m-h-50 {
+  min-height: 50vh;
+}
+
+.m-h-60 {
+  min-height: 60vh;
+}
+
+.m-h-70 {
+  min-height: 70vh;
+}
+
+.m-h-80 {
+  min-height: 80vh;
+}
+
+.m-h-90 {
+  min-height: 90vh;
+}
+
+.text-7xl {
+  font-size: 5rem;
+}
+
+.text-8xl {
+  font-size: 6rem;
+}
+
+.text-9xl {
+  font-size: 7rem;
+}
+
+.text-10xl {
+  font-size: 8rem;
+}

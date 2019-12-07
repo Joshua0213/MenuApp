@@ -14,12 +14,15 @@ const TextFieldGroup = ({
   disabled
 }) => {
   return (
-    <div className="form-group">
+    <div className="">
       <input
         type={type}
-        className={classnames("form-control form-control-lg", {
-          "is-invalid": error
-        })}
+        className={classnames(
+          " bg-gray-200 w-full my-3 pl-2 rounded-lg text-3xl border-solid border-2 hover:bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:bg-white",
+          {
+            "border-red-500": error
+          }
+        )}
         placeholder={placeholder}
         name={name}
         value={value}
@@ -27,7 +30,7 @@ const TextFieldGroup = ({
         disabled={disabled}
       />
       {info && <small className="form-text text-muted">{info}</small>}
-      {error && <div className="invalid-feedback">{error}</div>}
+      {error && <div className="text-red-500 -mt-3 mb-2">{error}</div>}
     </div>
   );
 };

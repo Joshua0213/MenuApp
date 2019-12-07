@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./CSSLogin.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
@@ -53,38 +52,39 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="login">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="text-center">Log In</h1>
-              <p className="lead text-center">
-                Sign in to your DevConnector account
-              </p>
-              <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="Email Address"
-                  name="email"
-                  type="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  error={errors.email}
-                />
-                <TextFieldGroup
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  error={errors.password}
-                />
-                <input
-                  type="submit"
-                  className="c-landing__button c-register__button"
-                />
-              </form>
-            </div>
-          </div>
+      <div className="login flex justify-center min-h-screen bg-gray-100">
+        <div className="container flex flex-col items-center pt-1">
+          <h1 className="text-center font-display text-6xl font-medium">
+            Log In
+          </h1>
+          <p className="text-lg text-center">
+            Sign in to your Root Menu account
+          </p>
+          <form
+            className=" sm:w-10/12 w-11/12 lg:w-7/12"
+            onSubmit={this.onSubmit}
+          >
+            <TextFieldGroup
+              placeholder="Email Address"
+              name="email"
+              type="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              error={errors.email}
+            />
+            <TextFieldGroup
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.onChange}
+              error={errors.password}
+            />
+            <input
+              type="submit"
+              className="text-white font-medium bg-teal-700 w-full rounded  mt-5 py-3 hover:bg-teal-800"
+            />
+          </form>
         </div>
       </div>
     );

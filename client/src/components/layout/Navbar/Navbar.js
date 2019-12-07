@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./CSSNavbar.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -20,14 +19,12 @@ class Navbar extends Component {
       upper = name.charAt(0).toUpperCase() + name.substring(1);
     }
     const authLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li>Hello {upper}</li>
-        <li className="nav-item">
-          <a
-            href="/"
-            onClick={this.onLogoutClick.bind(this)}
-            className="nav-link"
-          >
+      <ul className=" flex flex-row justify-end items-end">
+        <li className=" px-2 text-white text-lg -my-1 ">
+          Welcome back, {upper}!
+        </li>
+        <li className=" px-2 hover:text-white text-lg -my-1">
+          <a href="/" onClick={this.onLogoutClick.bind(this)} className="  ">
             Logout
           </a>
         </li>
@@ -35,13 +32,13 @@ class Navbar extends Component {
     );
 
     const guestLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
+      <ul className="flex flex-row justify-end">
+        <li className="px-2 hover:text-white">
           <Link className="nav-link" to="/register">
             Sign Up
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="px-2 hover:text-white">
           <Link className="nav-link" to="/login">
             Login
           </Link>
@@ -50,11 +47,16 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark mb-4">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            MenuMaker
-          </Link>
+      <nav className=" bg-teal-800 z-50 p-1 pt-2 flex flex-col">
+        <div className="self-center w-10/12 flex flex-row justify-between ">
+          <div className=" flex text-white ">
+            <Link
+              className="self-center text-xl text-gray-200 hover:text-white"
+              to="/"
+            >
+              MenuMaker
+            </Link>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -64,14 +66,7 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
-                  {" "}
-                </Link>
-              </li>
-            </ul>
+          <div className="flex justify-center flex-col text-gray-500 ">
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </div>
