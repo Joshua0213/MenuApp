@@ -22,7 +22,7 @@ class Landingpage extends Component {
           <div className="flex">
             <Link
               to="/register"
-              className="text-white font-medium bg-teal-700 w-full rounded  mt-5 py-3 px-8 mr-5 hover:bg-teal-800 mb-32"
+              className="text-white font-medium bg-button-1 w-full rounded  mt-5 py-3 px-8 mr-5 hover:bg-main-primary mb-32"
             >
               Register
             </Link>
@@ -30,7 +30,7 @@ class Landingpage extends Component {
             <div className="l-landing__buttonseperator"></div>
             <Link
               to="/login"
-              className="px-10 text-white font-medium bg-teal-700 w-full rounded  mt-5 py-3 hover:bg-teal-800 mb-32"
+              className="px-10 text-white font-medium bg-button-1 w-full rounded  mt-5 py-3 hover:bg-main-primary mb-32"
             >
               Login
             </Link>
@@ -42,7 +42,7 @@ class Landingpage extends Component {
         <div className="buttoncontainer w-11/12 flex justify-center">
           <Link
             to="/Dashboard"
-            className="text-white font-medium bg-teal-700 rounded  mt-5 py-3 px-10 hover:bg-teal-800 mb-32 display-block"
+            className="text-white font-medium bg-button-1 rounded  mt-5 py-3 px-10 hover:bg-main-primary mb-32 display-block"
           >
             Dashboard
           </Link>

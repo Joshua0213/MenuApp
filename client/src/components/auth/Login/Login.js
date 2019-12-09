@@ -82,7 +82,7 @@ class Login extends Component {
             />
             <input
               type="submit"
-              className="text-white font-medium bg-teal-700 w-full rounded  mt-5 py-3 hover:bg-teal-800"
+              className="text-white font-medium bg-button-1 cursor-pointer w-full rounded  mt-5 py-3 hover:bg-main-primary"
             />
           </form>
         </div>

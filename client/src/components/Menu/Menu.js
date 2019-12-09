@@ -24,7 +24,7 @@ class Menu extends Component {
       console.log(mainHeader);
       menuContent = <div>{mainHeader}</div>;
     }
-    return <div>{menuContent}</div>;
+    return <div className="m-h-90">{menuContent}</div>;
   }
 }
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_MENU, MENU_LOADING } from "./types";
+import { GET_MENU_BY_HANDLE, MENU_LOADING } from "./types";
 
 //Get current profile
 export const getMenuByHandle = handle => dispatch => {
@@ -10,7 +10,7 @@ export const getMenuByHandle = handle => dispatch => {
     .get(`/menu/${handle}`)
     .then(res =>
       dispatch({
-        type: GET_MENU,
+        type: GET_MENU_BY_HANDLE,
         payload: res.data
       })
     )
@@ -21,21 +21,6 @@ export const getMenuByHandle = handle => dispatch => {
 //
 //
 //
-//
-//
-//Get current profile
-// export const getCurrentMenu = () => dispatch => {
-//   dispatch(setMenuLoading());
-//   axios
-//     .get("/dashboard")
-//     .then(res =>
-//       dispatch({
-//         type: GET_PROFILE,
-//         payload: res.data
-//       })
-//     )
-//     .catch(err => console.log(err));
-// };
 //
 //
 //

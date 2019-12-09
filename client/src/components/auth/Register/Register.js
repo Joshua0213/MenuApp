@@ -99,7 +99,7 @@ class Register extends Component {
                   error={errors.password2}
                 />
                
-                <input type="submit" className=/*"btn btn-info btn-block mt-4"*/'text-white font-medium bg-teal-700 w-full rounded  mt-5 py-3 hover:bg-teal-800 mb-32' />
+                <input type="submit" className=/*"btn btn-info btn-block mt-4"*/'text-white font-medium cursor-pointer bg-button-1 w-full rounded  mt-5 py-3 hover:bg-main-primary mb-32' />
               </form>
         </div>
         <div className='h-20'></div>

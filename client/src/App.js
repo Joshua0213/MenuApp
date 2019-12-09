@@ -13,12 +13,11 @@ import Register from "./components/auth/Register/Register";
 import Login from "./components/auth/Login/Login";
 import Menu from "./components/Menu/Menu";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Menubuilder from "./components/Menubuilder/Menubuilder";
 import PrivateRoute from "./components/Common/PrivateRoute";
 import { clearCurrentProfile } from "./actions/dashboardActions";
 
 //Check for token
-
-console.log(Date.now() / 1000);
 if (localStorage.jwtToken) {
   const decoded = jwt_decode(localStorage.jwtToken);
   const currentTime = Date.now() / 1000;
@@ -46,12 +45,15 @@ function App() {
         <div className="App">
           <Navbar />
           <Route exact path="/" component={Landingpage} />
-          <div className="routecontaner">
+          <div className="Routecontainer">
             <Route exact path="/register" component={Register} />
             <Route exact path="/menu/:handle" component={Menu} />
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/menubuilder" component={Menubuilder} />
             </Switch>
           </div>
           <Footer />

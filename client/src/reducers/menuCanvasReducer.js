@@ -1,8 +1,8 @@
-import { GET_MENU_BY_HANDLE, MENU_LOADING } from "../actions/types";
+import { GET_MENU_BUILT, MENU_LOADING } from "../actions/types";
 
 const initialState = {
-  mainHeader: "",
-  loading: false
+  menuObj: [{ Title: "Page1" }],
+  loading: true
 };
 
 export default function(state = initialState, action) {
@@ -12,10 +12,10 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
-    case GET_MENU_BY_HANDLE:
+    case GET_MENU_BUILT:
       return {
         ...state,
-        mainHeader: action.payload,
+        menuObj: action.payload,
         loading: false
       };
     default:
