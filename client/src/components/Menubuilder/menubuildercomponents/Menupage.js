@@ -5,6 +5,7 @@ class Menupage extends Component {
     let classes = "text-6xl mt-20";
     let focus = this.props.focus;
     let MyFocus = this.props.MyFocus;
+
     if (focus !== MyFocus) {
       classes += " hidden";
     }

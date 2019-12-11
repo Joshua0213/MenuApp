@@ -1,72 +1,59 @@
 import React, { Component } from "react";
+import Spinner from "../../Common/Spinner";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Spinner from "../../Common/Spinner";
 //import TextFieldGroupReactive from "../../Common/TextFieldGroupReactive";
-import { getMenu } from "../../../actions/menubuilderActions";
 
 //import Addsection from "./sections/Addsection";
 import Navbarcanvas from "./Navbarcanvas";
 import Menupagecanvas from "./Menupagecanvas";
 import Menupage from "./Menupage";
+import { getMenuArr } from "../../../actions/menubuilderActions";
 
 class Menubuildercanvas extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pageFocus: 0
-    };
-    this.changeFocus = this.changeFocus.bind(this);
-  }
-  changeFocus(index) {
-    this.setState({
-      pageFocus: index
-    });
-  }
   componentDidMount() {
-    this.props.getMenu();
+    this.props.getMenuArr(this.props.menuObj);
   }
 
   render() {
-    const { menuObj } = this.props.menuBuilt;
-    const { loading } = this.props.menuBuilt;
+    const menuObj = this.props.menuObj;
+    const loadingArr = this.props.menuArr.loading;
     let navbar;
     let content;
     let pageContent;
-    console.log(this.props);
 
-    if (loading) {
-      content = <Spinner />;
+    //
+    //logic for having a navbar goes here
+    if (loadingArr) {
+      pageContent = <Spinner />;
     } else {
+      let navArr = [];
+      let pageFocus = this.props.menuArr.pageFocus;
       if (menuObj.length < 2) {
         navbar = null;
-        pageContent = <Menupage />;
+        pageContent = (
+          <Menupage
+            Content={this.props.menuArr.menuArr[0].Content}
+            focus={0}
+            MyFocus={0}
+          />
+        );
       } else {
-        //
-        //logic for having a navbar goes here
-        let navArr = [];
+        let menuArr = this.props.menuArr.menuArr;
         let pageArr = [];
-        menuObj.forEach(element => {
+        menuArr.forEach(element => {
           navArr.push(element.Title);
           pageArr.push(element.Content);
         });
-        navbar = (
-          <Navbarcanvas
-            navArr={navArr}
-            focus={this.state.pageFocus}
-            changeFocus={this.changeFocus}
-          />
-        );
-        pageContent = (
-          <Menupagecanvas focus={this.state.pageFocus} pageArr={pageArr} />
-        );
+        navbar = <Navbarcanvas navArr={navArr} focus={pageFocus} />;
+        pageContent = <Menupagecanvas focus={pageFocus} pageArr={pageArr} />;
       }
+      content = (
+        <div>
+          {navbar} <div className="bg-gray-500 h-px w-full"></div> {pageContent}
+        </div>
+      );
     }
-    content = (
-      <div>
-        {navbar} {pageContent}
-      </div>
-    );
 
     let finalized = <div>{content}</div>;
     return (
@@ -78,11 +65,11 @@ class Menubuildercanvas extends Component {
 }
 
 Menubuildercanvas.propTypes = {
-  getMenu: PropTypes.func.isRequired
+  getMenuArr: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  menuBuilt: state.menubuilt
+  menuArr: state.menuarr
 });
 
-export default connect(mapStateToProps, { getMenu })(Menubuildercanvas);
+export default connect(mapStateToProps, { getMenuArr })(Menubuildercanvas);

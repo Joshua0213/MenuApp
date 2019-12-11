@@ -2,7 +2,7 @@ import { GET_MENU_BUILT, MENU_LOADING } from "../actions/types";
 
 const initialState = {
   menuObj: [{ Title: "Page1" }],
-  loading: true
+  loadingObj: true
 };
 
 export default function(state = initialState, action) {
@@ -10,13 +10,13 @@ export default function(state = initialState, action) {
     case MENU_LOADING:
       return {
         ...state,
-        loading: true
+        loadingObj: true
       };
     case GET_MENU_BUILT:
       return {
         ...state,
         menuObj: action.payload,
-        loading: false
+        loadingObj: false
       };
     default:
       return state;

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
 import TextFieldGroup from "../../Common/TextFieldGroup";
+import TextFieldPassword from "../../Common/TextFieldPassword";
 
 class Login extends Component {
   constructor() {
@@ -72,7 +73,7 @@ class Login extends Component {
               onChange={this.onChange}
               error={errors.email}
             />
-            <TextFieldGroup
+            <TextFieldPassword
               placeholder="Password"
               name="password"
               type="password"
@@ -80,6 +81,7 @@ class Login extends Component {
               onChange={this.onChange}
               error={errors.password}
             />
+
             <input
               type="submit"
               className="text-white font-medium bg-button-1 cursor-pointer w-full rounded  mt-5 py-3 hover:bg-main-primary"

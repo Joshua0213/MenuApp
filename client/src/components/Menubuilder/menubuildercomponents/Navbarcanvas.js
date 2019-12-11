@@ -7,23 +7,18 @@ class Navbarcanvas extends Component {
     const pages = navArr.map((page, index) => {
       return (
         <div
-          id="Navbarcanas_container"
+          id="Navbarcanvas_container"
           key={page}
-          className="hover:bg-blue-400 cursor-pointer flex-grow flex"
+          className="bg-blue-300 hover:bg-blue-400 cursor-pointer flex-grow flex m-px rounded "
         >
-          <Navbartab
-            Title={page}
-            Myfocus={index}
-            focus={this.props.focus}
-            changeFocus={this.props.changeFocus}
-          />
+          <Navbartab Title={page} Myfocus={index} focus={this.props.focus} />
         </div>
       );
     });
     return (
       <div
         id="Navbarcanvas"
-        className="w-full bg-blue-200 min-h-10vh flex flex-row"
+        className="bg-gray-200 w-full  min-h-10vh flex flex-row py-1"
       >
         {pages}
       </div>
