@@ -9,7 +9,7 @@ class Navbarcanvas extends Component {
         <div
           id="Navbarcanvas_container"
           key={page}
-          className="bg-blue-300 hover:bg-blue-400 cursor-pointer flex-grow flex m-px rounded "
+          className="bg-blue-300 hover:bg-blue-400 cursor-pointer mx-2 flex-grow flex m-px rounded "
         >
           <Navbartab Title={page} Myfocus={index} focus={this.props.focus} />
         </div>
@@ -18,7 +18,7 @@ class Navbarcanvas extends Component {
     return (
       <div
         id="Navbarcanvas"
-        className="bg-gray-200 w-full  min-h-10vh flex flex-row py-1"
+        className="bg-gray-200 w-full  min-h-10vh flex flex-row py-1 px-2"
       >
         {pages}
       </div>

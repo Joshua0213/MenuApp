@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Spinner from "../../Common/Spinner";
 
 import SidebarPages from "./sidebar sections/page section/SidebarPages";
+import SidebarSections from "./sidebar sections/section section/SidebarSections";
 
 import { getMenuArr } from "../../../actions/menubuilderActions";
 
@@ -13,6 +14,8 @@ class Sidebar extends Component {
   }
   render() {
     const loadingArr = this.props.menuArr.loading;
+    const menuObj = this.props.menuArr.menuArr;
+    let focus = this.props.menuArr.pageFocus;
     let content;
     if (loadingArr) {
       content = <Spinner />;
@@ -22,7 +25,8 @@ class Sidebar extends Component {
           id="Sidebar"
           className="bg-blue-100 h-screen -mb-6 w-48 flex flex-col overflow-auto items-center flex-shrink-0"
         >
-          <SidebarPages name={"Pages"} menuObj={this.props.menuArr.menuArr} />
+          <SidebarPages name={"Pages"} menuObj={menuObj} />
+          <SidebarSections focus={focus} menuObj={menuObj} />
         </div>
       );
     }

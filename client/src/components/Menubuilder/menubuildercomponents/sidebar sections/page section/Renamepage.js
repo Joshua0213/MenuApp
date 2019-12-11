@@ -41,10 +41,10 @@ class Renamepage extends Component {
       content = (
         <div className="rounded flex flex-col items-center py-1 ">
           <div className="h-56 rounded-lg mb-1 bg-gray-200 w-11/12 border-2 border-gray-500 hover:border-gray-500">
-            <div className="mt-4 mb-3 text-center text-lg">Page Title: </div>
+            <div className="mt-4 mb-3 text-center text-lg">Rename Page: </div>
             <TextFieldGroupSmall
               className=""
-              placeholder="New Menu Page"
+              placeholder="Page Name"
               name="pageTitle"
               type="name"
               value={this.state.pageTitle}

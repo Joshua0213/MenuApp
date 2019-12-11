@@ -18,7 +18,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         menuArr: action.payload,
-        loadingArr: true
+        loadingArr: false
       };
     case GET_PAGE_FOCUS:
       return {
