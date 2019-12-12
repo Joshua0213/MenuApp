@@ -27,7 +27,6 @@ class SidebarSections extends Component {
       let focus = this.props.menuArr.pageFocus;
       let title = this.props.menuArr.menuArr[focus].Title;
       if (this.state.hidden === true) {
-        console.log(title);
         content = (
           <div
             className="bg-gray-300 border-gray-500 border-2 cursor-pointer hover:border-gray-600 h-7 w-11/12 mt-1 rounded-full flex justify-around"

@@ -12,12 +12,15 @@ export const getMenuObj = () => {
   return {
     type: GET_MENU_BUILT,
     payload: [
-      { Title: "Lunches", Content: "Lunch Menu" },
-      { Title: "Dinners", Content: "Dinners Menu" },
-      { Title: "Appetizers", Content: "Appetizer Menu" },
-      { Title: "Desserts", Content: "Dessert Menu" },
-      { Title: "Drinks", Content: "Drinks Menu" },
-      { Title: "Specials", Content: "Specials" }
+      {
+        Title: "Lunches",
+        Content: [
+          { Type: "header", Value: "Lunch Menu" },
+          { Type: "header", Value: "Other Header" },
+          { Type: "header", Value: "Another Header!" }
+        ]
+      },
+      { Title: "Dinners", Content: [{ Type: "header", Value: "Dinner Menu" }] }
     ]
   };
 };
@@ -44,31 +47,38 @@ export const setPageFocus = newfocus => {
 };
 
 export const deleteMenuPage = (menuObj, index) => dispatch => {
-  menuObj.splice(index, 1);
-  dispatch(setMenuArr(menuObj));
+  let tempObj = menuObj.map(i => i);
+  tempObj.splice(index, 1);
+  dispatch(setMenuArr(tempObj));
 };
 
 export const moveMenuPage = (menuObj, index, dir) => dispatch => {
+  let tempObj = menuObj.map(i => i);
   if (dir === 1) {
     ///direction is up, move backwards in array
-    let newArr = menuObj.splice(index, 1);
-    menuObj.splice(index - 1, 0, newArr[0]);
+    let newArr = tempObj.splice(index, 1);
+    tempObj.splice(index - 1, 0, newArr[0]);
   } else {
     ///direction is down, move forward in array
-    let newArr = menuObj.splice(index, 1);
-    menuObj.splice(index + 1, 0, newArr[0]);
+    let newArr = tempObj.splice(index, 1);
+    tempObj.splice(index + 1, 0, newArr[0]);
   }
-  dispatch(setMenuArr(menuObj));
+  dispatch(setMenuArr(tempObj));
 };
 
 export const addMenuPage = (menuObj, newPage) => dispatch => {
-  let newObj = { Title: newPage, Content: newPage + " Menu" };
-  menuObj.push(newObj);
-  dispatch(setMenuArr(menuObj));
+  let tempObj = menuObj.map(i => i);
+  let newObj = {
+    Title: newPage,
+    Content: [{ Type: "header", Value: newPage + " Menu" }]
+  };
+  tempObj.push(newObj);
+  dispatch(setMenuArr(tempObj));
 };
 
 export const renameMenuPage = (menuObj, pageTitle, index) => dispatch => {
-  let pageObj = { Title: pageTitle, Content: menuObj[index].Content };
-  menuObj.splice(index, 1, pageObj);
-  dispatch(setMenuArr(menuObj));
+  let tempObj = menuObj.map(i => i);
+  let pageObj = { Title: pageTitle, Content: tempObj[index].Content };
+  tempObj.splice(index, 1, pageObj);
+  dispatch(setMenuArr(tempObj));
 };

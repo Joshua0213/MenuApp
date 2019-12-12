@@ -22,20 +22,27 @@ class Addpage extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   setFocus() {
-    this.props.setPageFocus(this.props.menuObj.length - 1);
+    this.props.setPageFocus(this.props.menuArr.menuArr.length);
   }
   addPage() {
     this.props.toggleAddPage();
-    this.props.addMenuPage(this.props.menuObj, this.state.pageTitle);
+    this.props.addMenuPage(this.props.menuArr.menuArr, this.state.pageTitle);
     this.setFocus();
   }
 
   render() {
     let content = "";
+    let taken = false;
+    let menuArr = this.props.menuArr.menuArr;
     let addPageClick = this.addPage;
     let saveclassName =
       "bg-green-300 hover:bg-green-400 py-px text-green-600 hover:text-green-800 px-2 m-px rounded border-2 border-gray-400 hover:border-gray-500 cursor-pointer";
-    if (this.state.pageTitle === "") {
+    menuArr.forEach(element => {
+      if (this.state.pageTitle === element.Title) {
+        taken = true;
+      }
+    });
+    if (this.state.pageTitle === "" || taken) {
       saveclassName =
         "bg-gray-300 py-px text-gray-600 px-2 m-px rounded border-2 border-gray-400 cursor-not-allowed";
       addPageClick = null;
@@ -86,4 +93,8 @@ class Addpage extends Component {
   }
 }
 
-export default connect(null, { addMenuPage, setPageFocus })(Addpage);
+const mapStateToProps = state => ({
+  menuArr: state.menuarr
+});
+
+export default connect(mapStateToProps, { addMenuPage, setPageFocus })(Addpage);

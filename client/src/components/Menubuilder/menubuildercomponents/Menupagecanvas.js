@@ -1,22 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Menupage from "./Menupage";
 
 class Menupagecanvas extends Component {
   render() {
-    let { pageArr } = this.props;
-    const pages = pageArr.map((page, index) => {
-      return (
-        <Menupage
-          key={page}
-          Content={page}
-          MyFocus={index}
-          focus={this.props.focus}
-        />
-      );
+    let { menuArr } = this.props.menuArr;
+    const pages = menuArr.map((page, index) => {
+      return <Menupage key={index} MyFocus={index} />;
     });
     return <div id="Menupagecanvas">{pages}</div>;
   }
 }
 
-export default Menupagecanvas;
+const mapStateToProps = state => ({
+  menuArr: state.menuarr
+});
+
+export default connect(mapStateToProps, {})(Menupagecanvas);

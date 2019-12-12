@@ -56,7 +56,9 @@ function App() {
               <PrivateRoute exact path="/menubuilder" component={Menubuilder} />
             </Switch>
           </div>
-          <Footer />
+          <div className=" z-30 relative ">
+            <Footer />
+          </div>
         </div>
       </Router>
     </Provider>

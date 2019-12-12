@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Spinner from "../Common/Spinner";
 import Sidebar from "./menubuildercomponents/Sidebar";
 import Menubuildercanvas from "./menubuildercomponents/Menubuildercanvas";
-import { getMenuObj } from "../../actions/menubuilderActions";
+import { getMenuObj, getMenuArr } from "../../actions/menubuilderActions";
 
 class Menubuilder extends Component {
   componentDidMount() {
@@ -19,16 +19,12 @@ class Menubuilder extends Component {
     if (loadingObj) {
       content = <Spinner />;
     } else {
+      this.props.getMenuArr(menuObj);
       content = (
         <div id="Menubuilder" className="min-h-screen flex flex-row">
-          <Sidebar menuObj={menuObj} loading={loadingObj} />
-
+          <Sidebar />
           <div className="w-px min-h-screen bg-gray-500 -ml-px"></div>
-          <Menubuildercanvas
-            className="flex min-h-screen"
-            menuObj={menuObj}
-            loading={loadingObj}
-          />
+          <Menubuildercanvas className="flex min-h-screen" />
         </div>
       );
     }
@@ -45,4 +41,6 @@ const mapStateToProps = state => ({
   menuBuilt: state.menubuilt
 });
 
-export default connect(mapStateToProps, { getMenuObj })(Menubuilder);
+export default connect(mapStateToProps, { getMenuObj, getMenuArr })(
+  Menubuilder
+);

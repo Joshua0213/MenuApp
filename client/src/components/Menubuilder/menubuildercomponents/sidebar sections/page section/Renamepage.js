@@ -21,18 +21,25 @@ class Renamepage extends Component {
   renamePage() {
     this.props.toggleRenamePage();
     this.props.renameMenuPage(
-      this.props.menuObj,
+      this.props.menuArr.menuArr,
       this.state.pageTitle,
-      this.props.focus
+      this.props.menuArr.pageFocus
     );
   }
 
   render() {
     let content = "";
+    let menuArr = this.props.menuArr.menuArr;
+    let taken = false;
+    menuArr.forEach(element => {
+      if (this.state.pageTitle === element.Title) {
+        taken = true;
+      }
+    });
     let renamePageClick = this.renamePage;
     let saveclassName =
       "bg-green-300 hover:bg-green-400 py-px text-green-600 hover:text-green-800 px-2 m-px rounded border-2 border-gray-400 hover:border-gray-500 cursor-pointer";
-    if (this.state.pageTitle === "") {
+    if (this.state.pageTitle === "" || taken) {
       saveclassName =
         "bg-gray-300 py-px text-gray-600 px-2 m-px rounded border-2 border-gray-400 cursor-not-allowed";
       renamePageClick = null;
@@ -41,7 +48,12 @@ class Renamepage extends Component {
       content = (
         <div className="rounded flex flex-col items-center py-1 ">
           <div className="h-56 rounded-lg mb-1 bg-gray-200 w-11/12 border-2 border-gray-500 hover:border-gray-500">
-            <div className="mt-4 mb-3 text-center text-lg">Rename Page: </div>
+            <div className="mt-4 mb-3 text-center text-lg">
+              <span className="text-center text-lg">Rename Page:</span>
+              <div className='mx-3 bg-gray-300 border-gray-500 cursor-pointer border-4 flex-grow flex mx-1 my-1 rounded flex justify-center p-px"'>
+                {menuArr[this.props.menuArr.pageFocus].Title}
+              </div>
+            </div>
             <TextFieldGroupSmall
               className=""
               placeholder="Page Name"
@@ -83,4 +95,8 @@ class Renamepage extends Component {
   }
 }
 
-export default connect(null, { renameMenuPage })(Renamepage);
+const mapStateToProps = state => ({
+  menuArr: state.menuarr
+});
+
+export default connect(mapStateToProps, { renameMenuPage })(Renamepage);

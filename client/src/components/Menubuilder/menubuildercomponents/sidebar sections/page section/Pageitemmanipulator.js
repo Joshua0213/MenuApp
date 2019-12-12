@@ -10,6 +10,9 @@ import {
 class Pageitemmanipulator extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      newArr: []
+    };
     this.onDelete = this.onDelete.bind(this);
     this.moveUp = this.moveUp.bind(this);
     this.moveDown = this.moveDown.bind(this);
@@ -35,8 +38,9 @@ class Pageitemmanipulator extends Component {
   }
 
   render() {
-    let { focus } = this.props;
     let menuArr = this.props.menuArr.menuArr;
+
+    let { focus } = this.props;
     let addIconClasses =
       "w-11/12 bg-gray-100 mb-1 rounded-lg border-2 border-gray-400 hover:border-gray-500 flex justify-around align-items";
     let upIconClasses = " ";

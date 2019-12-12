@@ -24,14 +24,12 @@ class SidebarPages extends Component {
     });
   }
   toggleAddPage() {
-    console.log("toggle");
     this.setState(prevState => {
       return { addPageHidden: !prevState.addPageHidden };
     });
   }
 
   toggleRenamePage() {
-    console.log("toggle");
     this.setState(prevState => {
       return { renamePageHidden: !prevState.renamePageHidden };
     });
@@ -39,7 +37,7 @@ class SidebarPages extends Component {
   render() {
     let content;
 
-    const pages = this.props.menuObj.map((page, index) => {
+    const pages = this.props.menuArr.menuArr.map((page, index) => {
       return (
         <div id="Navbarcanvas_container" key={index}>
           <SidebarPagesItem
@@ -66,7 +64,6 @@ class SidebarPages extends Component {
           <div className="bg-gray-300 mt-1 hover:border-gray-600 border-gray-500 border-2 w-11/12 rounded-lg flex flex-col items-center ">
             <Addpage
               hidden={this.state.addPageHidden}
-              menuObj={this.props.menuObj}
               toggleAddPage={this.toggleAddPage}
             />
           </div>
@@ -77,7 +74,7 @@ class SidebarPages extends Component {
             <Renamepage
               focus={this.props.menuArr.pageFocus}
               hidden={this.state.renamePageHidden}
-              menuObj={this.props.menuObj}
+              menuObj={this.props.menuArr.menuArr}
               toggleRenamePage={this.toggleRenamePage}
             />
           </div>
@@ -96,7 +93,7 @@ class SidebarPages extends Component {
             </div>
             <Pageitemmanipulator
               focus={this.props.menuArr.pageFocus}
-              menuObj={this.props.menuObj}
+              menuObj={this.props.menuArr.menuArr}
               toggleAddPage={this.toggleAddPage}
               toggleRenamePage={this.toggleRenamePage}
             />
