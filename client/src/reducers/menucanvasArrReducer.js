@@ -12,13 +12,15 @@ export default function(state = initialState, action) {
       return {
         ...state,
         menuArr: action.payload,
-        loadingArr: false
+        loadingArr: false,
+        needToSave: false
       };
     case SET_MENU_ARRAY:
       return {
         ...state,
         menuArr: action.payload,
-        loadingArr: false
+        loadingArr: false,
+        needToSave: true
       };
     case GET_PAGE_FOCUS:
       return {

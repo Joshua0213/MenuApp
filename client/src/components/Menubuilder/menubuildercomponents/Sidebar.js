@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import SidebarPages from "./sidebar sections/page section/SidebarPages";
 import SidebarSections from "./sidebar sections/section section/SidebarSections";
+import GlobalOptions from "./sidebar sections/global section/GlobalOptions";
 
 import { getMenuArr } from "../../../actions/menubuilderActions";
 
@@ -13,10 +14,11 @@ class Sidebar extends Component {
     content = (
       <div
         id="Sidebar"
-        className="bg-blue-100 h-screen -mb-6 w-48 flex flex-col overflow-auto items-center flex-shrink-0"
+        className="bg-blue-100 min-h-screen pb-5 w-48 flex flex-col overflow-auto items-center"
       >
         <SidebarPages name={"Pages"} />
         <SidebarSections />
+        <GlobalOptions />
       </div>
     );
     return <div className="relative z-30">{content}</div>;

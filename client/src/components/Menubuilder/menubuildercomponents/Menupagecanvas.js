@@ -9,7 +9,7 @@ class Menupagecanvas extends Component {
     const pages = menuArr.map((page, index) => {
       return <Menupage key={index} MyFocus={index} />;
     });
-    return <div id="Menupagecanvas">{pages}</div>;
+    return <div id="Menupagecanvas block w-auto">{pages}</div>;
   }
 }
 

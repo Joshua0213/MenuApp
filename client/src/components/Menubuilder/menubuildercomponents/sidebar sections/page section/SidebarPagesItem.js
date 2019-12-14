@@ -12,7 +12,7 @@ class SidebarPagesItem extends Component {
   }
   render() {
     let classes =
-      "ml-2 hover:bg-gray-300 hover:border-gray-500 cursor-pointer border-4 flex-grow flex mx-1 my-1 rounded justify-center";
+      " hover:bg-gray-300 hover:border-gray-500 cursor-pointer border-4 flex-grow flex mx-1 my-1 rounded justify-center";
     let { focus } = this.props;
     let { myFocus } = this.props;
     if (focus === myFocus) {

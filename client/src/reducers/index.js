@@ -5,6 +5,7 @@ import dashboardReducer from "./dashboardReducer";
 import menuReducer from "./menuReducer";
 import menuCanvasReducer from "./menuCanvasReducer";
 import menucanvasArrReducer from "./menucanvasArrReducer";
+import globalstylesReducer from "./globalstylesReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   menu: menuReducer,
   dashboard: dashboardReducer,
   menubuilt: menuCanvasReducer,
-  menuarr: menucanvasArrReducer
+  menuarr: menucanvasArrReducer,
+  globalstyles: globalstylesReducer
 });

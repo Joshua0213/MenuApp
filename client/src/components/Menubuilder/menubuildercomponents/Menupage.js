@@ -3,17 +3,24 @@ import { connect } from "react-redux";
 
 import Sectionfactory from "./page sections/Sectionfactory";
 import Addsection from "./page sections/Addsection";
-import Addsectioncanvas from "./page sections/Addsectioncanvas";
-import Gray from "../../Common/Gray";
+import Addsectioncanvascontainer from "./page sections/AddCanvas components/Addsectioncanvascontainer";
 
 class Menupage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       addCanvasOpen: false,
-      opener: 999999
+      opener: 999999,
+      openTo: "start"
     };
     this.toggleAddCanvas = this.toggleAddCanvas.bind(this);
+    this.openSectionToAdd = this.openSectionToAdd.bind(this);
+  }
+
+  openSectionToAdd(t) {
+    this.setState(() => {
+      return { openTo: t };
+    });
   }
 
   toggleAddCanvas(Opened, opener) {
@@ -37,11 +44,17 @@ class Menupage extends Component {
     let MyFocus = this.props.MyFocus;
     let pageContentArray = this.props.menuArr.menuArr[MyFocus].Content;
     let sections = [];
-    if (this.state.addCanvasOpen) {
-      sections.push(<Gray key={"g"} toggleCanvas={this.toggleAddCanvas} />);
-    }
     if (this.state.opener === 0) {
-      sections.push(<Addsectioncanvas key={"addCanvas"} />);
+      sections.push(
+        <Addsectioncanvascontainer
+          key={"addCanvas"}
+          toggleCanvas={this.toggleAddCanvas}
+          openTo={this.state.openTo}
+          openSectionToAdd={this.openSectionToAdd}
+          pageLocation={MyFocus}
+          location={0}
+        />
+      );
     } else {
       sections.push(
         <Addsection
@@ -49,6 +62,7 @@ class Menupage extends Component {
           location={0}
           toggleCanvas={this.toggleAddCanvas}
           opener={this.state.opener}
+          openSectionToAdd={this.openSectionToAdd}
         />
       );
     }
@@ -61,7 +75,16 @@ class Menupage extends Component {
         />
       );
       if (this.state.opener === index + 1) {
-        sections.push(<Addsectioncanvas key={"addCanvas"} />);
+        sections.push(
+          <Addsectioncanvascontainer
+            key={"addCanvas"}
+            toggleCanvas={this.toggleAddCanvas}
+            openTo={this.state.openTo}
+            openSectionToAdd={this.openSectionToAdd}
+            pageLocation={MyFocus}
+            location={index + 1}
+          />
+        );
       } else {
         sections.push(
           <Addsection
@@ -69,6 +92,7 @@ class Menupage extends Component {
             location={index + 1}
             toggleCanvas={this.toggleAddCanvas}
             opener={this.state.opener}
+            openSectionToAdd={this.openSectionToAdd}
           />
         );
       }
@@ -78,7 +102,10 @@ class Menupage extends Component {
       classes += " hidden";
     }
     return (
-      <div id="Menupage" className={classes}>
+      <div
+        id="Menupage h-auto block bg-green-200 flex flex-rows justify-center"
+        className={classes}
+      >
         {sections}
       </div>
     );

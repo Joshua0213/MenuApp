@@ -12,9 +12,11 @@ export default class Gray extends Component {
   render() {
     return (
       <div
-        className="h-full w-full bg-gray-400 absolute z-20 opacity-75"
+        className="block flex-grow  h-auto bg-black absolute z-20 opacity-10"
         onClick={this.toggler}
-      ></div>
+      >
+        ...
+      </div>
     );
   }
 }

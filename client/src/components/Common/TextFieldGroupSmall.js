@@ -14,11 +14,11 @@ const TextFieldGroupSmall = ({
   disabled
 }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex justify-center">
       <input
         type={type}
         className={classnames(
-          " bg-gray-100 w-11/12 my-3 pl-2 rounded-lg text-m border-solid border-2 hover:bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:bg-white",
+          " bg-gray-100 w-11/12 rounded-lg text-m border-solid border-2 hover:bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:bg-white",
           {
             "border-red-500": error
           }
