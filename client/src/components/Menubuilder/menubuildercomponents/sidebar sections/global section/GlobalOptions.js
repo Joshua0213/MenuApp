@@ -9,19 +9,41 @@ class GlobalOptions extends Component {
     super(props);
     this.state = {
       hidden: true,
-      focus: "menu"
+      focus: "Menu",
+      dropdown: false
     };
     this.toggleClick = this.toggleClick.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.setFocus = this.setFocus.bind(this);
+  }
+
+  setFocus(value) {
+    this.setState(() => {
+      return { focus: value };
+    });
+  }
+
+  toggleDropdown() {
+    this.setState(prevState => {
+      return { dropdown: !prevState.dropdown };
+    });
   }
 
   toggleClick() {
     this.setState(prevState => {
-      return { hidden: !prevState.hidden };
+      return { hidden: !prevState.hidden, dropdown: false };
     });
   }
   render() {
     let content;
+    let dropdownClass =
+      "w-10/12 relative border-2 cursor-pointer hover:border-gray-600 text-center mt-1 rounded-full";
 
+    if (!this.state.dropdown) {
+      dropdownClass += " border-gray-500";
+    } else {
+      dropdownClass += " border-gray-600";
+    }
     if (this.state.hidden === true) {
       content = (
         <div
@@ -34,14 +56,20 @@ class GlobalOptions extends Component {
     } else {
       let canvas;
       switch (this.state.focus) {
-        case "header":
+        case "Headers":
           // <Globaldivcanvas focus={header}
+          canvas = <Globalmenucanvas focus={this.state.focus} />;
           break;
-        case "paragaraph":
+        case "Paragaraphs":
           // code block
+          canvas = <Globalmenucanvas focus={this.state.focus} />;
+          break;
+        case "Something":
+          // code block
+          canvas = <Globalmenucanvas focus={this.state.focus} />;
           break;
         default:
-          canvas = <Globalmenucanvas />;
+          canvas = <Globalmenucanvas focus={this.state.focus} />;
       }
       content = (
         <div className="bg-gray-300 mt-1  hover:border-gray-600 border-gray-500 border-2 w-11/12 rounded-lg flex flex-col items-center ">
@@ -51,7 +79,14 @@ class GlobalOptions extends Component {
           >
             <div className="">Menu Settings</div>
           </div>
-          <Globaldropdown />
+          <div className={dropdownClass} onClick={this.toggleDropdown}>
+            <Globaldropdown
+              focus={this.state.focus}
+              toggle={this.toggleDropdown}
+              setFocus={this.setFocus}
+              open={this.state.dropdown}
+            />
+          </div>
           {canvas}
           item manipulator?
         </div>

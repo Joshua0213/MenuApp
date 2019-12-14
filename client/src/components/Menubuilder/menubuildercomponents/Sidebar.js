@@ -21,7 +21,7 @@ class Sidebar extends Component {
         <GlobalOptions />
       </div>
     );
-    return <div className="relative z-30">{content}</div>;
+    return <div className="relative z-40">{content}</div>;
   }
 }
 

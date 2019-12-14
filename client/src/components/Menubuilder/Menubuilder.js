@@ -30,7 +30,7 @@ class Menubuilder extends Component {
           <div className="min-h-screen bg-blue-100">
             <Sidebar />
           </div>
-          <div className="w-px min-h-screen bg-gray-500 -ml-px z-50"></div>
+          <div className="w-px min-h-screen bg-gray-500 z-30"></div>
           <Menubuildercanvas className="flex min-h-screen" />
         </div>
       );

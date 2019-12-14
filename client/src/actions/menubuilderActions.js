@@ -33,7 +33,10 @@ export const getMenuObj = () => {
               Value: "Another Header!",
               Settings: { fontSize: "90px" }
             }
-          ]
+          ],
+          Settings: {
+            backgroundColor: null
+          }
         },
         {
           Title: "Dinners",
@@ -43,10 +46,16 @@ export const getMenuObj = () => {
               Value: "Dinner Menu",
               Settings: { fontSize: "9px" }
             }
-          ]
+          ],
+          Settings: {
+            backgroundColor: "#17CFE4"
+          }
         }
       ],
-      globalsObj: { headers: { fontSize: "20px" } }
+      globalsObj: {
+        headers: { fontSize: "20px" },
+        menu: { backgroundColor: "#F0DAC6" }
+      }
     }
   };
 };
