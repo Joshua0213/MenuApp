@@ -39,11 +39,26 @@ class Menupage extends Component {
   }
 
   render() {
-    let classes = "text-6xl flex flex-col items-center";
+    let classes = "text-4xl flex flex-col h-full items-center";
     let focus = this.props.menuArr.pageFocus;
     let MyFocus = this.props.MyFocus;
     let pageContentArray = this.props.menuArr.menuArr[MyFocus].Content;
     let sections = [];
+    let inheritColor = this.props.menuArr.menuArr[MyFocus].Settings
+      .InheritbackgroundColor;
+    let globalBackgroundColor = this.props.globalState.globalStyles.menu
+      .backgroundColor;
+    let localBackgroundColor = this.props.menuArr.menuArr[MyFocus].Settings
+      .backgroundColor;
+    let currentBackgroundColor;
+    if (inheritColor) {
+      currentBackgroundColor = globalBackgroundColor;
+    } else {
+      currentBackgroundColor = localBackgroundColor;
+    }
+    let pageStyle = {
+      backgroundColor: `${currentBackgroundColor}`
+    };
     if (this.state.opener === 0) {
       sections.push(
         <Addsectioncanvascontainer
@@ -103,8 +118,9 @@ class Menupage extends Component {
     }
     return (
       <div
-        id="Menupage h-auto block bg-green-200 flex flex-rows justify-center"
+        id="Menupage h-auto block flex flex-grow h-full flex-rows justify-center"
         className={classes}
+        style={pageStyle}
       >
         {sections}
       </div>
@@ -113,7 +129,8 @@ class Menupage extends Component {
 }
 
 const mapStateToProps = state => ({
-  menuArr: state.menuarr
+  menuArr: state.menuarr,
+  globalState: state.globalstyles
 });
 
 export default connect(mapStateToProps, {})(Menupage);

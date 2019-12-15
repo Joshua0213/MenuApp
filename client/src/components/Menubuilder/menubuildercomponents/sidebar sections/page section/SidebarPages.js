@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import SidebarPagesItem from "./SidebarPagesItem";
 import Pageitemmanipulator from "./Pageitemmanipulator";
 import Addpage from "./Addpage";
-import Renamepage from "./Renamepage";
+import Pagesettings from "./Pagesettings";
 
 class SidebarPages extends Component {
   constructor(props) {
@@ -12,11 +12,11 @@ class SidebarPages extends Component {
     this.state = {
       hidden: true,
       addPageHidden: true,
-      renamePageHidden: true
+      pagesettingsHidden: true
     };
     this.toggleClick = this.toggleClick.bind(this);
     this.toggleAddPage = this.toggleAddPage.bind(this);
-    this.toggleRenamePage = this.toggleRenamePage.bind(this);
+    this.togglePageSettings = this.togglePageSettings.bind(this);
   }
   toggleClick() {
     this.setState(prevState => {
@@ -29,9 +29,9 @@ class SidebarPages extends Component {
     });
   }
 
-  toggleRenamePage() {
+  togglePageSettings() {
     this.setState(prevState => {
-      return { renamePageHidden: !prevState.renamePageHidden };
+      return { pagesettingsHidden: !prevState.pagesettingsHidden };
     });
   }
   render() {
@@ -68,14 +68,14 @@ class SidebarPages extends Component {
             />
           </div>
         );
-      } else if (!this.state.renamePageHidden) {
+      } else if (!this.state.pagesettingsHidden) {
         content = (
           <div className="bg-gray-300 mt-1 hover:border-gray-600 border-gray-500 border-2 w-11/12 rounded-lg flex flex-col items-center ">
-            <Renamepage
+            <Pagesettings
               focus={this.props.menuArr.pageFocus}
-              hidden={this.state.renamePageHidden}
+              hidden={this.state.pagesettingsHidden}
               menuObj={this.props.menuArr.menuArr}
-              toggleRenamePage={this.toggleRenamePage}
+              togglePageSettings={this.togglePageSettings}
             />
           </div>
         );
@@ -95,7 +95,7 @@ class SidebarPages extends Component {
               focus={this.props.menuArr.pageFocus}
               menuObj={this.props.menuArr.menuArr}
               toggleAddPage={this.toggleAddPage}
-              toggleRenamePage={this.toggleRenamePage}
+              togglePageSettings={this.togglePageSettings}
             />
           </div>
         );

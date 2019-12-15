@@ -5,7 +5,9 @@ import {
   GET_MENU_ARR,
   SET_MENU_ARRAY,
   GET_PAGE_FOCUS,
-  GET_GLOBALS_OBJECT
+  GET_GLOBALS_OBJECT,
+  SET_GLOBALS_OBJECT,
+  SET_SIDEBAR_WIDTH
 } from "./types";
 
 //Get current menu
@@ -35,7 +37,8 @@ export const getMenuObj = () => {
             }
           ],
           Settings: {
-            backgroundColor: null
+            backgroundColor: null,
+            InheritbackgroundColor: true
           }
         },
         {
@@ -44,17 +47,18 @@ export const getMenuObj = () => {
             {
               Type: "header",
               Value: "Dinner Menu",
-              Settings: { fontSize: "9px" }
+              Settings: { fontSize: "30px" }
             }
           ],
           Settings: {
-            backgroundColor: "#17CFE4"
+            backgroundColor: "#F0E8E8",
+            InheritbackgroundColor: false
           }
         }
       ],
       globalsObj: {
         headers: { fontSize: "20px" },
-        menu: { backgroundColor: "#F0DAC6" }
+        menu: { backgroundColor: "#EEE8D9" }
       }
     }
   };
@@ -78,6 +82,20 @@ export const getGlobalsObject = globalObj => {
   return {
     type: GET_GLOBALS_OBJECT,
     payload: globalObj
+  };
+};
+
+const setGlobalsObject = globalObj => {
+  return {
+    type: SET_GLOBALS_OBJECT,
+    payload: globalObj
+  };
+};
+
+export const setSidebarWidth = newWidth => {
+  return {
+    type: SET_SIDEBAR_WIDTH,
+    payload: newWidth
   };
 };
 
@@ -133,7 +151,11 @@ export const addMenuPage = (menuObj, newPage) => dispatch => {
     Title: newPage,
     Content: [
       { Type: "header", Value: newPage + " Menu", Settings: { fontSize: null } }
-    ]
+    ],
+    Settings: {
+      backgroundColor: null,
+      InheritbackgroundColor: true
+    }
   };
   tempObj.push(newObj);
   dispatch(setMenuArr(tempObj));
@@ -141,7 +163,11 @@ export const addMenuPage = (menuObj, newPage) => dispatch => {
 
 export const renameMenuPage = (menuObj, pageTitle, index) => dispatch => {
   let tempObj = menuObj.map(i => i);
-  let pageObj = { Title: pageTitle, Content: tempObj[index].Content };
+  let pageObj = {
+    Title: pageTitle,
+    Content: tempObj[index].Content,
+    Settings: tempObj[index].Settings
+  };
   tempObj.splice(index, 1, pageObj);
   dispatch(setMenuArr(tempObj));
 };
@@ -209,4 +235,31 @@ export const updateSpacer = (
   let tempObj = menuObj.map(i => i);
   tempObj[pageLocation].Content[sectionLocation].Value = value;
   dispatch(setMenuArr(tempObj));
+};
+
+export const updatePageSetting = (
+  menuObj,
+  pageLocation,
+  setting,
+  value
+) => dispatch => {
+  let tempObj = menuObj.map(i => i);
+  tempObj[pageLocation].Settings[setting] = value;
+  dispatch(setMenuArr(tempObj));
+};
+
+export const updateGlobalSetting = (
+  globalsObj,
+  category,
+  setting,
+  value
+) => dispatch => {
+  console.log(globalsObj);
+  let tempObj = {};
+  Object.keys(globalsObj).map(function(key, index) {
+    tempObj[key] = globalsObj[key];
+    return null;
+  });
+  tempObj[category][setting] = value;
+  dispatch(setGlobalsObject(tempObj));
 };

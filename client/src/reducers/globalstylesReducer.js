@@ -1,4 +1,4 @@
-import { GET_GLOBALS_OBJECT } from "../actions/types";
+import { GET_GLOBALS_OBJECT, SET_GLOBALS_OBJECT } from "../actions/types";
 
 const initialState = {
   globalStyles: {}
@@ -7,6 +7,11 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_GLOBALS_OBJECT:
+      return {
+        ...state,
+        globalStyles: action.payload
+      };
+    case SET_GLOBALS_OBJECT:
       return {
         ...state,
         globalStyles: action.payload

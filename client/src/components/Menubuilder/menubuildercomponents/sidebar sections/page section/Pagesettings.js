@@ -5,8 +5,9 @@ import { renameMenuPage } from "../../../../../actions/menubuilderActions";
 
 import TextFieldGroupSmall from "../../../../Common/TextFieldGroupSmall";
 import Backbutton from "../../../../Common/Backbutton";
+import Localsettings from "../sidebar section common/Localsettings";
 
-class Renamepage extends Component {
+class Pagesettings extends Component {
   constructor() {
     super();
     this.state = {
@@ -48,24 +49,27 @@ class Renamepage extends Component {
     if (!this.props.hidden) {
       content = (
         <div className="rounded flex flex-col items-center py-1 ">
-          <div className="h-56 rounded-lg mb-1 bg-gray-200 w-11/12 border-2 border-gray-500 hover:border-gray-500">
+          <div className="min-h-64 text-center flex flex-col items-center  mb-1 w-full border-b-2 border-gray-500 hover:border-gray-500 pb-2">
             <div className="mt-4 mb-3 text-center text-lg">
-              <span className="text-center text-lg">Rename Page:</span>
-              <div className='mx-3 bg-gray-300 border-gray-500 cursor-pointer border-4 flex-grow flex mx-1 my-1 rounded flex justify-center p-px"'>
+              <span className="text-center text-lg">Page Settings</span>
+              <div className='mx-3 bg-gray-300 border-gray-500 border-4 flex-grow flex mx-1 my-1 rounded flex justify-center p-px"'>
                 {menuArr[this.props.menuArr.pageFocus].Title}
               </div>
             </div>
             <TextFieldGroupSmall
               className=""
-              placeholder="Page Name"
+              placeholder="Page Title"
               name="pageTitle"
               type="name"
               value={this.state.pageTitle}
               onChange={this.onChange}
             />
+            <Localsettings name={"Background"} focus={this.props.focus} />
+            <Localsettings name={"Margins"} focus={this.props.focus} />
+            <Localsettings name={"Padding"} focus={this.props.focus} />
           </div>
           <div className="bg-gray-200 rounded-lg flex justify-around w-11/12 border-2 border-gray-500 hover:border-gray-500">
-            <Backbutton toggle={this.props.toggleRenamePage} />
+            <Backbutton toggle={this.props.togglePageSettings} />
             <div className={saveclassName}>
               <svg
                 className="w-6 h-6 fill-current"
@@ -83,7 +87,7 @@ class Renamepage extends Component {
       content = "";
     }
 
-    return <div className="w-full bg-gray-300 rounded">{content}</div>;
+    return <div className="w-full bg-gray-300 min-h-64 rounded">{content}</div>;
   }
 }
 
@@ -91,4 +95,4 @@ const mapStateToProps = state => ({
   menuArr: state.menuarr
 });
 
-export default connect(mapStateToProps, { renameMenuPage })(Renamepage);
+export default connect(mapStateToProps, { renameMenuPage })(Pagesettings);

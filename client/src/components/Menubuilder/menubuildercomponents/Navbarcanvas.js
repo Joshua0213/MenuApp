@@ -23,7 +23,7 @@ class Navbarcanvas extends Component {
     return (
       <div
         id="Navbarcanvas"
-        className="bg-gray-200 w-full  min-h-10vh flex flex-row py-1 px-2"
+        className="bg-gray-200 w-full min-h-10vh flex flex-row py-1 px-2"
       >
         {pages}
       </div>

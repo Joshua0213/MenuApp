@@ -3,15 +3,20 @@ import reactCSS from "reactcss";
 import { ChromePicker } from "react-color";
 
 class Colorpicker extends React.Component {
-  state = {
-    displayColorPicker: false,
-    color: {
-      r: "241",
-      g: "112",
-      b: "19",
-      a: "1"
-    }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayColorPicker: false,
+      color: {
+        r: "241",
+        g: "112",
+        b: "19",
+        a: "1"
+      },
+      background: "#fff"
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
   handleClick = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker });
@@ -22,17 +27,18 @@ class Colorpicker extends React.Component {
   };
 
   handleChange = color => {
-    this.setState({ color: color.rgb });
+    this.setState({ background: color.hex });
+    this.props.changeColor(color.hex);
   };
 
   render() {
-    const styles = reactCSS({
+    let styles = reactCSS({
       default: {
         color: {
           width: "36px",
           height: "14px",
           borderRadius: "2px",
-          background: `rgba(${this.state.color.r}, ${this.state.color.g}, ${this.state.color.b}, ${this.state.color.a})`
+          background: `${this.props.controlColor}`
         },
         swatch: {
           padding: "5px",
@@ -44,7 +50,7 @@ class Colorpicker extends React.Component {
         },
         popover: {
           position: "absolute",
-          zIndex: "50"
+          zIndex: "100"
         },
         cover: {
           position: "fixed",
@@ -57,15 +63,15 @@ class Colorpicker extends React.Component {
     });
 
     return (
-      <div>
+      <div className="z-50">
         <div style={styles.swatch} onClick={this.handleClick}>
-          <div style={styles.color} />
+          <div style={styles.color}></div>
         </div>
         {this.state.displayColorPicker ? (
           <div className="w-11/12 z-50" style={styles.popover}>
             <div style={styles.cover} onClick={this.handleClose} />
             <ChromePicker
-              color={this.state.color}
+              color={this.state.background}
               onChange={this.handleChange}
             />
           </div>

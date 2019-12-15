@@ -44,27 +44,27 @@ class Globaldropdown extends Component {
             <div className="pb-1">{this.props.focus}</div>
             {icon}
           </div>
-          <div className="absolute w-full p-px rounded-lg border-2 border-gray-500 mt-2 cursor-pointer bg-gray-100">
+          <div className="absolute w-full p-px border-2 border-gray-500 mt-2 cursor-pointer bg-gray-100">
             <div
-              className="bg-gray-200 hover:bg-gray-400 border-2 border-gray-500 rounded-lg hover:border-gray-600"
+              className="bg-gray-200 hover:bg-gray-400 py-2 border-b-2 border-gray-500 hover:border-gray-600"
               onClick={() => this.props.setFocus("Menu")}
             >
               Menu
             </div>
             <div
-              className="bg-white hover:bg-gray-200 border-2 rounded-lg border-gray-500 hover:border-gray-600"
+              className="bg-white hover:bg-gray-200  py-2 border-b-2 border-gray-500 hover:border-gray-600"
               onClick={() => this.setFocus("Headers")}
             >
               Headers
             </div>
             <div
-              className="bg-gray-200 hover:bg-gray-400 border-2 border-gray-500 rounded-lg hover:border-gray-600"
+              className="bg-gray-200 hover:bg-gray-400  py-2 border-b-2 border-gray-500 hover:border-gray-600"
               onClick={() => this.setFocus("Paragraphs")}
             >
               Paragraphs
             </div>
             <div
-              className="bg-white hover:bg-gray-200 border-2 rounded-lg border-gray-500 hover:border-gray-600"
+              className="bg-white hover:bg-gray-200  py-2 border-gray-500 hover:border-gray-600"
               onClick={() => this.setFocus("Something")}
             >
               Something

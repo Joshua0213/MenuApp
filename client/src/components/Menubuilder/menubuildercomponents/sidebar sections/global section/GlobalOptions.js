@@ -93,7 +93,7 @@ class GlobalOptions extends Component {
       );
     }
 
-    return <div className="w-full flex justify-center z-10">{content}</div>;
+    return <div className="w-full flex justify-center">{content}</div>;
   }
 }
 

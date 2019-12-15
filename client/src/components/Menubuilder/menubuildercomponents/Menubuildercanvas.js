@@ -24,14 +24,15 @@ class Menubuildercanvas extends Component {
         navbar = null;
       }
       content = (
-        <div>
-          {navbar} <div className="bg-gray-500 h-px w-full"></div> {pageContent}
+        <div className="h-full">
+          {navbar} <div className="bg-gray-500 h-px w-full"></div>
+          {pageContent}
         </div>
       );
     }
 
     return (
-      <div id="Menubuildercanvas" className="w-full text-center">
+      <div id="Menubuildercanvas" className="w-full text-center h-full">
         {content}
       </div>
     );

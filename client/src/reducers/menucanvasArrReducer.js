@@ -1,9 +1,15 @@
-import { GET_MENU_ARR, SET_MENU_ARRAY, GET_PAGE_FOCUS } from "../actions/types";
+import {
+  GET_MENU_ARR,
+  SET_SIDEBAR_WIDTH,
+  SET_MENU_ARRAY,
+  GET_PAGE_FOCUS
+} from "../actions/types";
 
 const initialState = {
   menuArr: [],
   loadingArr: true,
-  pageFocus: 0
+  pageFocus: 0,
+  sidebarWidth: 350
 };
 
 export default function(state = initialState, action) {
@@ -26,6 +32,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         pageFocus: action.payload
+      };
+    case SET_SIDEBAR_WIDTH:
+      return {
+        ...state,
+        sidebarWidth: action.payload
       };
     default:
       return state;
