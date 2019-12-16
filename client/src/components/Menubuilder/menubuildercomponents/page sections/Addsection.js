@@ -28,14 +28,14 @@ class Addsection extends Component {
     let toggleClick = this.toggler;
     let content;
     let classes =
-      "text-center text-sm opacity-50 rounded-full w-full hover:opacity-100 cursor-pointer";
+      "text-center text-sm opacity-0 relative z-50 w-6/12 rounded-full hover:opacity-100 cursor-pointer";
 
     if (this.state.mouseOver) {
-      content = <div>---+---</div>;
-      classes += " bg-green-500";
+      content = <div></div>;
+      classes += " bg-blue-500 h-4 -mt-2 -mb-2";
     } else {
       content = "";
-      classes += " bg-green-400 h-2";
+      classes += " bg-blue-400 h-4 -mt-2 -mb-2";
     }
 
     return (

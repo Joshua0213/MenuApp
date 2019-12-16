@@ -6,6 +6,8 @@ import SidebarPages from "./sidebar sections/page section/SidebarPages";
 import SidebarSections from "./sidebar sections/section section/SidebarSections";
 import GlobalOptions from "./sidebar sections/global section/GlobalOptions";
 import Menuitems from "./sidebar sections/menu items section/MenuItems";
+import Savebutton from "./sidebar sections/sidebar section common/Savebutton";
+import Icontoggle from "./sidebar sections/sidebar section common/Icontoggle";
 
 import { getMenuArr } from "../../../actions/menubuilderActions";
 
@@ -22,6 +24,10 @@ class Sidebar extends Component {
         className="bg-blue-100 min-h-screen pb-5 flex flex-col overflow-auto items-center"
         style={sidebarStyle}
       >
+        <div className="h-12 border-b-2 border-gray-500 w-full flex flex-row items-center justify-around">
+          <Savebutton />
+          <Icontoggle />
+        </div>
         <SidebarPages name={"Pages"} />
         <SidebarSections />
         <GlobalOptions />

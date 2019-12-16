@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { setPageFocus } from "../../../actions/menubuilderActions";
+import {
+  setPageFocus,
+  setSectionFocus
+} from "../../../../actions/menubuilderActions";
 
 class Navbartab extends Component {
   constructor(props) {
@@ -10,6 +13,17 @@ class Navbartab extends Component {
   }
 
   setFocus() {
+    //check if the next page has a section array
+    //that is long enough to handle the current section focus
+    if (
+      this.props.menuArr.sectionFocus >
+      this.props.menuArr.menuArr[this.props.Myfocus].Content.length - 1
+    ) {
+      this.props.setSectionFocus(
+        this.props.menuArr.menuArr[this.props.Myfocus].Content.length - 1
+      );
+    }
+
     this.props.setPageFocus(this.props.Myfocus);
   }
   render() {
@@ -25,4 +39,10 @@ class Navbartab extends Component {
   }
 }
 
-export default connect(null, { setPageFocus })(Navbartab);
+const mapStateToProps = state => ({
+  menuArr: state.menuarr
+});
+
+export default connect(mapStateToProps, { setPageFocus, setSectionFocus })(
+  Navbartab
+);

@@ -7,7 +7,11 @@ import {
   GET_PAGE_FOCUS,
   GET_GLOBALS_OBJECT,
   SET_GLOBALS_OBJECT,
-  SET_SIDEBAR_WIDTH
+  SET_SIDEBAR_WIDTH,
+  SET_NEED_SAVE,
+  PAGE_SAVED,
+  TOGGLE_ICONS,
+  SET_SECTION_FOCUS
 } from "./types";
 
 //Get current menu
@@ -22,18 +26,39 @@ export const getMenuObj = () => {
             {
               Type: "header",
               Value: "Lunch Menu",
-              Settings: { fontSize: "40px" }
+              Settings: {
+                fontSize: "80px",
+                InheritfontSize: true,
+                backgroundColor: "#ffffff",
+                width: "30",
+                justifySelf: "start",
+                hasBackgroundColor: false
+              }
             },
             {
               Type: "header",
               Value: "Other Header",
-              Settings: { fontSize: null }
+              Settings: {
+                fontSize: "70px",
+                InheritfontSize: false,
+                backgroundColor: "#DDF3C6",
+                width: "70",
+                justifySelf: "center",
+                hasBackgroundColor: true
+              }
             },
             { Type: "spacer", Value: "300" },
             {
               Type: "header",
               Value: "Another Header!",
-              Settings: { fontSize: "90px" }
+              Settings: {
+                fontSize: "30px",
+                InheritfontSize: true,
+                backgroundColor: "#ffffff",
+                width: "50",
+                justifySelf: "end",
+                hasBackgroundColor: false
+              }
             }
           ],
           Settings: {
@@ -47,7 +72,14 @@ export const getMenuObj = () => {
             {
               Type: "header",
               Value: "Dinner Menu",
-              Settings: { fontSize: "30px" }
+              Settings: {
+                fontSize: "80px",
+                InheritfontSize: false,
+                backgroundColor: "#ffffff",
+                width: "50",
+                justifySelf: "center",
+                hasBackgroundColor: false
+              }
             }
           ],
           Settings: {
@@ -57,7 +89,7 @@ export const getMenuObj = () => {
         }
       ],
       globalsObj: {
-        headers: { fontSize: "20px" },
+        headers: { GfontSize: "35px", GbackgroundColor: "#E49696" },
         menu: { backgroundColor: "#EEE8D9" }
       }
     }
@@ -78,6 +110,24 @@ const setMenuArr = menuObj => {
   };
 };
 
+const setNeedSave = () => {
+  return {
+    type: SET_NEED_SAVE
+  };
+};
+const savePage = () => {
+  return {
+    type: PAGE_SAVED
+  };
+};
+
+export const toggleIcons = toggleTo => {
+  return {
+    type: TOGGLE_ICONS,
+    payload: toggleTo
+  };
+};
+
 export const getGlobalsObject = globalObj => {
   return {
     type: GET_GLOBALS_OBJECT,
@@ -85,11 +135,16 @@ export const getGlobalsObject = globalObj => {
   };
 };
 
-const setGlobalsObject = globalObj => {
+const setGlobalsObject = globalObj => dispatch => {
+  dispatch(setNeedSave());
   return {
     type: SET_GLOBALS_OBJECT,
     payload: globalObj
   };
+};
+
+export const setSavePage = () => dispatch => {
+  dispatch(savePage());
 };
 
 export const setSidebarWidth = newWidth => {
@@ -102,6 +157,13 @@ export const setSidebarWidth = newWidth => {
 export const setPageFocus = newfocus => {
   return {
     type: GET_PAGE_FOCUS,
+    payload: newfocus
+  };
+};
+
+export const setSectionFocus = newfocus => {
+  return {
+    type: SET_SECTION_FOCUS,
     payload: newfocus
   };
 };
@@ -192,7 +254,14 @@ export const createNewHeader = (
   tempObj[pageLocation].Content.splice(sectionLocation, 0, {
     Type: "header",
     Value: newHeader,
-    Settings: { fontSize: null }
+    Settings: {
+      fontSize: "40px",
+      InheritfontSize: true,
+      backgroundColor: "#ffffff",
+      width: "100",
+      justifySelf: "center",
+      hasBackgroundColor: false
+    }
   });
   dispatch(setMenuArr(tempObj));
 };
@@ -248,18 +317,30 @@ export const updatePageSetting = (
   dispatch(setMenuArr(tempObj));
 };
 
+export const updateSectionSetting = (
+  menuObj,
+  pageLocation,
+  sectionLocation,
+  setting,
+  value
+) => dispatch => {
+  let tempObj = menuObj.map(i => i);
+  tempObj[pageLocation].Content[sectionLocation].Settings[setting] = value;
+  dispatch(setMenuArr(tempObj));
+};
+
 export const updateGlobalSetting = (
   globalsObj,
   category,
   setting,
   value
 ) => dispatch => {
-  console.log(globalsObj);
   let tempObj = {};
   Object.keys(globalsObj).map(function(key, index) {
     tempObj[key] = globalsObj[key];
     return null;
   });
+  console.log(tempObj);
   tempObj[category][setting] = value;
   dispatch(setGlobalsObject(tempObj));
 };

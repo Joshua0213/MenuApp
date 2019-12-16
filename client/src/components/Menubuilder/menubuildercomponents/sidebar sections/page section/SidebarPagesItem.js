@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setPageFocus } from "../../../../../actions/menubuilderActions";
+import {
+  setPageFocus,
+  setSectionFocus
+} from "../../../../../actions/menubuilderActions";
 
 class SidebarPagesItem extends Component {
   constructor(props) {
@@ -8,6 +11,16 @@ class SidebarPagesItem extends Component {
     this.setFocus = this.setFocus.bind(this);
   }
   setFocus() {
+    //check if the next page has a section array
+    //that is long enough to handle the current section focus
+    if (
+      this.props.menuArr.sectionFocus >
+      this.props.menuArr.menuArr[this.props.myFocus].Content.length - 1
+    ) {
+      this.props.setSectionFocus(
+        this.props.menuArr.menuArr[this.props.myFocus].Content.length - 1
+      );
+    }
     this.props.setPageFocus(this.props.myFocus);
   }
   render() {
@@ -28,4 +41,10 @@ class SidebarPagesItem extends Component {
   }
 }
 
-export default connect(null, { setPageFocus })(SidebarPagesItem);
+const mapStateToProps = state => ({
+  menuArr: state.menuarr
+});
+
+export default connect(mapStateToProps, { setPageFocus, setSectionFocus })(
+  SidebarPagesItem
+);

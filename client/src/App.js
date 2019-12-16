@@ -13,9 +13,9 @@ import Register from "./components/auth/Register/Register";
 import Login from "./components/auth/Login/Login";
 import Menu from "./components/Menu/Menu";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Menubuilder from "./components/Menubuilder/Menubuilder";
 import PrivateRoute from "./components/Common/PrivateRoute";
 import { clearCurrentProfile } from "./actions/dashboardActions";
+import MenuBuilderwrapper from "./components/Menubuilder/MenuBuilderwrapper";
 
 //Check for token
 if (localStorage.jwtToken) {
@@ -53,7 +53,11 @@ function App() {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
             <Switch>
-              <PrivateRoute exact path="/menubuilder" component={Menubuilder} />
+              <PrivateRoute
+                exact
+                path="/menubuilder"
+                component={MenuBuilderwrapper}
+              />
             </Switch>
           </div>
           <div className=" z-30 relative ">

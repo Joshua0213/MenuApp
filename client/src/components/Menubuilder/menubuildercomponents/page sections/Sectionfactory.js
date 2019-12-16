@@ -26,7 +26,7 @@ class Sectionfactory extends Component {
       );
     }
 
-    return <div className="w-11/12 ">{content}</div>;
+    return <div className="w-full">{content}</div>;
   }
 }
 

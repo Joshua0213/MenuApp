@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { updatePageSetting } from "../../../../../actions/menubuilderActions";
+import {
+  updatePageSetting,
+  updateSectionSetting
+} from "../../../../../actions/menubuilderActions";
 
 import Colorpicker from "../../../../Common/Colorpicker";
 import Checkbox from "../../../../Common/Checkbox";
@@ -9,11 +12,15 @@ import Checkbox from "../../../../Common/Checkbox";
 class Backgroundcolor extends Component {
   constructor(props) {
     super(props);
-    this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
+    this.changePageBackgroundColor = this.changePageBackgroundColor.bind(this);
+    this.changeSectionBackgroundColor = this.changeSectionBackgroundColor.bind(
+      this
+    );
     this.toggleInherit = this.toggleInherit.bind(this);
+    this.toggleNone = this.toggleNone.bind(this);
   }
 
-  changeBackgroundColor(newColor) {
+  changePageBackgroundColor(newColor) {
     this.props.updatePageSetting(
       this.props.menuArr.menuArr,
       this.props.menuArr.pageFocus,
@@ -22,11 +29,17 @@ class Backgroundcolor extends Component {
     );
   }
 
-  toggleInherit() {
-    console.log(
-      this.props.menuArr.menuArr[this.props.menuArr.pageFocus].Settings
-        .InheritbackgroundColor
+  changeSectionBackgroundColor(newColor) {
+    this.props.updateSectionSetting(
+      this.props.menuArr.menuArr,
+      this.props.menuArr.pageFocus,
+      this.props.menuArr.sectionFocus,
+      "backgroundColor",
+      newColor
     );
+  }
+
+  toggleInherit() {
     this.props.updatePageSetting(
       this.props.menuArr.menuArr,
       this.props.menuArr.pageFocus,
@@ -36,44 +49,86 @@ class Backgroundcolor extends Component {
     );
   }
 
+  toggleNone() {
+    let { hasBackgroundColor } = this.props.menuArr.menuArr[
+      this.props.menuArr.pageFocus
+    ].Content[this.props.menuArr.sectionFocus].Settings;
+
+    this.props.updateSectionSetting(
+      this.props.menuArr.menuArr,
+      this.props.menuArr.pageFocus,
+      this.props.menuArr.sectionFocus,
+      "hasBackgroundColor",
+      !hasBackgroundColor
+    );
+  }
+
   render() {
+    let { pageFocus } = this.props.menuArr;
+    let changeBackgroundColor = null;
+    let words = "";
+    let menuBackgroundColor;
+    let pageBackgroundColor;
+    let hasBackgroundColor;
+    let controlColor;
+    let toggled;
+    let toggle;
+
+    switch (this.props.scope) {
+      case "Page":
+        toggled = this.props.menuArr.menuArr[pageFocus].Settings
+          .InheritbackgroundColor;
+        menuBackgroundColor = this.props.globalState.globalStyles.menu
+          .backgroundColor;
+        pageBackgroundColor = this.props.menuArr.menuArr[pageFocus].Settings
+          .backgroundColor;
+        changeBackgroundColor = this.changePageBackgroundColor;
+        controlColor = pageBackgroundColor
+          ? pageBackgroundColor
+          : menuBackgroundColor;
+        words = "Inherit";
+        toggle = this.toggleInherit;
+        break;
+
+      case "Section":
+        changeBackgroundColor = this.changeSectionBackgroundColor;
+        words = "None";
+        hasBackgroundColor = this.props.menuArr.menuArr[pageFocus].Content[
+          this.props.menuArr.sectionFocus
+        ].Settings.hasBackgroundColor;
+        if (!hasBackgroundColor) {
+          toggled = true;
+        } else {
+          toggled = false;
+        }
+        toggle = this.toggleNone;
+        controlColor = this.props.menuArr.menuArr[pageFocus].Content[
+          this.props.menuArr.sectionFocus
+        ].Settings.backgroundColor;
+
+        break;
+      default:
+        break;
+    }
+
     let divstyle = {
       zIndex: 100
     };
-    let { pageFocus } = this.props.menuArr;
-    let inheritColor = this.props.menuArr.menuArr[pageFocus].Settings
-      .InheritbackgroundColor;
-    let globalBackgroundColor = this.props.globalState.globalStyles.menu
-      .backgroundColor;
-    let localBackgroundColor = this.props.menuArr.menuArr[pageFocus].Settings
-      .backgroundColor;
-    let toggleBackground;
-    let currentBackgroundColor;
-    if (inheritColor) {
-      currentBackgroundColor = globalBackgroundColor;
-    } else {
-      toggleBackground = false;
-      currentBackgroundColor = localBackgroundColor;
-    }
     return (
       <div
-        className="   pt-4 z-50 border-b-2 border-gray-500 py-2"
+        className="   pt-4 z-50 border-b-2 border-gray-500 py-4"
         style={divstyle}
       >
         <div className="w-full pb-2">Background Color</div>
         <div className="flex w-full">
           <div className="flex justify-between">
-            <Checkbox toggled={inheritColor} toggleClick={this.toggleInherit} />{" "}
-            <div className="pl-1">Inherit</div>
+            <Checkbox toggled={toggled} toggleClick={toggle} />{" "}
+            <div className="pl-1">{words}</div>
           </div>
           <div className="pl-4">
             <Colorpicker
-              controlColor={
-                localBackgroundColor
-                  ? localBackgroundColor
-                  : globalBackgroundColor
-              }
-              changeColor={this.changeBackgroundColor}
+              controlColor={controlColor}
+              changeColor={changeBackgroundColor}
             />
           </div>
         </div>
@@ -87,4 +142,7 @@ const mapStateToProps = state => ({
   globalState: state.globalstyles
 });
 
-export default connect(mapStateToProps, { updatePageSetting })(Backgroundcolor);
+export default connect(mapStateToProps, {
+  updatePageSetting,
+  updateSectionSetting
+})(Backgroundcolor);

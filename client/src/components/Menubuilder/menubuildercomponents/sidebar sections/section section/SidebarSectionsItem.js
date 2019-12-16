@@ -7,7 +7,7 @@ export default class SidebarSectionsItem extends Component {
   }
 
   toggleFocus() {
-    this.props.changeFocus(this.props.myFocus);
+    this.props.changeFocus(this.props.myLocation);
   }
 
   render() {
@@ -19,7 +19,7 @@ export default class SidebarSectionsItem extends Component {
     if (this.props.Type === "spacer") {
       tag = "px";
     }
-    if (this.props.focus === this.props.myFocus) {
+    if (this.props.sectionLocation === this.props.myLocation) {
       classes += "  bg-gray-300 border-gray-500";
     } else {
       classes += "  bg-gray-200";

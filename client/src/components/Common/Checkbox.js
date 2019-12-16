@@ -10,7 +10,6 @@ export default class Checkbox extends Component {
 
   render() {
     let content;
-
     if (!this.props.toggled) {
       content = (
         <div className="h-6 w-6 rounded-full bg-gray-300 hover:bg-gray-400 cursor-pointer border-2 border-gray-600 hover:border-gray-900"></div>

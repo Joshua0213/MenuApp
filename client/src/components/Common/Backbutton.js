@@ -5,7 +5,7 @@ export default class Backbutton extends Component {
     return (
       <div>
         <div
-          className="bg-green-300 hover:bg-green-400 px-2 text-green-600 hover:text-green-800 m-px rounded border-2 border-gray-400 hover:border-gray-500 cursor-pointer"
+          className="bg-green-300 hover:bg-green-400 text-green-600 hover:text-green-800 text-center px-2 rounded border-2 border-gray-400 hover:border-gray-500 cursor-pointer"
           onClick={() => this.props.toggle()}
         >
           <svg

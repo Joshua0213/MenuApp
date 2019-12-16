@@ -40,7 +40,7 @@ class Headerchangeoptions extends Component {
       submitHeader = this.submitNewHeader;
     }
     return (
-      <div className="rounded-lg w-4/12 z-40 bg-white flex flex-col items-center border-4 p-1 border-blue-300 relative pb-2">
+      <div className="rounded-lg text-black w-4/12 z-40 bg-white flex flex-col items-center border-4 p-1 border-blue-300 absolute pb-2">
         <div className="flex justify-around py-3 w-11/12">
           <Backbutton toggle={this.props.toggle} />
           <div className="text-xl border-4 border-gray-400 py-2 px-3 bg-gray-200 rounded-full">

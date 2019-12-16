@@ -5,7 +5,7 @@ import { renameMenuPage } from "../../../../../actions/menubuilderActions";
 
 import TextFieldGroupSmall from "../../../../Common/TextFieldGroupSmall";
 import Backbutton from "../../../../Common/Backbutton";
-import Localsettings from "../sidebar section common/Localsettings";
+import Pagebackgroundsettings from "./Pagebackgroundsettings";
 
 class Pagesettings extends Component {
   constructor() {
@@ -21,7 +21,7 @@ class Pagesettings extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   renamePage() {
-    this.props.toggleRenamePage();
+    this.props.togglePageSettings();
     this.props.renameMenuPage(
       this.props.menuArr.menuArr,
       this.state.pageTitle,
@@ -49,6 +49,11 @@ class Pagesettings extends Component {
     if (!this.props.hidden) {
       content = (
         <div className="rounded flex flex-col items-center py-1 ">
+          <div className="w-full flex">
+            <div className="ml-2">
+              <Backbutton toggle={this.props.togglePageSettings} />
+            </div>
+          </div>
           <div className="min-h-64 text-center flex flex-col items-center  mb-1 w-full border-b-2 border-gray-500 hover:border-gray-500 pb-2">
             <div className="mt-4 mb-3 text-center text-lg">
               <span className="text-center text-lg">Page Settings</span>
@@ -56,30 +61,38 @@ class Pagesettings extends Component {
                 {menuArr[this.props.menuArr.pageFocus].Title}
               </div>
             </div>
-            <TextFieldGroupSmall
-              className=""
-              placeholder="Page Title"
-              name="pageTitle"
-              type="name"
-              value={this.state.pageTitle}
-              onChange={this.onChange}
-            />
-            <Localsettings name={"Background"} focus={this.props.focus} />
-            <Localsettings name={"Margins"} focus={this.props.focus} />
-            <Localsettings name={"Padding"} focus={this.props.focus} />
-          </div>
-          <div className="bg-gray-200 rounded-lg flex justify-around w-11/12 border-2 border-gray-500 hover:border-gray-500">
-            <Backbutton toggle={this.props.togglePageSettings} />
-            <div className={saveclassName}>
-              <svg
-                className="w-6 h-6 fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                onClick={renamePageClick}
-              >
-                <path d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951 1.392 1.392 0 0 1 1.953.27l2.351 3.104 5.911-9.492a1.396 1.396 0 0 1 1.921-.445c.653.406.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z" />
-              </svg>
+            <div className="flex flex-rows">
+              <TextFieldGroupSmall
+                className=""
+                placeholder="Page Title"
+                name="pageTitle"
+                type="name"
+                value={this.state.pageTitle}
+                onChange={this.onChange}
+              />{" "}
+              <div className={saveclassName}>
+                <svg
+                  className="w-6 h-6 fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  onClick={renamePageClick}
+                >
+                  <path d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951 1.392 1.392 0 0 1 1.953.27l2.351 3.104 5.911-9.492a1.396 1.396 0 0 1 1.921-.445c.653.406.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z" />
+                </svg>
+              </div>
             </div>
+            <Pagebackgroundsettings
+              name={"Background"}
+              pageLocation={this.props.pageLocation}
+            />
+            <Pagebackgroundsettings
+              name={"Margins"}
+              pageLocation={this.props.pageLocation}
+            />
+            <Pagebackgroundsettings
+              name={"Padding"}
+              pageLocation={this.props.pageLocation}
+            />
           </div>
         </div>
       );

@@ -2,15 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Checkbox from "../../../../Common/Checkbox";
-import Colorpicker from "../../../../Common/Colorpicker";
-import Backgroundcolor from "../../sidebar sections/sidebar section common/Backgroundcolor";
+import Backgroundcolor from "../sidebar section common/Backgroundcolor";
 
-class Localsettings extends Component {
+class Pagebackgroundsettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      focus: this.props.menuArr.pageFocus
+      open: false
     };
     this.toggleOpen = this.toggleOpen.bind(this);
   }
@@ -23,16 +21,7 @@ class Localsettings extends Component {
 
   render() {
     let content;
-    let toggleBackground;
-    let focus = this.state.focus;
-    let backgroundColor = this.props.menuArr.menuArr[
-      this.props.menuArr.pageFocus
-    ].Settings.backgroundColor;
-    if (backgroundColor === null) {
-      toggleBackground = false;
-    } else {
-      toggleBackground = true;
-    }
+    //let { pageLocation } = this.props;
 
     let toggle = this.toggleOpen;
     let mainClasses =
@@ -75,19 +64,7 @@ class Localsettings extends Component {
             {this.props.name}
             {icon}
           </div>
-          {/* <div className="border-b-2 border-gray-500 py-2">
-            <div className="w-full pb-2">{this.props.name + " Color"}</div>
-            <div className="flex w-full">
-              <div className="flex justify-between">
-                <Checkbox toggled={toggleBackground} />{" "}
-                <div className="pl-1">Inherit</div>
-              </div>
-              <div className="pl-4">
-                <Colorpicker />
-              </div>
-            </div>
-          </div> */}
-          <Backgroundcolor />
+          <Backgroundcolor scope={"Page"} />
           <div className="w-full ">{this.props.name} Settings!!</div>
           <Checkbox toggled={false} />
         </div>
@@ -107,4 +84,4 @@ const mapStateToProps = state => ({
   globalState: state.globalstyles
 });
 
-export default connect(mapStateToProps, {})(Localsettings);
+export default connect(mapStateToProps, {})(Pagebackgroundsettings);

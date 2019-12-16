@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { setSectionFocus } from "../../../../../actions/menubuilderActions";
+
 import SidebarSectionsItem from "./SidebarSectionsItem";
 import Sectionitemmanipulator from "./Sectionitemmanipulator";
+import Sectionsettings from "./Sectionsettings";
 
 class SidebarSections extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hidden: true,
-      focus: 0
+      showOptions: false
     };
     this.toggleClick = this.toggleClick.bind(this);
+    this.toggleShowSettings = this.toggleShowSettings.bind(this);
     this.changeSectionFocus = this.changeSectionFocus.bind(this);
+    this.setSectionFocus = this.setSectionFocus.bind(this);
   }
 
   changeSectionFocus(newFocus) {
@@ -21,11 +26,26 @@ class SidebarSections extends Component {
     });
   }
 
+  setSectionFocus(newFocus) {
+    if (newFocus === this.props.menuArr.sectionFocus) {
+      this.props.setSectionFocus(null);
+    } else {
+      this.props.setSectionFocus(newFocus);
+    }
+  }
+
   toggleClick() {
     this.setState(prevState => {
       return { hidden: !prevState.hidden };
     });
   }
+
+  toggleShowSettings() {
+    this.setState(prevState => {
+      return { showOptions: !prevState.showOptions };
+    });
+  }
+
   render() {
     const sections = this.props.menuArr.menuArr[
       this.props.menuArr.pageFocus
@@ -35,29 +55,27 @@ class SidebarSections extends Component {
           <SidebarSectionsItem
             Value={section.Value}
             Type={section.Type}
-            focus={this.state.focus}
-            myFocus={index}
-            changeFocus={this.changeSectionFocus}
+            sectionLocation={this.props.menuArr.sectionFocus}
+            myLocation={index}
+            changeFocus={this.setSectionFocus}
           />
         </div>
       );
     });
     let content;
-    const loadingArr = this.props.menuArr.loadingArr;
-    if (loadingArr) {
+    let pageLocation = this.props.menuArr.pageFocus;
+    let title = this.props.menuArr.menuArr[pageLocation].Title;
+    if (this.state.hidden === true) {
+      content = (
+        <div
+          className="bg-gray-300 border-gray-500 border-2 cursor-pointer  hover:border-gray-600 h-7 w-11/12 mt-1 rounded-full flex justify-around"
+          onClick={this.toggleClick}
+        >
+          <div className="">{title}</div>
+        </div>
+      );
     } else {
-      let focus = this.props.menuArr.pageFocus;
-      let title = this.props.menuArr.menuArr[focus].Title;
-      if (this.state.hidden === true) {
-        content = (
-          <div
-            className="bg-gray-300 border-gray-500 border-2 cursor-pointer  hover:border-gray-600 h-7 w-11/12 mt-1 rounded-full flex justify-around"
-            onClick={this.toggleClick}
-          >
-            <div className="">{title}</div>
-          </div>
-        );
-      } else {
+      if (!this.state.showOptions) {
         content = (
           <div className="bg-gray-300 mt-1  hover:border-gray-600 border-gray-500 border-2 w-11/12 rounded-lg flex flex-col items-center ">
             <div
@@ -70,14 +88,26 @@ class SidebarSections extends Component {
               {sections}
             </div>
             <Sectionitemmanipulator
-              sectionFocus={this.state.focus}
-              pageFocus={focus}
-              changeFocus={this.changeSectionFocus}
+              sectionFocus={this.props.menuArr.sectionFocus}
+              pageFocus={pageLocation}
+              changeFocus={this.setSectionFocus}
+              toggleShowSettings={this.toggleShowSettings}
+            />
+          </div>
+        );
+      } else {
+        //Show Section Options
+        content = (
+          <div className="bg-gray-300 mt-1 hover:border-gray-600 border-gray-500 border-2 w-11/12 rounded-lg flex flex-col items-center ">
+            <Sectionsettings
+              sectionLocation={this.props.menuArr.sectionFocus}
+              toggleSectionSettings={this.toggleShowSettings}
             />
           </div>
         );
       }
     }
+
     return <div className="w-full flex justify-center ">{content}</div>;
   }
 }
@@ -86,4 +116,4 @@ const mapStateToProps = state => ({
   menuArr: state.menuarr
 });
 
-export default connect(mapStateToProps, {})(SidebarSections);
+export default connect(mapStateToProps, { setSectionFocus })(SidebarSections);

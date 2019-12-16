@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Globaldropdown from "./Globaldropdown";
 import Globalmenucanvas from "./Globalmenucanvas";
+import Globalheadercanvas from "./Globalheadercanvas";
 
 class GlobalOptions extends Component {
   constructor(props) {
@@ -58,11 +59,11 @@ class GlobalOptions extends Component {
       switch (this.state.focus) {
         case "Headers":
           // <Globaldivcanvas focus={header}
-          canvas = <Globalmenucanvas focus={this.state.focus} />;
+          canvas = <Globalheadercanvas focus={this.state.focus} />;
           break;
         case "Paragaraphs":
           // code block
-          canvas = <Globalmenucanvas focus={this.state.focus} />;
+          canvas = <Globalheadercanvas focus={this.state.focus} />;
           break;
         case "Something":
           // code block

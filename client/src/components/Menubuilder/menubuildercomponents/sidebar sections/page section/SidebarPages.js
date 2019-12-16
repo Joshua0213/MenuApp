@@ -72,7 +72,7 @@ class SidebarPages extends Component {
         content = (
           <div className="bg-gray-300 mt-1 hover:border-gray-600 border-gray-500 border-2 w-11/12 rounded-lg flex flex-col items-center ">
             <Pagesettings
-              focus={this.props.menuArr.pageFocus}
+              pageLocation={this.props.menuArr.pageFocus}
               hidden={this.state.pagesettingsHidden}
               menuObj={this.props.menuArr.menuArr}
               togglePageSettings={this.togglePageSettings}

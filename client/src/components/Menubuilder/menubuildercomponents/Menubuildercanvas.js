@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 //import Addsection from "./sections/Addsection";
-import Navbarcanvas from "./Navbarcanvas";
+import Navbarcanvas from "../menubuildercomponents/navbar components/Navbarcanvas";
 import Menupagecanvas from "./Menupagecanvas";
 import { getMenuArr } from "../../../actions/menubuilderActions";
 
