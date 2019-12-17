@@ -27,6 +27,7 @@ class Menupage extends Component {
     this.setState(prevState => {
       return { addCanvasOpen: !prevState.addCanvasOpen };
     });
+
     if (Opened) {
       this.setState(prevState => {
         return { opener: opener };
@@ -39,7 +40,7 @@ class Menupage extends Component {
   }
 
   render() {
-    let classes = "text-4xl flex flex-col h-full items-center";
+    let classes = "text-4xl flex flex-col h-full items-center ";
     let focus = this.props.menuArr.pageFocus;
     let MyFocus = this.props.MyFocus;
     let pageContentArray = this.props.menuArr.menuArr[MyFocus].Content;

@@ -6,6 +6,8 @@ import { renameHeader } from "../../../../../actions/menubuilderActions";
 import TextFieldGroupSmall from "../../../../Common/TextFieldGroupSmall";
 import Backbutton from "../../../../Common/Backbutton";
 import Sectionbackgroundsettings from "./Sectionbackgroundsettings";
+import Sectiondisplaysettings from "./Sectiondisplaysettings";
+import Sectioncontentsettings from "./Sectioncontentsettings";
 
 class Sectionsettings extends Component {
   constructor() {
@@ -56,22 +58,19 @@ class Sectionsettings extends Component {
     let content = (
       <div className="rounded flex flex-col items-center py-1 pb-2">
         <div className="w-full flex">
-          <div className="ml-2">
+          <div className="ml-4 ">
             <Backbutton toggle={this.props.toggleSectionSettings} />
           </div>
+          <span className="text-center text-lg ml-4">
+            {typeCapitalized + " Settings"}
+          </span>
         </div>
-        <div className="min-h-64 text-center flex flex-col items-center w-full border-b-2 border-gray-500 hover:border-gray-500 pb-2 ">
-          <div className="mt-4 mb-3 text-center text-lg">
-            <span className="text-center text-lg">
-              {typeCapitalized + " Settings"}
-            </span>
-            <div className='mx-3 bg-gray-300 border-gray-500 border-4 flex-grow flex mx-1 my-1 rounded flex justify-center p-px"'>
-              {
-                this.props.menuArr.menuArr[pageLocation].Content[
-                  sectionLocation
-                ].Value
-              }
-            </div>
+        <div className="min-h-64 text-center flex flex-col items-center w-full border-b-2 border-gray-500  pb-2 ">
+          <div className='my-2 bg-gray-300 border-gray-500 border-4 flex-grow flex mx-1 rounded flex justify-center p-px"'>
+            {
+              this.props.menuArr.menuArr[pageLocation].Content[sectionLocation]
+                .Value
+            }
           </div>
           <div className="flex flex-rows">
             <TextFieldGroupSmall
@@ -95,15 +94,11 @@ class Sectionsettings extends Component {
             </div>
           </div>
 
-          <Sectionbackgroundsettings
+          <Sectiondisplaysettings
             pageLocation={pageLocation}
             sectionLocation={sectionLocation}
           />
-          <Sectionbackgroundsettings
-            pageLocation={pageLocation}
-            sectionLocation={sectionLocation}
-          />
-          <Sectionbackgroundsettings
+          <Sectioncontentsettings
             pageLocation={pageLocation}
             sectionLocation={sectionLocation}
           />

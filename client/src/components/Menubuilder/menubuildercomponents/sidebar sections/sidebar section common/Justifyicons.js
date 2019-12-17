@@ -8,31 +8,43 @@ export default class Justifyicons extends Component {
     this.justifyCenter = this.justifyCenter.bind(this);
   }
 
-  justifyStart() {}
+  justifyStart() {
+    this.props.setJustify("start");
+  }
 
-  justifyEnd() {}
+  justifyEnd() {
+    this.props.setJustify("end");
+  }
 
-  justifyCenter() {}
+  justifyCenter() {
+    this.props.setJustify("center");
+  }
 
   render() {
     let startClasses = "w-6 h-6 stroke-current hover:text-black";
     let endClasses = "w-6 h-6 stroke-current hover:text-black";
     let centerClasses = "w-6 h-6 stroke-current hover:text-black";
+    let startClick = this.justifyStart;
+    let centerClick = this.justifyCenter;
+    let endClick = this.justifyEnd;
     switch (this.props.justify) {
       case "start":
         startClasses += " text-black";
         endClasses += " text-gray-400 cursor-pointer";
         centerClasses += " text-gray-400 cursor-pointer";
+        startClick = null;
         break;
       case "end":
         endClasses += " text-black";
         startClasses += " text-gray-400 cursor-pointer";
         centerClasses += " text-gray-400 cursor-pointer";
+        endClick = null;
         break;
       case "center":
         centerClasses += " text-black";
         endClasses += " text-gray-400 cursor-pointer";
         startClasses += " text-gray-400 cursor-pointer";
+        centerClick = null;
         break;
 
       default:
@@ -44,6 +56,7 @@ export default class Justifyicons extends Component {
         <div className="w-11/12 mb-1 flex justify-around flex-rows px-2 align-items">
           <svg
             className={startClasses}
+            onClick={startClick}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >
@@ -52,6 +65,7 @@ export default class Justifyicons extends Component {
 
           <svg
             className={centerClasses}
+            onClick={centerClick}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >
@@ -59,6 +73,7 @@ export default class Justifyicons extends Component {
           </svg>
           <svg
             className={endClasses}
+            onClick={endClick}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >

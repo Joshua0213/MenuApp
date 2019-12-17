@@ -55,7 +55,10 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className=" bg-main-primary z-50 p-2 pt-2 flex flex-col">
+      <nav
+        id="mainNavbar"
+        className=" bg-main-primary z-50 p-2 pt-2 flex flex-col"
+      >
         <div className="self-center w-10/12 flex flex-row justify-between ">
           <div className=" flex text-white ">
             <Link className="text-lg text-gray-200 hover:text-white" to="/">

@@ -56,8 +56,74 @@ class Spacersection extends Component {
     let pixels = this.props.menuArr.menuArr[pageLocation].Content[
       sectionLocation
     ].Value;
+
+    let {
+      hasBackgroundColor,
+      backgroundColor,
+      width,
+      justifySelf,
+      borderColor,
+      borderStyle,
+      borderWidth,
+      margin,
+      marginTop,
+      marginBottom,
+      marginLeft,
+      marginRight,
+      marginControl,
+      padding,
+      paddingTop,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      paddingControl
+    } = this.props.menuArr.menuArr[pageLocation].Content[
+      sectionLocation
+    ].Settings;
+
+    let spacerBackground;
+    if (hasBackgroundColor) {
+      spacerBackground = backgroundColor;
+    } else {
+      spacerBackground = "rgba(0,0,0,0)";
+    }
+    if (justifySelf !== "center") {
+      justifySelf = `flex-${justifySelf}`;
+    }
+    if (!marginControl) {
+      marginTop = margin;
+      marginBottom = margin;
+      marginLeft = margin;
+      marginRight = margin;
+    }
+    if (!paddingControl) {
+      paddingTop = padding;
+      paddingBottom = padding;
+      paddingLeft = padding;
+      paddingRight = padding;
+    }
     let spacerStyle = {
-      height: `${pixels}px`
+      height: `${pixels}px`,
+      backgroundColor: spacerBackground,
+      width: `${width}%`,
+      borderColor: borderColor,
+      borderStyle: borderStyle,
+      borderWidth: `${borderWidth}px`,
+      marginRight: `${marginRight}px`,
+      marginTop: `${marginTop}px`,
+      marginBottom: `${marginBottom}px`,
+      marginLeft: `${marginLeft}px`,
+      paddingRight: `${paddingRight}px`,
+      paddingTop: `${paddingTop}px`,
+      paddingBottom: `${paddingBottom}px`,
+      paddingLeft: `${paddingLeft}px`
+    };
+    let spacerContainerStyle = {
+      display: "flex",
+      width: "100%",
+      justifyContent: `${justifySelf}`,
+
+      margin: `${margin}px`
     };
     let iconClassnames = "flex flex-row absolute ml-2";
     let content;
@@ -125,7 +191,7 @@ class Spacersection extends Component {
         onMouseEnter={this.toggleHoverOn}
         onMouseLeave={this.toggleHoverOff}
         onClick={this.onMouseClick}
-        className="w-full"
+        style={spacerContainerStyle}
       >
         {content}
       </div>

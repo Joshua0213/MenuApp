@@ -68,7 +68,7 @@ class Colorpicker extends React.Component {
           <div style={styles.color}></div>
         </div>
         {this.state.displayColorPicker ? (
-          <div className="w-11/12 z-50" style={styles.popover}>
+          <div className="z-50" style={styles.popover}>
             <div style={styles.cover} onClick={this.handleClose} />
             <ChromePicker
               color={this.state.background}

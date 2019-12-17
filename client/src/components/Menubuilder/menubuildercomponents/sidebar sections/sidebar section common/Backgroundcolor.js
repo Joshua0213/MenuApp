@@ -115,22 +115,22 @@ class Backgroundcolor extends Component {
       zIndex: 100
     };
     return (
-      <div
-        className="   pt-4 z-50 border-b-2 border-gray-500 py-4"
-        style={divstyle}
-      >
-        <div className="w-full pb-2">Background Color</div>
+      <div className="z-50  border-gray-500 w-full" style={divstyle}>
+        <div className="mb-2 w-auto">
+          <span className="border-b-2 border-gray-500">Background Color</span>{" "}
+        </div>
         <div className="flex w-full">
           <div className="flex justify-between">
             <Checkbox toggled={toggled} toggleClick={toggle} />{" "}
             <div className="pl-1">{words}</div>
           </div>
-          <div className="pl-4">
-            <Colorpicker
-              controlColor={controlColor}
-              changeColor={changeBackgroundColor}
-            />
-          </div>
+        </div>
+        <div className=" flex flex-rows">
+          <Colorpicker
+            style={{ alignSelf: "start", width: "25%" }}
+            controlColor={controlColor}
+            changeColor={changeBackgroundColor}
+          />
         </div>
       </div>
     );

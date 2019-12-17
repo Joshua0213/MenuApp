@@ -88,7 +88,10 @@ class SidebarPages extends Component {
             >
               <div className="">{this.props.name}</div>
             </div>
-            <div className="w-11/12 h-48 overflow-auto bg-gray-100 my-1 rounded-lg border-2 border-gray-400 hover:border-gray-500">
+            <div
+              className="w-11/12 max-h-48 overflow-auto bg-gray-100 my-1 rounded-lg border-2 border-gray-400 hover:border-gray-500"
+              style={{ maxHeight: "300px" }}
+            >
               {pages}
             </div>
             <Pageitemmanipulator

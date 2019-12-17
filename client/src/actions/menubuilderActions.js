@@ -29,10 +29,25 @@ export const getMenuObj = () => {
               Settings: {
                 fontSize: "80px",
                 InheritfontSize: true,
-                backgroundColor: "#ffffff",
+                backgroundColor: "#EDEEF1",
                 width: "30",
                 justifySelf: "start",
-                hasBackgroundColor: false
+                hasBackgroundColor: false,
+                borderStyle: "solid",
+                borderWidth: "5",
+                borderColor: "#927F73",
+                margin: "2",
+                marginTop: "2",
+                marginBottom: "2",
+                marginLeft: "2",
+                marginRight: "2",
+                marginControl: false,
+                padding: "2",
+                paddingTop: "2",
+                paddingBottom: "2",
+                paddingLeft: "2",
+                paddingRight: "2",
+                paddingControl: false
               }
             },
             {
@@ -44,20 +59,74 @@ export const getMenuObj = () => {
                 backgroundColor: "#DDF3C6",
                 width: "70",
                 justifySelf: "center",
-                hasBackgroundColor: true
+                hasBackgroundColor: true,
+                borderStyle: "solid",
+                borderWidth: "3",
+                borderColor: "#927F73",
+                margin: "6",
+                marginTop: "2",
+                marginBottom: "3",
+                marginLeft: "4",
+                marginRight: "5",
+                marginControl: false,
+                padding: "2",
+                paddingTop: "2",
+                paddingBottom: "2",
+                paddingLeft: "2",
+                paddingRight: "2",
+                paddingControl: false
               }
             },
-            { Type: "spacer", Value: "300" },
+            {
+              Type: "spacer",
+              Value: "300",
+              Settings: {
+                backgroundColor: "#EDEEF1",
+                width: "50",
+                justifySelf: "center",
+                hasBackgroundColor: true,
+                borderStyle: "none",
+                borderWidth: "2",
+                borderColor: "#927F73",
+                margin: "0",
+                marginTop: "0",
+                marginBottom: "0",
+                marginLeft: "0",
+                marginRight: "0",
+                marginControl: false,
+                padding: "0",
+                paddingTop: "0",
+                paddingBottom: "0",
+                paddingLeft: "0",
+                paddingRight: "0",
+                paddingControl: false
+              }
+            },
             {
               Type: "header",
               Value: "Another Header!",
               Settings: {
                 fontSize: "30px",
                 InheritfontSize: true,
-                backgroundColor: "#ffffff",
+                backgroundColor: "#EDEEF1",
                 width: "50",
                 justifySelf: "end",
-                hasBackgroundColor: false
+                hasBackgroundColor: false,
+                borderStyle: "none",
+                borderWidth: "2",
+                borderColor: "#927F73",
+                margin: "2",
+                marginTop: "2",
+                marginBottom: "2",
+                marginLeft: "2",
+                marginRight: "2",
+                marginControl: false,
+                padding: "2",
+                paddingTop: "2",
+                paddingBottom: "2",
+                paddingLeft: "2",
+                paddingRight: "2",
+                paddingControl: false
               }
             }
           ],
@@ -75,10 +144,25 @@ export const getMenuObj = () => {
               Settings: {
                 fontSize: "80px",
                 InheritfontSize: false,
-                backgroundColor: "#ffffff",
+                backgroundColor: "#EDEEF1",
                 width: "50",
                 justifySelf: "center",
-                hasBackgroundColor: false
+                hasBackgroundColor: false,
+                borderStyle: "none",
+                borderWidth: "2",
+                borderColor: "#927F73",
+                margin: "2",
+                marginTop: "2",
+                marginBottom: "2",
+                marginLeft: "2",
+                marginRight: "2",
+                marginControl: false,
+                padding: "2",
+                paddingTop: "2",
+                paddingBottom: "2",
+                paddingLeft: "2",
+                paddingRight: "2",
+                paddingControl: false
               }
             }
           ],
@@ -212,7 +296,33 @@ export const addMenuPage = (menuObj, newPage) => dispatch => {
   let newObj = {
     Title: newPage,
     Content: [
-      { Type: "header", Value: newPage + " Menu", Settings: { fontSize: null } }
+      {
+        Type: "header",
+        Value: newPage + " Menu",
+        Settings: {
+          fontSize: "40px",
+          InheritfontSize: true,
+          backgroundColor: "#EDEEF1",
+          width: "100",
+          justifySelf: "center",
+          hasBackgroundColor: false,
+          borderStyle: "none",
+          borderWidth: "2",
+          borderColor: "#927F73",
+          margin: "2",
+          marginTop: "2",
+          marginBottom: "2",
+          marginLeft: "2",
+          marginRight: "2",
+          marginControl: false,
+          padding: "2",
+          paddingTop: "2",
+          paddingBottom: "2",
+          paddingLeft: "2",
+          paddingRight: "2",
+          paddingControl: false
+        }
+      }
     ],
     Settings: {
       backgroundColor: null,
@@ -257,10 +367,25 @@ export const createNewHeader = (
     Settings: {
       fontSize: "40px",
       InheritfontSize: true,
-      backgroundColor: "#ffffff",
+      backgroundColor: "#EDEEF1",
       width: "100",
       justifySelf: "center",
-      hasBackgroundColor: false
+      hasBackgroundColor: false,
+      borderStyle: "none",
+      borderWidth: "2",
+      borderColor: "#927F73",
+      margin: "2",
+      marginTop: "2",
+      marginBottom: "2",
+      marginLeft: "2",
+      marginRight: "2",
+      marginControl: false,
+      padding: "2",
+      paddingTop: "2",
+      paddingBottom: "2",
+      paddingLeft: "2",
+      paddingRight: "2",
+      paddingControl: false
     }
   });
   dispatch(setMenuArr(tempObj));
@@ -290,7 +415,28 @@ export const createNewSpacer = (
   let tempObj = menuObj.map(i => i);
   tempObj[pageLocation].Content.splice(sectionLocation, 0, {
     Type: "spacer",
-    Value: 150
+    Value: 150,
+    Settings: {
+      backgroundColor: "#EDEEF1",
+      width: "100",
+      justifySelf: "center",
+      hasBackgroundColor: true,
+      borderStyle: "none",
+      borderWidth: "2",
+      borderColor: "#927F73",
+      margin: "0",
+      marginTop: "0",
+      marginBottom: "0",
+      marginLeft: "0",
+      marginRight: "0",
+      marginControl: false,
+      padding: "0",
+      paddingTop: "0",
+      paddingBottom: "0",
+      paddingLeft: "0",
+      paddingRight: "0",
+      paddingControl: false
+    }
   });
   dispatch(setMenuArr(tempObj));
 };

@@ -59,8 +59,24 @@ class Headersection extends Component {
       fontSize,
       backgroundColor,
       width,
-      justifySelf
+      justifySelf,
+      borderColor,
+      borderStyle,
+      borderWidth,
+      margin,
+      marginTop,
+      marginBottom,
+      marginLeft,
+      marginRight,
+      marginControl,
+      padding,
+      paddingTop,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      paddingControl
     } = settings;
+
     let { GfontSize } = headerStyles;
     if (!hasBackgroundColor) {
       backgroundColor = "rgba(0,0,0,0)";
@@ -72,17 +88,45 @@ class Headersection extends Component {
     if (justifySelf !== "center") {
       justifySelf = `flex-${justifySelf}`;
     }
+    if (!marginControl) {
+      marginTop = margin;
+      marginBottom = margin;
+      marginLeft = margin;
+      marginRight = margin;
+    }
+    if (!paddingControl) {
+      paddingTop = padding;
+      paddingBottom = padding;
+      paddingLeft = padding;
+      paddingRight = padding;
+    }
     let headerContainerStyle = {
       fontSize: fontSize,
       display: "flex",
       width: "100%",
-      justifyContent: `${justifySelf}`
+      justifyContent: `${justifySelf}`,
+      margin: `${margin}px`,
+      marginTop: `${marginTop}px`,
+      marginBottom: `${marginBottom}px`,
+      marginRight: `${marginRight}px`,
+      marginLeft: `${marginLeft}px`
     };
     let headerStyle = {
       backgroundColor: `${backgroundColor}`,
       width: `${width}%`,
       display: "flex",
-      justifyContent: "flex-end"
+      justifyContent: "center",
+      borderStyle: `${borderStyle}`,
+      borderWidth: `${borderWidth}px`,
+      borderColor: `${borderColor}`,
+      marginRight: `${marginRight}px`,
+      marginTop: `${marginTop}px`,
+      marginBottom: `${marginBottom}px`,
+      marginLeft: `${marginLeft}px`,
+      paddingRight: `${paddingRight}px`,
+      paddingTop: `${paddingTop}px`,
+      paddingBottom: `${paddingBottom}px`,
+      paddingLeft: `${paddingLeft}px`
     };
     let iconClassnames = "flex flex-row absolute ml-2";
     let content;

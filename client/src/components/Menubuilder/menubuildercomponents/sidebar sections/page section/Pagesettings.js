@@ -50,16 +50,14 @@ class Pagesettings extends Component {
       content = (
         <div className="rounded flex flex-col items-center py-1 ">
           <div className="w-full flex">
-            <div className="ml-2">
+            <div className="ml-4">
               <Backbutton toggle={this.props.togglePageSettings} />
             </div>
+            <span className="text-center text-lg ml-6">Page Settings</span>
           </div>
-          <div className="min-h-64 text-center flex flex-col items-center  mb-1 w-full border-b-2 border-gray-500 hover:border-gray-500 pb-2">
-            <div className="mt-4 mb-3 text-center text-lg">
-              <span className="text-center text-lg">Page Settings</span>
-              <div className='mx-3 bg-gray-300 border-gray-500 border-4 flex-grow flex mx-1 my-1 rounded flex justify-center p-px"'>
-                {menuArr[this.props.menuArr.pageFocus].Title}
-              </div>
+          <div className=" text-center flex flex-col items-center   w-full border-b-2 border-gray-500  pb-2">
+            <div className='my-2 bg-gray-300 border-gray-500 border-4 flex-grow flex mx-1  rounded flex justify-center p-px"'>
+              {menuArr[this.props.menuArr.pageFocus].Title}
             </div>
             <div className="flex flex-rows">
               <TextFieldGroupSmall
@@ -100,7 +98,7 @@ class Pagesettings extends Component {
       content = "";
     }
 
-    return <div className="w-full bg-gray-300 min-h-64 rounded">{content}</div>;
+    return <div className="w-full bg-gray-300 rounded">{content}</div>;
   }
 }
 

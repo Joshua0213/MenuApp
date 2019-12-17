@@ -21,7 +21,7 @@ class Sidebar extends Component {
     content = (
       <div
         id="Sidebar"
-        className="bg-blue-100 min-h-screen pb-5 flex flex-col overflow-auto items-center"
+        className="bg-blue-100 min-h-screen pb-5 flex flex-col items-center"
         style={sidebarStyle}
       >
         <div className="h-12 border-b-2 border-gray-500 w-full flex flex-row items-center justify-around">
@@ -34,7 +34,7 @@ class Sidebar extends Component {
         <Menuitems />
       </div>
     );
-    return <div className="relative z-40">{content}</div>;
+    return <div className=" relative z-40">{content}</div>;
   }
 }
 
