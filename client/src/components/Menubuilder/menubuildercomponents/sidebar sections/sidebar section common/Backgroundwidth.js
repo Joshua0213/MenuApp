@@ -6,6 +6,7 @@ import {
   updateSectionSetting
 } from "../../../../../actions/menubuilderActions";
 
+import Checkbox from "../../../../Common/Checkbox";
 import NumberFieldGroup from "../../../../Common/NumberFieldGroup";
 import Justifyicons from "../sidebar section common/Justifyicons";
 
@@ -19,6 +20,7 @@ class Backgroundwidth extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.changeJustify = this.changeJustify.bind(this);
+    this.onToggleWidthAuto = this.onToggleWidthAuto.bind(this);
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -35,6 +37,18 @@ class Backgroundwidth extends Component {
     );
   }
 
+  onToggleWidthAuto() {
+    this.props.updateSectionSetting(
+      this.props.menuArr.menuArr,
+      this.props.menuArr.pageFocus,
+      this.props.menuArr.sectionFocus,
+      "widthAuto",
+      !this.props.menuArr.menuArr[this.props.menuArr.pageFocus].Content[
+        this.props.menuArr.sectionFocus
+      ].Settings.widthAuto
+    );
+  }
+
   changeJustify(newJustify) {
     this.props.updateSectionSetting(
       this.props.menuArr.menuArr,
@@ -46,14 +60,10 @@ class Backgroundwidth extends Component {
   }
 
   render() {
-    let content;
     let { pageFocus, sectionFocus, menuArr } = this.props.menuArr;
-    let { width, justifySelf } = menuArr[pageFocus].Content[
+    let { width, justifySelf, widthAuto } = menuArr[pageFocus].Content[
       sectionFocus
     ].Settings;
-    if (true) {
-      content = "content";
-    }
     return (
       <div className="py-1 border-bottom-2 border-b-2 border-gray-500">
         <div className="w-full pb-2">Background Width</div>
@@ -74,6 +84,13 @@ class Backgroundwidth extends Component {
             />
             <div>{width}%</div>
           </form>
+          <div className="text-sm flex flex-rows">
+            <Checkbox
+              toggled={widthAuto}
+              toggleClick={this.onToggleWidthAuto}
+            />
+            <div>Auto</div>
+          </div>
           <div className="w-full pt-4">
             <Justifyicons
               justify={justifySelf}

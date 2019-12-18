@@ -6,6 +6,8 @@ import {
   deleteSection
 } from "../../../../actions/menubuilderActions";
 
+import showcase2 from "../../../../img/showcase2.jpg";
+
 class Spacersection extends Component {
   constructor(props) {
     super(props);
@@ -60,11 +62,17 @@ class Spacersection extends Component {
     let {
       hasBackgroundColor,
       backgroundColor,
+      widthAuto,
       width,
       justifySelf,
       borderColor,
       borderStyle,
       borderWidth,
+      borderTop,
+      borderBottom,
+      borderLeft,
+      borderRight,
+      borderControl,
       margin,
       marginTop,
       marginBottom,
@@ -76,16 +84,31 @@ class Spacersection extends Component {
       paddingBottom,
       paddingLeft,
       paddingRight,
-      paddingControl
+      paddingControl,
+      zIndex,
+      borderRadius,
+      borderRadiusTopLeft,
+      borderRadiusTopRight,
+      borderRadiusBottomLeft,
+      borderRadiusBottomRight,
+      borderRadiusControl
     } = this.props.menuArr.menuArr[pageLocation].Content[
       sectionLocation
     ].Settings;
 
+    let backgroundImage;
     let spacerBackground;
+    if (widthAuto) {
+      width = "auto";
+    } else {
+      width = `${width}%`;
+    }
     if (hasBackgroundColor) {
       spacerBackground = backgroundColor;
+      backgroundImage = "none";
     } else {
       spacerBackground = "rgba(0,0,0,0)";
+      backgroundImage = `url('${showcase2}')`;
     }
     if (justifySelf !== "center") {
       justifySelf = `flex-${justifySelf}`;
@@ -102,13 +125,34 @@ class Spacersection extends Component {
       paddingLeft = padding;
       paddingRight = padding;
     }
+    if (!borderControl) {
+      borderTop = borderWidth;
+      borderBottom = borderWidth;
+      borderLeft = borderWidth;
+      borderRight = borderWidth;
+    }
+    if (!borderRadiusControl) {
+      borderRadiusTopLeft = borderRadius;
+      borderRadiusTopRight = borderRadius;
+      borderRadiusBottomLeft = borderRadius;
+      borderRadiusBottomRight = borderRadius;
+    }
     let spacerStyle = {
       height: `${pixels}px`,
       backgroundColor: spacerBackground,
-      width: `${width}%`,
+      width: `${width}`,
       borderColor: borderColor,
       borderStyle: borderStyle,
       borderWidth: `${borderWidth}px`,
+      borderTopWidth: `${borderTop}px`,
+      borderBottomWidth: `${borderBottom}px`,
+      borderRightWidth: `${borderRight}px`,
+      borderLeftWidth: `${borderLeft}px`,
+      borderRadius: `${borderRadius}px`,
+      borderTopRightRadius: `${borderRadiusTopRight}px`,
+      borderTopLeftRadius: `${borderRadiusTopLeft}px`,
+      borderBottomRightRadius: `${borderRadiusBottomRight}px`,
+      borderBottomLeftRadius: `${borderRadiusBottomLeft}px`,
       marginRight: `${marginRight}px`,
       marginTop: `${marginTop}px`,
       marginBottom: `${marginBottom}px`,
@@ -116,14 +160,18 @@ class Spacersection extends Component {
       paddingRight: `${paddingRight}px`,
       paddingTop: `${paddingTop}px`,
       paddingBottom: `${paddingBottom}px`,
-      paddingLeft: `${paddingLeft}px`
+      paddingLeft: `${paddingLeft}px`,
+      backgroundImage: `${backgroundImage}`,
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed"
     };
     let spacerContainerStyle = {
       display: "flex",
-      width: "100%",
+      width: "auto",
       justifyContent: `${justifySelf}`,
-
-      margin: `${margin}px`
+      margin: `${margin}px`,
+      zIndex: `${zIndex}`,
+      position: "relative"
     };
     let iconClassnames = "flex flex-row absolute ml-2";
     let content;
@@ -135,7 +183,7 @@ class Spacersection extends Component {
           <div className="w-full" style={spacerStyle}>
             <div className={iconClassnames}>
               <svg
-                className="m-1 w-5 h-5 text-red-500 fill-current hover:text-red-700 cursor-pointer hover:bg-gray-100 rounded-lg"
+                className=" w-5 h-5 text-red-500 fill-current hover:text-red-700 cursor-pointer hover:bg-gray-100 rounded-lg"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 onClick={this.deleteClick}
@@ -158,7 +206,7 @@ class Spacersection extends Component {
       } else {
         iconClassnames += "";
         content = (
-          <div className="w-full" style={spacerStyle}>
+          <div className="" style={spacerStyle}>
             <div className={iconClassnames}>
               <svg
                 className="m-1 w-5 h-5 text-red-500 fill-current hover:text-red-700 cursor-pointer hover:bg-gray-100 rounded-lg"

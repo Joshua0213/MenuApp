@@ -7,7 +7,9 @@ import {
   PAGE_SAVED,
   TOGGLE_ICONS,
   ADD_TO_HISTORY,
-  SET_SECTION_FOCUS
+  SET_SECTION_FOCUS,
+  SET_DISPLAY_SIZE,
+  TOGGLE_DISPLAY_BRIGHTNESS
 } from "../actions/types";
 
 const initialState = {
@@ -16,9 +18,11 @@ const initialState = {
   pageFocus: 0,
   sectionFocus: 0,
   sidebarWidth: 300,
-  hideIcons: false,
+  hideIcons: true,
   needToSave: false,
-  historyArr: []
+  historyArr: [],
+  displaySize: "large",
+  displayBrightness: "dark"
 };
 
 export default function(state = initialState, action) {
@@ -71,6 +75,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         historyArr: action.payload
+      };
+    case TOGGLE_DISPLAY_BRIGHTNESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        displayBrightness: action.payload
+      };
+    case SET_DISPLAY_SIZE:
+      return {
+        ...state,
+        displaySize: action.payload
       };
     default:
       return state;

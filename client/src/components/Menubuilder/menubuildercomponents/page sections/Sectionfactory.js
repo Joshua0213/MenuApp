@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Headersection from "../page sections/Headersection";
-import Spacersection from "../page sections/SpacerSection";
+import Headersection from "./Headersection";
+import Spacersection from "./SpacerSection";
+import Containersection from "./Containersection";
 
 class Sectionfactory extends Component {
   render() {
@@ -20,6 +21,13 @@ class Sectionfactory extends Component {
     } else if (sectionType === "spacer") {
       content = (
         <Spacersection
+          pageLocation={this.props.pageLocation}
+          sectionLocation={this.props.sectionLocation}
+        />
+      );
+    } else if (sectionType === "container") {
+      content = (
+        <Containersection
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
         />

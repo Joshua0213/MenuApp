@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import {
-  updatePageSetting,
-  updateSectionSetting
-} from "../../../../../actions/menubuilderActions";
+import { updateSectionSetting } from "../../../../../actions/menubuilderActions";
 
 import NumberFieldGroup from "../../../../Common/NumberFieldGroup";
 import Checkbox from "../../../../Common/Checkbox";
@@ -209,6 +206,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-  updatePageSetting,
   updateSectionSetting
 })(Marginsettings);

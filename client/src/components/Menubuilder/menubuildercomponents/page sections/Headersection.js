@@ -52,17 +52,23 @@ class Headersection extends Component {
     let headerStyles = this.props.globalState.globalStyles.headers;
     let sectionArr = pageArr[this.props.pageLocation].Content;
     let pagetitle = sectionArr[this.props.sectionLocation].Value;
-    let settings = sectionArr[this.props.sectionLocation].Settings;
+    let { Settings } = sectionArr[this.props.sectionLocation];
     let {
       InheritfontSize,
       hasBackgroundColor,
       fontSize,
       backgroundColor,
+      widthAuto,
       width,
       justifySelf,
       borderColor,
       borderStyle,
       borderWidth,
+      borderTop,
+      borderBottom,
+      borderLeft,
+      borderRight,
+      borderControl,
       margin,
       marginTop,
       marginBottom,
@@ -74,10 +80,22 @@ class Headersection extends Component {
       paddingBottom,
       paddingLeft,
       paddingRight,
-      paddingControl
-    } = settings;
+      paddingControl,
+      zIndex,
+      borderRadius,
+      borderRadiusTopLeft,
+      borderRadiusTopRight,
+      borderRadiusBottomLeft,
+      borderRadiusBottomRight,
+      borderRadiusControl
+    } = Settings;
 
     let { GfontSize } = headerStyles;
+    if (widthAuto) {
+      width = "auto";
+    } else {
+      width = `${width}%`;
+    }
     if (!hasBackgroundColor) {
       backgroundColor = "rgba(0,0,0,0)";
     } else {
@@ -100,25 +118,48 @@ class Headersection extends Component {
       paddingLeft = padding;
       paddingRight = padding;
     }
+    if (!borderControl) {
+      borderTop = borderWidth;
+      borderBottom = borderWidth;
+      borderLeft = borderWidth;
+      borderRight = borderWidth;
+    }
+    if (!borderRadiusControl) {
+      borderRadiusTopLeft = borderRadius;
+      borderRadiusTopRight = borderRadius;
+      borderRadiusBottomLeft = borderRadius;
+      borderRadiusBottomRight = borderRadius;
+    }
     let headerContainerStyle = {
       fontSize: fontSize,
       display: "flex",
-      width: "100%",
+      width: "auto",
       justifyContent: `${justifySelf}`,
       margin: `${margin}px`,
       marginTop: `${marginTop}px`,
       marginBottom: `${marginBottom}px`,
       marginRight: `${marginRight}px`,
-      marginLeft: `${marginLeft}px`
+      marginLeft: `${marginLeft}px`,
+      zIndex: `${zIndex}`,
+      position: "relative"
     };
     let headerStyle = {
       backgroundColor: `${backgroundColor}`,
-      width: `${width}%`,
+      width: `${width}`,
       display: "flex",
       justifyContent: "center",
       borderStyle: `${borderStyle}`,
       borderWidth: `${borderWidth}px`,
+      borderTopWidth: `${borderTop}px`,
+      borderBottomWidth: `${borderBottom}px`,
+      borderRightWidth: `${borderRight}px`,
+      borderLeftWidth: `${borderLeft}px`,
       borderColor: `${borderColor}`,
+      borderRadius: `${borderRadius}px`,
+      borderTopRightRadius: `${borderRadiusTopRight}px`,
+      borderTopLeftRadius: `${borderRadiusTopLeft}px`,
+      borderBottomRightRadius: `${borderRadiusBottomRight}px`,
+      borderBottomLeftRadius: `${borderRadiusBottomLeft}px`,
       marginRight: `${marginRight}px`,
       marginTop: `${marginTop}px`,
       marginBottom: `${marginBottom}px`,

@@ -11,7 +11,9 @@ import {
   SET_NEED_SAVE,
   PAGE_SAVED,
   TOGGLE_ICONS,
-  SET_SECTION_FOCUS
+  SET_SECTION_FOCUS,
+  SET_DISPLAY_SIZE,
+  TOGGLE_DISPLAY_BRIGHTNESS
 } from "./types";
 
 //Get current menu
@@ -30,12 +32,18 @@ export const getMenuObj = () => {
                 fontSize: "80px",
                 InheritfontSize: true,
                 backgroundColor: "#EDEEF1",
+                widthAuto: false,
                 width: "30",
                 justifySelf: "start",
                 hasBackgroundColor: false,
                 borderStyle: "solid",
                 borderWidth: "5",
                 borderColor: "#927F73",
+                borderTop: "10",
+                borderBottom: "10",
+                borderLeft: "0",
+                borderRight: "0",
+                borderControl: true,
                 margin: "2",
                 marginTop: "2",
                 marginBottom: "2",
@@ -47,22 +55,35 @@ export const getMenuObj = () => {
                 paddingBottom: "2",
                 paddingLeft: "2",
                 paddingRight: "2",
-                paddingControl: false
+                paddingControl: false,
+                zIndex: "1",
+                borderRadius: "0",
+                borderRadiusTopLeft: "0",
+                borderRadiusTopRight: "0",
+                borderRadiusBottomLeft: "0",
+                borderRadiusBottomRight: "0",
+                borderRadiusControl: false
               }
             },
             {
               Type: "header",
               Value: "Other Header",
               Settings: {
-                fontSize: "70px",
+                fontSize: "20px",
                 InheritfontSize: false,
-                backgroundColor: "#DDF3C6",
+                backgroundColor: "#FFFBFB",
                 width: "70",
                 justifySelf: "center",
                 hasBackgroundColor: true,
                 borderStyle: "solid",
+                widthAuto: true,
                 borderWidth: "3",
                 borderColor: "#927F73",
+                borderTop: "0",
+                borderBottom: "0",
+                borderLeft: "0",
+                borderRight: "0",
+                borderControl: false,
                 margin: "6",
                 marginTop: "2",
                 marginBottom: "3",
@@ -74,20 +95,154 @@ export const getMenuObj = () => {
                 paddingBottom: "2",
                 paddingLeft: "2",
                 paddingRight: "2",
-                paddingControl: false
+                paddingControl: false,
+                zIndex: "2",
+                borderRadius: "0",
+                borderRadiusTopLeft: "0",
+                borderRadiusTopRight: "0",
+                borderRadiusBottomLeft: "0",
+                borderRadiusBottomRight: "0",
+                borderRadiusControl: false
+              }
+            },
+            {
+              Type: "container",
+              Value: [
+                {
+                  Type: "header",
+                  Value: "Lunch Menu",
+                  Settings: {
+                    fontSize: "80px",
+                    InheritfontSize: true,
+                    backgroundColor: "#EDEEF1",
+                    widthAuto: false,
+                    width: "30",
+                    justifySelf: "start",
+                    hasBackgroundColor: false,
+                    borderStyle: "solid",
+                    borderWidth: "5",
+                    borderColor: "#927F73",
+                    borderTop: "10",
+                    borderBottom: "10",
+                    borderLeft: "0",
+                    borderRight: "0",
+                    borderControl: true,
+                    margin: "2",
+                    marginTop: "2",
+                    marginBottom: "2",
+                    marginLeft: "2",
+                    marginRight: "2",
+                    marginControl: false,
+                    padding: "2",
+                    paddingTop: "2",
+                    paddingBottom: "2",
+                    paddingLeft: "2",
+                    paddingRight: "2",
+                    paddingControl: false,
+                    zIndex: "1",
+                    borderRadius: "0",
+                    borderRadiusTopLeft: "0",
+                    borderRadiusTopRight: "0",
+                    borderRadiusBottomLeft: "0",
+                    borderRadiusBottomRight: "0",
+                    borderRadiusControl: false
+                  }
+                },
+                {
+                  Type: "header",
+                  Value: "Other Header",
+                  Settings: {
+                    fontSize: "20px",
+                    InheritfontSize: false,
+                    backgroundColor: "#FFFBFB",
+                    width: "70",
+                    justifySelf: "center",
+                    hasBackgroundColor: true,
+                    borderStyle: "solid",
+                    widthAuto: true,
+                    borderWidth: "3",
+                    borderColor: "#927F73",
+                    borderTop: "0",
+                    borderBottom: "0",
+                    borderLeft: "0",
+                    borderRight: "0",
+                    borderControl: false,
+                    margin: "6",
+                    marginTop: "2",
+                    marginBottom: "3",
+                    marginLeft: "4",
+                    marginRight: "5",
+                    marginControl: false,
+                    padding: "2",
+                    paddingTop: "2",
+                    paddingBottom: "2",
+                    paddingLeft: "2",
+                    paddingRight: "2",
+                    paddingControl: false,
+                    zIndex: "2",
+                    borderRadius: "0",
+                    borderRadiusTopLeft: "0",
+                    borderRadiusTopRight: "0",
+                    borderRadiusBottomLeft: "0",
+                    borderRadiusBottomRight: "0",
+                    borderRadiusControl: false
+                  }
+                }
+              ],
+              Settings: {
+                fontSize: "20px",
+                InheritfontSize: false,
+                backgroundColor: "#FFFBFB",
+                width: "70",
+                justifySelf: "center",
+                hasBackgroundColor: true,
+                borderStyle: "solid",
+                widthAuto: true,
+                borderWidth: "3",
+                borderColor: "#927F73",
+                borderTop: "0",
+                borderBottom: "0",
+                borderLeft: "0",
+                borderRight: "0",
+                borderControl: false,
+                margin: "6",
+                marginTop: "2",
+                marginBottom: "3",
+                marginLeft: "4",
+                marginRight: "5",
+                marginControl: false,
+                padding: "2",
+                paddingTop: "2",
+                paddingBottom: "2",
+                paddingLeft: "2",
+                paddingRight: "2",
+                paddingControl: false,
+                zIndex: "2",
+                borderRadius: "0",
+                borderRadiusTopLeft: "0",
+                borderRadiusTopRight: "0",
+                borderRadiusBottomLeft: "0",
+                borderRadiusBottomRight: "0",
+                borderRadiusControl: false
               }
             },
             {
               Type: "spacer",
-              Value: "300",
+              Value: "100",
               Settings: {
                 backgroundColor: "#EDEEF1",
-                width: "50",
+                width: "100",
                 justifySelf: "center",
-                hasBackgroundColor: true,
+                hasBackgroundColor: false,
                 borderStyle: "none",
                 borderWidth: "2",
+                widthAuto: false,
                 borderColor: "#927F73",
+                borderTop: "0",
+                borderBottom: "0",
+                borderLeft: "0",
+                borderRight: "0",
+                borderControl: false,
                 margin: "0",
                 marginTop: "0",
                 marginBottom: "0",
@@ -99,7 +254,14 @@ export const getMenuObj = () => {
                 paddingBottom: "0",
                 paddingLeft: "0",
                 paddingRight: "0",
-                paddingControl: false
+                paddingControl: false,
+                zIndex: "1",
+                borderRadius: "0",
+                borderRadiusTopLeft: "0",
+                borderRadiusTopRight: "0",
+                borderRadiusBottomLeft: "0",
+                borderRadiusBottomRight: "0",
+                borderRadiusControl: false
               }
             },
             {
@@ -114,7 +276,13 @@ export const getMenuObj = () => {
                 hasBackgroundColor: false,
                 borderStyle: "none",
                 borderWidth: "2",
+                widthAuto: false,
                 borderColor: "#927F73",
+                borderTop: "0",
+                borderBottom: "0",
+                borderLeft: "0",
+                borderRight: "0",
+                borderControl: false,
                 margin: "2",
                 marginTop: "2",
                 marginBottom: "2",
@@ -126,7 +294,14 @@ export const getMenuObj = () => {
                 paddingBottom: "2",
                 paddingLeft: "2",
                 paddingRight: "2",
-                paddingControl: false
+                paddingControl: false,
+                zIndex: "1",
+                borderRadius: "0",
+                borderRadiusTopLeft: "0",
+                borderRadiusTopRight: "0",
+                borderRadiusBottomLeft: "0",
+                borderRadiusBottomRight: "0",
+                borderRadiusControl: false
               }
             }
           ],
@@ -146,11 +321,17 @@ export const getMenuObj = () => {
                 InheritfontSize: false,
                 backgroundColor: "#EDEEF1",
                 width: "50",
+                widthAuto: false,
                 justifySelf: "center",
                 hasBackgroundColor: false,
                 borderStyle: "none",
                 borderWidth: "2",
                 borderColor: "#927F73",
+                borderTop: "0",
+                borderBottom: "0",
+                borderLeft: "0",
+                borderRight: "0",
+                borderControl: false,
                 margin: "2",
                 marginTop: "2",
                 marginBottom: "2",
@@ -162,7 +343,14 @@ export const getMenuObj = () => {
                 paddingBottom: "2",
                 paddingLeft: "2",
                 paddingRight: "2",
-                paddingControl: false
+                paddingControl: false,
+                zIndex: "1",
+                borderRadius: "0",
+                borderRadiusTopLeft: "0",
+                borderRadiusTopRight: "0",
+                borderRadiusBottomLeft: "0",
+                borderRadiusBottomRight: "0",
+                borderRadiusControl: false
               }
             }
           ],
@@ -184,6 +372,21 @@ export const getMenuArr = menuObj => {
   return {
     type: GET_MENU_ARR,
     payload: menuObj
+  };
+};
+
+export const setDisplaySize = size => {
+  return {
+    type: SET_DISPLAY_SIZE,
+    payload: size
+  };
+};
+
+export const setDisplayBrightness = size => {
+  console.log(size);
+  return {
+    type: TOGGLE_DISPLAY_BRIGHTNESS,
+    payload: size
   };
 };
 
@@ -303,12 +506,18 @@ export const addMenuPage = (menuObj, newPage) => dispatch => {
           fontSize: "40px",
           InheritfontSize: true,
           backgroundColor: "#EDEEF1",
+          widthAuto: false,
           width: "100",
           justifySelf: "center",
           hasBackgroundColor: false,
           borderStyle: "none",
           borderWidth: "2",
           borderColor: "#927F73",
+          borderTop: "0",
+          borderBottom: "0",
+          borderLeft: "0",
+          borderRight: "0",
+          borderControl: false,
           margin: "2",
           marginTop: "2",
           marginBottom: "2",
@@ -320,7 +529,14 @@ export const addMenuPage = (menuObj, newPage) => dispatch => {
           paddingBottom: "2",
           paddingLeft: "2",
           paddingRight: "2",
-          paddingControl: false
+          paddingControl: false,
+          zIndex: "1",
+          borderRadius: "0",
+          borderRadiusTopLeft: "0",
+          borderRadiusTopRight: "0",
+          borderRadiusBottomLeft: "0",
+          borderRadiusBottomRight: "0",
+          borderRadiusControl: false
         }
       }
     ],
@@ -368,12 +584,18 @@ export const createNewHeader = (
       fontSize: "40px",
       InheritfontSize: true,
       backgroundColor: "#EDEEF1",
+      widthAuto: false,
       width: "100",
       justifySelf: "center",
       hasBackgroundColor: false,
       borderStyle: "none",
       borderWidth: "2",
       borderColor: "#927F73",
+      borderTop: "0",
+      borderBottom: "0",
+      borderLeft: "0",
+      borderRight: "0",
+      borderControl: false,
       margin: "2",
       marginTop: "2",
       marginBottom: "2",
@@ -385,7 +607,14 @@ export const createNewHeader = (
       paddingBottom: "2",
       paddingLeft: "2",
       paddingRight: "2",
-      paddingControl: false
+      paddingControl: false,
+      zIndex: "1",
+      borderRadius: "0",
+      borderRadiusTopLeft: "0",
+      borderRadiusTopRight: "0",
+      borderRadiusBottomLeft: "0",
+      borderRadiusBottomRight: "0",
+      borderRadiusControl: false
     }
   });
   dispatch(setMenuArr(tempObj));
@@ -421,9 +650,15 @@ export const createNewSpacer = (
       width: "100",
       justifySelf: "center",
       hasBackgroundColor: true,
+      widthAuto: false,
       borderStyle: "none",
       borderWidth: "2",
       borderColor: "#927F73",
+      borderTop: "0",
+      borderBottom: "0",
+      borderLeft: "0",
+      borderRight: "0",
+      borderControl: false,
       margin: "0",
       marginTop: "0",
       marginBottom: "0",
@@ -435,7 +670,14 @@ export const createNewSpacer = (
       paddingBottom: "0",
       paddingLeft: "0",
       paddingRight: "0",
-      paddingControl: false
+      paddingControl: false,
+      zIndex: "1",
+      borderRadius: "0",
+      borderRadiusTopLeft: "0",
+      borderRadiusTopRight: "0",
+      borderRadiusBottomLeft: "0",
+      borderRadiusBottomRight: "0",
+      borderRadiusControl: false
     }
   });
   dispatch(setMenuArr(tempObj));

@@ -8,6 +8,8 @@ import GlobalOptions from "./sidebar sections/global section/GlobalOptions";
 import Menuitems from "./sidebar sections/menu items section/MenuItems";
 import Savebutton from "./sidebar sections/sidebar section common/Savebutton";
 import Icontoggle from "./sidebar sections/sidebar section common/Icontoggle";
+import Displayicons from "./sidebar sections/sidebar section common/Displayicons";
+import Brightnesstoggle from "./sidebar sections/sidebar section common/Brightnesstoggle";
 
 import { getMenuArr } from "../../../actions/menubuilderActions";
 
@@ -26,6 +28,8 @@ class Sidebar extends Component {
       >
         <div className="h-12 border-b-2 border-gray-500 w-full flex flex-row items-center justify-around">
           <Savebutton />
+          <Brightnesstoggle />
+          <Displayicons />
           <Icontoggle />
         </div>
         <SidebarPages name={"Pages"} />

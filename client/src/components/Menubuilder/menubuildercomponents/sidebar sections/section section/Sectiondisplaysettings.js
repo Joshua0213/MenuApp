@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Bordersettings from "../sidebar section common/Bordersettings";
 import Marginsettings from "../sidebar section common/Marginsettings";
 import Paddingsettings from "../sidebar section common/Paddingsettings";
+import Borderradius from "../sidebar section common/Borderradius";
 
 class Sectiondisplaysettings extends Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class Sectiondisplaysettings extends Component {
             {icon}
           </div>
           <Bordersettings />
+          <Borderradius />
           <Marginsettings />
           <Paddingsettings />
         </div>

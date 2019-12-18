@@ -8,12 +8,26 @@ import Navbarcanvas from "../menubuildercomponents/navbar components/Navbarcanva
 import Menupagecanvas from "./Menupagecanvas";
 import { getMenuArr } from "../../../actions/menubuilderActions";
 
+import TransparancyDark640 from "../../../img/TransparencyDark640.png";
+import Transparancy500 from "../../../img/Transparency500.png";
+
 class Menubuildercanvas extends Component {
   render() {
-    let loadingArr = this.props.menuArr.loadingArr;
+    let { loadingArr, displayBrightness } = this.props.menuArr;
     let navbar;
     let content;
     let pageContent;
+    let backgroundImage;
+    if (displayBrightness === "dark") {
+      backgroundImage = TransparancyDark640;
+    } else {
+      backgroundImage = Transparancy500;
+    }
+    let canvasStyle = {
+      backgroundImage: `url('${backgroundImage}')`,
+      backgroundPosition: "center",
+      backgroundAttachment: "repeat"
+    };
 
     if (loadingArr) {
       pageContent = <Spinner />;
@@ -32,7 +46,11 @@ class Menubuildercanvas extends Component {
     }
 
     return (
-      <div id="Menubuildercanvas" className="w-full text-center h-full">
+      <div
+        id="Menubuildercanvas"
+        style={canvasStyle}
+        className="w-full text-center h-full"
+      >
         {content}
       </div>
     );

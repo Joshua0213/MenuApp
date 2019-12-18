@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Backgroundcolor from "../sidebar section common/Backgroundcolor";
 import Backgroundwidth from "../sidebar section common/Backgroundwidth";
+import ZIndex from "../sidebar section common/ZIndex";
 
 class Sectionbackgroundsettings extends Component {
   constructor(props) {
@@ -67,6 +68,7 @@ class Sectionbackgroundsettings extends Component {
             sectionLocation={this.props.sectionLocation}
           />
           <Backgroundwidth />
+          <ZIndex />
         </div>
       );
       mainClasses += " border-gray-600";
