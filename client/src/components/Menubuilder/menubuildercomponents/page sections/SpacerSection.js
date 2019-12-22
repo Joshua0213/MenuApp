@@ -54,10 +54,18 @@ class Spacersection extends Component {
   }
 
   render() {
-    let { pageLocation, sectionLocation } = this.props;
-    let pixels = this.props.menuArr.menuArr[pageLocation].Content[
-      sectionLocation
-    ].Value;
+    let { pageLocation, sectionLocation, containerLocation } = this.props;
+    let sectionContent = this.props.menuArr.menuArr[this.props.pageLocation]
+      .Content[this.props.sectionLocation];
+
+    if (containerLocation !== null) {
+      containerLocation.map(element => {
+        sectionContent = sectionContent.Value[element];
+        return null;
+      });
+    }
+
+    let pixels = sectionContent.Value;
 
     let {
       hasBackgroundColor,

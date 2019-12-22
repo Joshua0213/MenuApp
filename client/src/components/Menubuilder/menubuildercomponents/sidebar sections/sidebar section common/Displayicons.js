@@ -43,13 +43,13 @@ class Displayicons extends Component {
         mediumClasses += " text-black";
         largeClasses += " text-gray-600 hover:text-black cursor-pointer";
         smallClasses += " text-gray-600 hover:text-black cursor-pointer";
-        let mediumClick = null;
+        mediumClick = null;
         break;
       case "small":
         smallClasses += " text-black";
         largeClasses += " text-gray-600 hover:text-black cursor-pointer";
         mediumClasses += " text-gray-600 hover:text-black cursor-pointer";
-        let smallClick = null;
+        smallClick = null;
         break;
       default:
         largeClasses += " ";

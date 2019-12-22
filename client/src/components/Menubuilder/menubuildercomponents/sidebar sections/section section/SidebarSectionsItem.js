@@ -15,7 +15,6 @@ class SidebarSectionsItem extends Component {
     let lower = this.props.Type;
     let upper = lower.charAt(0).toUpperCase() + lower.substring(1);
     let { Value } = this.props;
-    let sectionFocus = this.props.sectionLocation;
     let { pageFocus, menuArr } = this.props.menuArr;
     if (upper === "Container") {
       let numberOfSections =

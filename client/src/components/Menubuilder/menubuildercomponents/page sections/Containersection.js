@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import Sectionfactory from "./Sectionfactory";
+
 class Containersection extends Component {
   render() {
+    let { containerLocation, sectionLocation, pageLocation } = this.props;
+
     let containerStyles;
     let pageArr = this.props.menuArr.menuArr;
-    let sectionArr = pageArr[this.props.pageLocation].Content;
-    let { Settings } = sectionArr[this.props.sectionLocation];
+    let sectionContent = pageArr[pageLocation].Content[sectionLocation];
+    if (containerLocation !== null) {
+      containerLocation.forEach(element => {
+        sectionContent = sectionContent.Value[element];
+      });
+    }
+    let { Settings } = sectionContent;
     let {
       hasBackgroundColor,
       backgroundColor,
@@ -107,8 +116,33 @@ class Containersection extends Component {
       paddingBottom: `${paddingBottom}px`,
       paddingLeft: `${paddingLeft}px`
     };
+    //
+    //Make sure that the sectionfactory passes the original sectionLocation
+    //as it's sectionLocation prop. Not its index like the version used
+    //by the menu page. This way the nested section knows where to start
+    //looking when it is handed the containerLocation array.
+    //
+    let sections = [];
+    let tempArr = [];
 
-    return <div style={containerStyles}></div>;
+    if (containerLocation !== null) {
+      tempArr = containerLocation.map(i => {
+        return i;
+      });
+    }
+
+    sectionContent.Value.forEach((element, index) => {
+      sections.push(
+        <Sectionfactory
+          key={index}
+          pageLocation={pageLocation}
+          sectionLocation={sectionLocation}
+          containerLocation={[...tempArr, index]}
+        />
+      );
+    });
+
+    return <div style={containerStyles}>{sections}</div>;
   }
 }
 

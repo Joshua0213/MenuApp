@@ -88,6 +88,7 @@ class Menupage extends Component {
           key={index}
           pageLocation={MyFocus}
           sectionLocation={index}
+          containerLocation={null}
         />
       );
       if (this.state.opener === index + 1) {

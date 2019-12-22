@@ -5,19 +5,11 @@ import Headersection from "./Headersection";
 import Spacersection from "./SpacerSection";
 import Containersection from "./Containersection";
 
-class Sectionfactory extends Component {
+class Containersectionfactory extends Component {
   render() {
-    let { containerLocation } = this.props;
-    let sectionContent = this.props.menuArr.menuArr[this.props.pageLocation]
-      .Content[this.props.sectionLocation];
-
-    if (containerLocation !== null) {
-      containerLocation.forEach(element => {
-        sectionContent = sectionContent.Value[element];
-      });
-    }
-
-    let sectionType = sectionContent.Type;
+    let sectionType = this.props.menuArr.menuArr[this.props.pageLocation]
+      .Content[this.props.sectionLocation].Value[this.props.containerLocation]
+      .Type;
     let content = "";
 
     if (sectionType === "header") {
@@ -25,7 +17,6 @@ class Sectionfactory extends Component {
         <Headersection
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
-          containerLocation={containerLocation}
         />
       );
     } else if (sectionType === "spacer") {
@@ -33,7 +24,6 @@ class Sectionfactory extends Component {
         <Spacersection
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
-          containerLocation={containerLocation}
         />
       );
     } else if (sectionType === "container") {
@@ -41,7 +31,6 @@ class Sectionfactory extends Component {
         <Containersection
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
-          containerLocation={containerLocation}
         />
       );
     }
@@ -54,4 +43,4 @@ const mapStateToProps = state => ({
   menuArr: state.menuarr
 });
 
-export default connect(mapStateToProps, {})(Sectionfactory);
+export default connect(mapStateToProps, {})(Containersectionfactory);

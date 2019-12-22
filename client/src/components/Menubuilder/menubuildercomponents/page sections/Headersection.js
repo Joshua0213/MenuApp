@@ -47,12 +47,20 @@ class Headersection extends Component {
   }
 
   render() {
+    let { containerLocation } = this.props;
     let pageArr = this.props.menuArr.menuArr;
     let { hideIcons } = this.props.menuArr;
     let headerStyles = this.props.globalState.globalStyles.headers;
-    let sectionArr = pageArr[this.props.pageLocation].Content;
-    let pagetitle = sectionArr[this.props.sectionLocation].Value;
-    let { Settings } = sectionArr[this.props.sectionLocation];
+    let sectionContent =
+      pageArr[this.props.pageLocation].Content[this.props.sectionLocation];
+    if (containerLocation !== null) {
+      containerLocation.map(element => {
+        sectionContent = sectionContent.Value[element];
+        return null;
+      });
+    }
+    let pagetitle = sectionContent.Value;
+    let { Settings } = sectionContent;
     let {
       InheritfontSize,
       hasBackgroundColor,

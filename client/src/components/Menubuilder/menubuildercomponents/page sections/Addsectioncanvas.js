@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { createNewSpacer } from "../../../../actions/menubuilderActions";
+import {
+  createNewSpacer,
+  createNewContainer
+} from "../../../../actions/menubuilderActions";
 
 import Addsectionbutton from "./AddCanvas components/Addsectionbutton";
 import Backbutton from "../../../Common/Backbutton";
@@ -10,11 +13,21 @@ class Addsectioncanvas extends Component {
   constructor(props) {
     super(props);
     this.createSpacer = this.createSpacer.bind(this);
+    this.createContainer = this.createContainer.bind(this);
   }
 
   createSpacer() {
     this.props.toggleCanvas();
     this.props.createNewSpacer(
+      this.props.menuArr.menuArr,
+      this.props.pageLocation,
+      this.props.sectionLocation
+    );
+  }
+
+  createContainer() {
+    this.props.toggleCanvas();
+    this.props.createNewContainer(
       this.props.menuArr.menuArr,
       this.props.pageLocation,
       this.props.sectionLocation
@@ -45,6 +58,12 @@ class Addsectioncanvas extends Component {
           >
             Spacer
           </div>
+          <div
+            className="cursor-pointer bg-blue-300 rounded-lg flex-grow mx-2 hover:bg-blue-500 text-base text-center py-2 px-6 z-50"
+            onClick={this.createContainer}
+          >
+            Container
+          </div>
         </div>
       </div>
     );
@@ -55,4 +74,7 @@ const mapStateToProps = state => ({
   menuArr: state.menuarr
 });
 
-export default connect(mapStateToProps, { createNewSpacer })(Addsectioncanvas);
+export default connect(mapStateToProps, {
+  createNewSpacer,
+  createNewContainer
+})(Addsectioncanvas);

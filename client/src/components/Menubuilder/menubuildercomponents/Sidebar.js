@@ -2,24 +2,54 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import SidebarPages from "./sidebar sections/page section/SidebarPages";
-import SidebarSections from "./sidebar sections/section section/SidebarSections";
-import GlobalOptions from "./sidebar sections/global section/GlobalOptions";
-import Menuitems from "./sidebar sections/menu items section/MenuItems";
 import Savebutton from "./sidebar sections/sidebar section common/Savebutton";
 import Icontoggle from "./sidebar sections/sidebar section common/Icontoggle";
 import Displayicons from "./sidebar sections/sidebar section common/Displayicons";
 import Brightnesstoggle from "./sidebar sections/sidebar section common/Brightnesstoggle";
+import Sidebarnavbar from "./sidebar sections/Sidebarnavbar";
+import Sidebarmainpage from "./sidebar sections/Sidebarmainpage";
+import Sectiontreecanvas from "./sidebar sections/tree section/Sectiontreecanvas";
 
 import { getMenuArr } from "../../../actions/menubuilderActions";
 
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeTab: "Tree"
+    };
+    this.changeTabClick = this.changeTabClick.bind(this);
+  }
+
+  changeTabClick(tabName) {
+    this.setState(() => {
+      return {
+        activeTab: tabName
+      };
+    });
+  }
+
   render() {
     let content;
+    let mainContent;
     let sidebarWidth = this.props.menuArr.sidebarWidth;
     let sidebarStyle = {
       width: `${sidebarWidth}px`
     };
+
+    switch (this.state.activeTab) {
+      case "Main":
+        mainContent = <Sidebarmainpage />;
+        break;
+      case "Tree":
+        mainContent = <Sectiontreecanvas />;
+        break;
+
+      default:
+        mainContent = <Sidebarmainpage />;
+        break;
+    }
+
     content = (
       <div
         id="Sidebar"
@@ -32,10 +62,13 @@ class Sidebar extends Component {
           <Displayicons />
           <Icontoggle />
         </div>
-        <SidebarPages name={"Pages"} />
-        <SidebarSections />
-        <GlobalOptions />
-        <Menuitems />
+        <div className="pt-px border-b-2 border-gray-500 w-full">
+          <Sidebarnavbar
+            activeTab={this.state.activeTab}
+            changeTabClick={this.changeTabClick}
+          />
+        </div>
+        {mainContent}
       </div>
     );
     return <div className=" relative z-40">{content}</div>;

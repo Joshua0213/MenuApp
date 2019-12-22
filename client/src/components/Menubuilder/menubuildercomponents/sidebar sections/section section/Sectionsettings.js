@@ -5,9 +5,6 @@ import { renameHeader } from "../../../../../actions/menubuilderActions";
 
 import TextFieldGroupSmall from "../../../../Common/TextFieldGroupSmall";
 import Backbutton from "../../../../Common/Backbutton";
-import Sectionbackgroundsettings from "./Sectionbackgroundsettings";
-import Sectiondisplaysettings from "./Sectiondisplaysettings";
-import Sectioncontentsettings from "./Sectioncontentsettings";
 import Noncontainersettings from "./Noncontainersettings";
 import Containersettings from "./Containersettings";
 
