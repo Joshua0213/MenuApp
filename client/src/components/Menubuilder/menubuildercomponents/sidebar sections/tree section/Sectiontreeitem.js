@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class Sectiontreeitem extends Component {
+class Sectiontreeitem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,6 +34,7 @@ export default class Sectiontreeitem extends Component {
   }
 
   dragEnd() {
+    this.props.cancelDrag();
     this.setState(() => {
       return {
         bgColor: "#e2e8f0"
@@ -50,7 +52,7 @@ export default class Sectiontreeitem extends Component {
 
   render() {
     let icon;
-    let { name } = this.props;
+    let { name, sectionLocation, pageLocation, containerLocation } = this.props;
     let lowerName = name;
     let upperName = lowerName.charAt(0).toUpperCase() + lowerName.substring(1);
     let offset = this.props.depth * 20 + 5;
@@ -90,22 +92,16 @@ export default class Sectiontreeitem extends Component {
         className="flex"
         onDrag={() => {}}
         onDragStart={() => {
-          this.props.changeDragItem(this.props.id);
+          this.props.changeDragItem(
+            pageLocation,
+            sectionLocation,
+            containerLocation,
+            this.props.isParent
+          );
           this.dragStart();
         }}
         onDragEnd={() => {
           this.dragEnd();
-        }}
-        onDragEnter={e => {
-          e.preventDefault();
-          this.dragEnter();
-        }}
-        onDragLeave={() => {
-          this.dragExit();
-        }}
-        onDragOver={e => {
-          e.preventDefault();
-          this.dragEnter();
         }}
         onDrop={() => {
           this.dragExit();
@@ -124,3 +120,9 @@ export default class Sectiontreeitem extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  menuArr: state.menuarr
+});
+
+export default connect(mapStateToProps, {})(Sectiontreeitem);

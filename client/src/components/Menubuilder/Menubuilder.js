@@ -59,13 +59,14 @@ class Menubuilder extends Component {
       width: this.props.menuArr.sidebarWidth
     };
     let dragStyle = {
-      cursor: "ew-resize"
+      cursor: "ew-resize",
+      width: "5px"
     };
     let sidebarStyle = {
-      position: "fixed",
-      top: this.state.sidebarOffset
+      position: "relative",
+      width: `${this.props.menuArr.sidebarWidth}px`
     };
-    let dragClasses = " min-h-screen w-1 z-30 flex-shrink-0 ";
+    let dragClasses = " min-h-screen z-30  ";
     if (this.state.dragging) {
       logger = this.logDrag;
       dragClasses += " bg-gray-600";
@@ -95,8 +96,8 @@ class Menubuilder extends Component {
           style={dragStyle}
           onMouseDown={this.setDrag}
         ></div>
-        <div className="flex-grow ">
-          <Menubuildercanvas className="flex-grow min-h-screen" />
+        <div className=" w-full">
+          <Menubuildercanvas className=" min-h-screen" />
         </div>
       </div>
     );

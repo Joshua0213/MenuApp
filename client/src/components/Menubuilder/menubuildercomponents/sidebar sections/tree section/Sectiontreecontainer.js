@@ -24,9 +24,17 @@ class Sectiontreecontainer extends Component {
   }
 
   render() {
+    //   console.log(
+    //     this.props.dragPage +
+    //       "" +
+    //       this.props.pageLocation +
+    //       "" +
+    //       this.props.sectionLocation +
+    //       this.props.containerLocation
+    //   );
     let sections = [];
     let depth = 0;
-    let { menuArr, pageFocus, sectionFocus } = this.props.menuArr;
+    let { menuArr, pageFocus } = this.props.menuArr;
     let tempArr = [];
     let sectionArr =
       menuArr[pageFocus].Content[this.props.sectionLocation].Value;
@@ -46,12 +54,14 @@ class Sectiontreecontainer extends Component {
         id={this.props.sectionLocation + "container" + depth}
         dragItem={this.props.dragItem}
         changeDragItem={this.props.changeDragItem}
+        cancelDrag={this.props.cancelDrag}
         isParent={true}
+        pageLocation={pageFocus}
+        sectionLocation={this.props.sectionLocation}
         containerLocation={this.props.containerLocation}
         name={"Container"}
         toggleOpen={this.toggleOpen}
         isOpen={this.state.isOpen}
-        sectionLocation={this.props.sectionLocation}
       />
     );
     depth++;
@@ -60,6 +70,14 @@ class Sectiontreecontainer extends Component {
         <Sectiontreedragnode
           key={"todo=:fix this" + 1 + "nodedepth" + 0}
           depth={depth}
+          dragId={pageFocus + "" + this.props.sectionLocation + [...tempArr, 0]}
+          containerLocation={[...tempArr, 0]}
+          sectionLocation={this.props.sectionLocation}
+          pageLocation={this.props.pageLocation}
+          dragPage={this.props.dragPage}
+          dragSection={this.props.dragSection}
+          dragContainer={this.props.dragContainer}
+          dragIsParent={this.props.dragIsParent}
         />
       );
       sectionArr.forEach((element, index) => {
@@ -69,15 +87,33 @@ class Sectiontreecontainer extends Component {
             depth={depth}
             dragItem={this.props.dragItem}
             changeDragItem={this.props.changeDragItem}
+            cancelDrag={this.props.cancelDrag}
             containerLocation={[...tempArr, index]}
             sectionLocation={this.props.sectionLocation}
             pageLocation={this.props.pageLocation}
+            dragPage={this.props.dragPage}
+            dragSection={this.props.dragSection}
+            dragContainer={this.props.dragContainer}
+            dragIsParent={this.props.dragIsParent}
           />
         );
         sections.push(
           <Sectiontreedragnode
             key={index + 1 + "nodedepth" + 0}
             depth={depth}
+            dragId={
+              pageFocus +
+              "" +
+              this.props.sectionLocation +
+              [...tempArr, index + 1]
+            }
+            containerLocation={[...tempArr, index + 1]}
+            sectionLocation={this.props.sectionLocation}
+            pageLocation={this.props.pageLocation}
+            dragPage={this.props.dragPage}
+            dragSection={this.props.dragSection}
+            dragContainer={this.props.dragContainer}
+            dragIsParent={this.props.dragIsParent}
           />
         );
       });

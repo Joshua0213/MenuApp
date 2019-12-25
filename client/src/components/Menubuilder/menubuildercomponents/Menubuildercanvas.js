@@ -26,7 +26,8 @@ class Menubuildercanvas extends Component {
     let canvasStyle = {
       backgroundImage: `url('${backgroundImage}')`,
       backgroundPosition: "center",
-      backgroundAttachment: "repeat"
+      backgroundAttachment: "repeat",
+      width: "100%"
     };
 
     if (loadingArr) {

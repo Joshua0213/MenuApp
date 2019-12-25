@@ -6,13 +6,36 @@ import {
   deleteSection
 } from "../../../../actions/menubuilderActions";
 
-import showcase2 from "../../../../img/showcase2.jpg";
+import peopleEating from "../../../../img/peopleEating.jpg";
+import peopleEating1 from "../../../../img/peopleEating1.jpg";
+import peopleEating2 from "../../../../img/peopleEating2.jpg";
+import peopleEating3 from "../../../../img/peopleEating3.jpg";
+import peopleEating4 from "../../../../img/peopleEating4.jpg";
+import peopleEating5 from "../../../../img/peopleEating5.jpg";
+import peopleEating6 from "../../../../img/peopleEating6.jpg";
+import peopleEating7 from "../../../../img/peopleEating7.jpg";
+import peopleEating8 from "../../../../img/peopleEating8.jpg";
+import peopleEating9 from "../../../../img/peopleEating9.jpg";
+import peopleEating10 from "../../../../img/peopleEating10.jpg";
+import peopleEating11 from "../../../../img/peopleEating11.jpg";
+import peopleEating12 from "../../../../img/peopleEating12.jpg";
+import peopleEating13 from "../../../../img/peopleEating13.jpg";
+import peopleEating14 from "../../../../img/peopleEating14.jpg";
+import peopleEating15 from "../../../../img/peopleEating15.jpg";
+import peopleEating16 from "../../../../img/peopleEating16.jpg";
+import peopleEating17 from "../../../../img/peopleEating17.jpg";
+import peopleEating18 from "../../../../img/peopleEating18.jpg";
+import peopleEating19 from "../../../../img/peopleEating19.jpg";
+import peopleEating20 from "../../../../img/peopleEating20.jpg";
+import peopleEating21 from "../../../../img/peopleEating21.jpg";
+import peopleEating22 from "../../../../img/peopleEating22.jpg";
 
 class Spacersection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hover: false
+      hover: false,
+      arrayValue: Math.floor(Math.random() * 23)
     };
     this.toggleHoverOff = this.toggleHoverOff.bind(this);
     this.toggleHoverOn = this.toggleHoverOn.bind(this);
@@ -37,14 +60,6 @@ class Spacersection extends Component {
   }
 
   sliderChange(event) {
-    console.log(
-      "setting value at page: " +
-        this.props.pageLocation +
-        " and section: " +
-        this.props.sectionLocation +
-        " to: " +
-        event.target.value
-    );
     this.props.updateSpacer(
       this.props.menuArr.menuArr,
       this.props.pageLocation,
@@ -57,6 +72,31 @@ class Spacersection extends Component {
     let { pageLocation, sectionLocation, containerLocation } = this.props;
     let sectionContent = this.props.menuArr.menuArr[this.props.pageLocation]
       .Content[this.props.sectionLocation];
+    let picArray = [
+      { picture: peopleEating, xsize: "1069", ysize: "717" },
+      { picture: peopleEating1, xsize: "912", ysize: "608" },
+      { picture: peopleEating2, xsize: "576", ysize: "720" },
+      { picture: peopleEating3, xsize: "730", ysize: "1095" },
+      { picture: peopleEating4, xsize: "1037", ysize: "691" },
+      { picture: peopleEating5, xsize: "649", ysize: "974" },
+      { picture: peopleEating6, xsize: "1369", ysize: "913" },
+      { picture: peopleEating7, xsize: "960", ysize: "640" },
+      { picture: peopleEating8, xsize: "576", ysize: "864" },
+      { picture: peopleEating9, xsize: "756", ysize: "1008" },
+      { picture: peopleEating10, xsize: "667", ysize: "1003" },
+      { picture: peopleEating11, xsize: "557", ysize: "836" },
+      { picture: peopleEating12, xsize: "758", ysize: "1050" },
+      { picture: peopleEating13, xsize: "747", ysize: "1120" },
+      { picture: peopleEating14, xsize: "656", ysize: "975" },
+      { picture: peopleEating15, xsize: "912", ysize: "608" },
+      { picture: peopleEating16, xsize: "557", ysize: "836" },
+      { picture: peopleEating17, xsize: "669", ysize: "1003" },
+      { picture: peopleEating18, xsize: "768", ysize: "1152" },
+      { picture: peopleEating19, xsize: "1051", ysize: "592" },
+      { picture: peopleEating20, xsize: "650", ysize: "1050" },
+      { picture: peopleEating21, xsize: "875", ysize: "583" },
+      { picture: peopleEating22, xsize: "1123", ysize: "749" }
+    ];
 
     if (containerLocation !== null) {
       containerLocation.map(element => {
@@ -116,7 +156,7 @@ class Spacersection extends Component {
       backgroundImage = "none";
     } else {
       spacerBackground = "rgba(0,0,0,0)";
-      backgroundImage = `url('${showcase2}')`;
+      backgroundImage = `url('${picArray[this.state.arrayValue].picture}')`;
     }
     if (justifySelf !== "center") {
       justifySelf = `flex-${justifySelf}`;
@@ -170,8 +210,11 @@ class Spacersection extends Component {
       paddingBottom: `${paddingBottom}px`,
       paddingLeft: `${paddingLeft}px`,
       backgroundImage: `${backgroundImage}`,
-      backgroundPosition: "center",
-      backgroundAttachment: "fixed"
+      //backgroundPosition: "center",
+      //backgroundAttachment: "fixed",
+      backgroundSize: `${picArray[this.state.arrayValue].xsize}px ${
+        picArray[this.state.arrayValue].ysize
+      }px`
     };
     let spacerContainerStyle = {
       display: "flex",

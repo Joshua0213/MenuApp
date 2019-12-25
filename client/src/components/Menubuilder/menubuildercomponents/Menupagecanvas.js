@@ -21,7 +21,8 @@ class Menupagecanvas extends Component {
         canvasWidth = "100%";
     }
     let canvasStyle = {
-      width: canvasWidth
+      width: canvasWidth,
+      overflow: "hidden"
     };
     const pages = menuArr.map((page, index) => {
       return <Menupage key={index} MyFocus={index} />;

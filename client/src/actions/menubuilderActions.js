@@ -125,50 +125,7 @@ export const getMenuObj = () => {
                     justifySelf: "center",
                     hasBackgroundColor: true,
                     borderStyle: "solid",
-                    widthAuto: true,
-                    borderWidth: "3",
-                    borderColor: "#927F73",
-                    borderTop: "0",
-                    borderBottom: "0",
-                    borderLeft: "0",
-                    borderRight: "0",
-                    borderControl: false,
-                    margin: "6",
-                    marginTop: "2",
-                    marginBottom: "3",
-                    marginLeft: "4",
-                    marginRight: "5",
-                    marginControl: false,
-                    padding: "2",
-                    paddingTop: "2",
-                    paddingBottom: "2",
-                    paddingLeft: "2",
-                    paddingRight: "2",
-                    paddingControl: false,
-                    zIndex: "2",
-                    borderRadius: "0",
-                    borderRadiusTopLeft: "0",
-                    borderRadiusTopRight: "0",
-                    borderRadiusBottomLeft: "0",
-                    borderRadiusBottomRight: "0",
-                    borderRadiusControl: false
-                  }
-                },
-                //
-                //
-                //
-                {
-                  Type: "header",
-                  Value: "Other Header",
-                  Settings: {
-                    fontSize: "20px",
-                    InheritfontSize: false,
-                    backgroundColor: "#FFFBFB",
-                    width: "70",
-                    justifySelf: "center",
-                    hasBackgroundColor: true,
-                    borderStyle: "solid",
-                    widthAuto: true,
+                    widthAuto: false,
                     borderWidth: "3",
                     borderColor: "#927F73",
                     borderTop: "0",
@@ -217,7 +174,7 @@ export const getMenuObj = () => {
                         justifySelf: "center",
                         hasBackgroundColor: true,
                         borderStyle: "solid",
-                        widthAuto: true,
+                        widthAuto: false,
                         borderWidth: "3",
                         borderColor: "#927F73",
                         borderTop: "0",
@@ -301,7 +258,225 @@ export const getMenuObj = () => {
                     justifySelf: "center",
                     hasBackgroundColor: true,
                     borderStyle: "solid",
-                    widthAuto: true,
+                    widthAuto: false,
+                    borderWidth: "3",
+                    borderColor: "#927F73",
+                    borderTop: "0",
+                    borderBottom: "0",
+                    borderLeft: "0",
+                    borderRight: "0",
+                    borderControl: false,
+                    margin: "6",
+                    marginTop: "2",
+                    marginBottom: "3",
+                    marginLeft: "4",
+                    marginRight: "5",
+                    marginControl: false,
+                    padding: "2",
+                    paddingTop: "2",
+                    paddingBottom: "2",
+                    paddingLeft: "2",
+                    paddingRight: "2",
+                    paddingControl: false,
+                    zIndex: "2",
+                    borderRadius: "0",
+                    borderRadiusTopLeft: "0",
+                    borderRadiusTopRight: "0",
+                    borderRadiusBottomLeft: "0",
+                    borderRadiusBottomRight: "0",
+                    borderRadiusControl: false
+                  }
+                },
+
+                //
+                //
+                //
+                {
+                  Type: "header",
+                  Value: "Other Header",
+                  Settings: {
+                    fontSize: "20px",
+                    InheritfontSize: false,
+                    backgroundColor: "#FFFBFB",
+                    width: "70",
+                    justifySelf: "center",
+                    hasBackgroundColor: true,
+                    borderStyle: "solid",
+                    widthAuto: false,
+                    borderWidth: "3",
+                    borderColor: "#927F73",
+                    borderTop: "0",
+                    borderBottom: "0",
+                    borderLeft: "0",
+                    borderRight: "0",
+                    borderControl: false,
+                    margin: "6",
+                    marginTop: "2",
+                    marginBottom: "3",
+                    marginLeft: "4",
+                    marginRight: "5",
+                    marginControl: false,
+                    padding: "2",
+                    paddingTop: "2",
+                    paddingBottom: "2",
+                    paddingLeft: "2",
+                    paddingRight: "2",
+                    paddingControl: false,
+                    zIndex: "2",
+                    borderRadius: "0",
+                    borderRadiusTopLeft: "0",
+                    borderRadiusTopRight: "0",
+                    borderRadiusBottomLeft: "0",
+                    borderRadiusBottomRight: "0",
+                    borderRadiusControl: false
+                  }
+                },
+                //
+                //
+                //
+                {
+                  Type: "container",
+                  Value: [
+                    //
+                    //
+                    //
+                    {
+                      Type: "header",
+                      Value: "Other Header",
+                      Settings: {
+                        fontSize: "20px",
+                        InheritfontSize: false,
+                        backgroundColor: "#FFFBFB",
+                        width: "70",
+                        justifySelf: "center",
+                        hasBackgroundColor: true,
+                        borderStyle: "solid",
+                        widthAuto: false,
+                        borderWidth: "3",
+                        borderColor: "#927F73",
+                        borderTop: "0",
+                        borderBottom: "0",
+                        borderLeft: "0",
+                        borderRight: "0",
+                        borderControl: false,
+                        margin: "6",
+                        marginTop: "2",
+                        marginBottom: "3",
+                        marginLeft: "4",
+                        marginRight: "5",
+                        marginControl: false,
+                        padding: "2",
+                        paddingTop: "2",
+                        paddingBottom: "2",
+                        paddingLeft: "2",
+                        paddingRight: "2",
+                        paddingControl: false,
+                        zIndex: "2",
+                        borderRadius: "0",
+                        borderRadiusTopLeft: "0",
+                        borderRadiusTopRight: "0",
+                        borderRadiusBottomLeft: "0",
+                        borderRadiusBottomRight: "0",
+                        borderRadiusControl: false
+                      }
+                    },
+                    //
+                    //
+                    //
+                    {
+                      Type: "header",
+                      Value: "Lunch Menu",
+                      Settings: {
+                        fontSize: "80px",
+                        InheritfontSize: true,
+                        backgroundColor: "#EDEEF1",
+                        widthAuto: false,
+                        width: "30",
+                        justifySelf: "start",
+                        hasBackgroundColor: false,
+                        borderStyle: "solid",
+                        borderWidth: "5",
+                        borderColor: "#927F73",
+                        borderTop: "10",
+                        borderBottom: "10",
+                        borderLeft: "0",
+                        borderRight: "0",
+                        borderControl: true,
+                        margin: "2",
+                        marginTop: "2",
+                        marginBottom: "2",
+                        marginLeft: "2",
+                        marginRight: "2",
+                        marginControl: false,
+                        padding: "2",
+                        paddingTop: "2",
+                        paddingBottom: "2",
+                        paddingLeft: "2",
+                        paddingRight: "2",
+                        paddingControl: false,
+                        zIndex: "1",
+                        borderRadius: "0",
+                        borderRadiusTopLeft: "0",
+                        borderRadiusTopRight: "0",
+                        borderRadiusBottomLeft: "0",
+                        borderRadiusBottomRight: "0",
+                        borderRadiusControl: false
+                      }
+                    },
+                    //
+                    //
+                    //
+                    {
+                      Type: "spacer",
+                      Value: "100",
+                      Settings: {
+                        backgroundColor: "#EDEEF1",
+                        width: "100",
+                        justifySelf: "center",
+                        hasBackgroundColor: true,
+                        borderStyle: "none",
+                        borderWidth: "2",
+                        widthAuto: false,
+                        borderColor: "#927F73",
+                        borderTop: "0",
+                        borderBottom: "0",
+                        borderLeft: "0",
+                        borderRight: "0",
+                        borderControl: false,
+                        margin: "0",
+                        marginTop: "0",
+                        marginBottom: "0",
+                        marginLeft: "0",
+                        marginRight: "0",
+                        marginControl: false,
+                        padding: "0",
+                        paddingTop: "0",
+                        paddingBottom: "0",
+                        paddingLeft: "0",
+                        paddingRight: "0",
+                        paddingControl: false,
+                        zIndex: "1",
+                        borderRadius: "0",
+                        borderRadiusTopLeft: "0",
+                        borderRadiusTopRight: "0",
+                        borderRadiusBottomLeft: "0",
+                        borderRadiusBottomRight: "0",
+                        borderRadiusControl: false
+                      }
+                    }
+                    //
+                    //
+                    //
+                  ],
+                  Settings: {
+                    fontSize: "20px",
+                    InheritfontSize: false,
+                    backgroundColor: "#FFFBFB",
+                    width: "70",
+                    justifySelf: "center",
+                    hasBackgroundColor: true,
+                    borderStyle: "solid",
+                    widthAuto: false,
                     borderWidth: "3",
                     borderColor: "#927F73",
                     borderTop: "0",
@@ -383,7 +558,7 @@ export const getMenuObj = () => {
                 justifySelf: "center",
                 hasBackgroundColor: true,
                 borderStyle: "solid",
-                widthAuto: true,
+                widthAuto: false,
                 borderWidth: "3",
                 borderColor: "#927F73",
                 borderTop: "0",
@@ -412,12 +587,324 @@ export const getMenuObj = () => {
                 borderRadiusControl: false
               }
             },
+
+            //
+            //
+            //
+            //
+            //
+            //
+            {
+              Type: "container",
+              Value: [
+                //
+                //
+                //
+                {
+                  Type: "header",
+                  Value: "Other Header",
+                  Settings: {
+                    fontSize: "20px",
+                    InheritfontSize: false,
+                    backgroundColor: "#FFFBFB",
+                    width: "70",
+                    justifySelf: "center",
+                    hasBackgroundColor: true,
+                    borderStyle: "solid",
+                    widthAuto: false,
+                    borderWidth: "3",
+                    borderColor: "#927F73",
+                    borderTop: "0",
+                    borderBottom: "0",
+                    borderLeft: "0",
+                    borderRight: "0",
+                    borderControl: false,
+                    margin: "6",
+                    marginTop: "2",
+                    marginBottom: "3",
+                    marginLeft: "4",
+                    marginRight: "5",
+                    marginControl: false,
+                    padding: "2",
+                    paddingTop: "2",
+                    paddingBottom: "2",
+                    paddingLeft: "2",
+                    paddingRight: "2",
+                    paddingControl: false,
+                    zIndex: "2",
+                    borderRadius: "0",
+                    borderRadiusTopLeft: "0",
+                    borderRadiusTopRight: "0",
+                    borderRadiusBottomLeft: "0",
+                    borderRadiusBottomRight: "0",
+                    borderRadiusControl: false
+                  }
+                },
+                //
+                //
+                //
+                {
+                  Type: "header",
+                  Value: "Other Header",
+                  Settings: {
+                    fontSize: "20px",
+                    InheritfontSize: false,
+                    backgroundColor: "#FFFBFB",
+                    width: "70",
+                    justifySelf: "center",
+                    hasBackgroundColor: true,
+                    borderStyle: "solid",
+                    widthAuto: false,
+                    borderWidth: "3",
+                    borderColor: "#927F73",
+                    borderTop: "0",
+                    borderBottom: "0",
+                    borderLeft: "0",
+                    borderRight: "0",
+                    borderControl: false,
+                    margin: "6",
+                    marginTop: "2",
+                    marginBottom: "3",
+                    marginLeft: "4",
+                    marginRight: "5",
+                    marginControl: false,
+                    padding: "2",
+                    paddingTop: "2",
+                    paddingBottom: "2",
+                    paddingLeft: "2",
+                    paddingRight: "2",
+                    paddingControl: false,
+                    zIndex: "2",
+                    borderRadius: "0",
+                    borderRadiusTopLeft: "0",
+                    borderRadiusTopRight: "0",
+                    borderRadiusBottomLeft: "0",
+                    borderRadiusBottomRight: "0",
+                    borderRadiusControl: false
+                  }
+                },
+                //
+                //
+                //
+                {
+                  Type: "container",
+                  Value: [
+                    //
+                    //
+                    //
+                    {
+                      Type: "header",
+                      Value: "Other Header",
+                      Settings: {
+                        fontSize: "20px",
+                        InheritfontSize: false,
+                        backgroundColor: "#FFFBFB",
+                        width: "70",
+                        justifySelf: "center",
+                        hasBackgroundColor: true,
+                        borderStyle: "solid",
+                        widthAuto: false,
+                        borderWidth: "3",
+                        borderColor: "#927F73",
+                        borderTop: "0",
+                        borderBottom: "0",
+                        borderLeft: "0",
+                        borderRight: "0",
+                        borderControl: false,
+                        margin: "6",
+                        marginTop: "2",
+                        marginBottom: "3",
+                        marginLeft: "4",
+                        marginRight: "5",
+                        marginControl: false,
+                        padding: "2",
+                        paddingTop: "2",
+                        paddingBottom: "2",
+                        paddingLeft: "2",
+                        paddingRight: "2",
+                        paddingControl: false,
+                        zIndex: "2",
+                        borderRadius: "0",
+                        borderRadiusTopLeft: "0",
+                        borderRadiusTopRight: "0",
+                        borderRadiusBottomLeft: "0",
+                        borderRadiusBottomRight: "0",
+                        borderRadiusControl: false
+                      }
+                    },
+                    //
+                    //
+                    //
+                    {
+                      Type: "header",
+                      Value: "Lunch Menu",
+                      Settings: {
+                        fontSize: "80px",
+                        InheritfontSize: true,
+                        backgroundColor: "#EDEEF1",
+                        widthAuto: false,
+                        width: "30",
+                        justifySelf: "start",
+                        hasBackgroundColor: false,
+                        borderStyle: "solid",
+                        borderWidth: "5",
+                        borderColor: "#927F73",
+                        borderTop: "10",
+                        borderBottom: "10",
+                        borderLeft: "0",
+                        borderRight: "0",
+                        borderControl: true,
+                        margin: "2",
+                        marginTop: "2",
+                        marginBottom: "2",
+                        marginLeft: "2",
+                        marginRight: "2",
+                        marginControl: false,
+                        padding: "2",
+                        paddingTop: "2",
+                        paddingBottom: "2",
+                        paddingLeft: "2",
+                        paddingRight: "2",
+                        paddingControl: false,
+                        zIndex: "1",
+                        borderRadius: "0",
+                        borderRadiusTopLeft: "0",
+                        borderRadiusTopRight: "0",
+                        borderRadiusBottomLeft: "0",
+                        borderRadiusBottomRight: "0",
+                        borderRadiusControl: false
+                      }
+                    }
+                    //
+                    //
+                    //
+                  ],
+                  Settings: {
+                    fontSize: "20px",
+                    InheritfontSize: false,
+                    backgroundColor: "#FFFBFB",
+                    width: "70",
+                    justifySelf: "center",
+                    hasBackgroundColor: true,
+                    borderStyle: "solid",
+                    widthAuto: false,
+                    borderWidth: "3",
+                    borderColor: "#927F73",
+                    borderTop: "0",
+                    borderBottom: "0",
+                    borderLeft: "0",
+                    borderRight: "0",
+                    borderControl: false,
+                    margin: "6",
+                    marginTop: "2",
+                    marginBottom: "3",
+                    marginLeft: "4",
+                    marginRight: "5",
+                    marginControl: false,
+                    padding: "2",
+                    paddingTop: "2",
+                    paddingBottom: "2",
+                    paddingLeft: "2",
+                    paddingRight: "2",
+                    paddingControl: false,
+                    zIndex: "2",
+                    borderRadius: "0",
+                    borderRadiusTopLeft: "0",
+                    borderRadiusTopRight: "0",
+                    borderRadiusBottomLeft: "0",
+                    borderRadiusBottomRight: "0",
+                    borderRadiusControl: false
+                  }
+                },
+                //
+                //
+                //
+                {
+                  Type: "spacer",
+                  Value: "100",
+                  Settings: {
+                    backgroundColor: "#EDEEF1",
+                    width: "100",
+                    justifySelf: "center",
+                    hasBackgroundColor: false,
+                    borderStyle: "none",
+                    borderWidth: "2",
+                    widthAuto: false,
+                    borderColor: "#927F73",
+                    borderTop: "0",
+                    borderBottom: "0",
+                    borderLeft: "0",
+                    borderRight: "0",
+                    borderControl: false,
+                    margin: "0",
+                    marginTop: "0",
+                    marginBottom: "0",
+                    marginLeft: "0",
+                    marginRight: "0",
+                    marginControl: false,
+                    padding: "0",
+                    paddingTop: "0",
+                    paddingBottom: "0",
+                    paddingLeft: "0",
+                    paddingRight: "0",
+                    paddingControl: false,
+                    zIndex: "1",
+                    borderRadius: "0",
+                    borderRadiusTopLeft: "0",
+                    borderRadiusTopRight: "0",
+                    borderRadiusBottomLeft: "0",
+                    borderRadiusBottomRight: "0",
+                    borderRadiusControl: false
+                  }
+                }
+                //
+                //
+                //
+              ],
+              Settings: {
+                fontSize: "20px",
+                InheritfontSize: false,
+                backgroundColor: "#FFFBFB",
+                width: "70",
+                justifySelf: "center",
+                hasBackgroundColor: true,
+                borderStyle: "solid",
+                widthAuto: false,
+                borderWidth: "3",
+                borderColor: "#927F73",
+                borderTop: "0",
+                borderBottom: "0",
+                borderLeft: "0",
+                borderRight: "0",
+                borderControl: false,
+                margin: "6",
+                marginTop: "2",
+                marginBottom: "3",
+                marginLeft: "4",
+                marginRight: "5",
+                marginControl: false,
+                padding: "2",
+                paddingTop: "2",
+                paddingBottom: "2",
+                paddingLeft: "2",
+                paddingRight: "2",
+                paddingControl: false,
+                zIndex: "2",
+                borderRadius: "0",
+                borderRadiusTopLeft: "0",
+                borderRadiusTopRight: "0",
+                borderRadiusBottomLeft: "0",
+                borderRadiusBottomRight: "0",
+                borderRadiusControl: false
+              }
+            },
+
             //
             //
             //
             {
               Type: "spacer",
-              Value: "100",
+              Value: "800",
               Settings: {
                 backgroundColor: "#EDEEF1",
                 width: "100",
@@ -967,7 +1454,202 @@ export const updateGlobalSetting = (
     tempObj[key] = globalsObj[key];
     return null;
   });
-  console.log(tempObj);
   tempObj[category][setting] = value;
   dispatch(setGlobalsObject(tempObj));
+};
+
+export const moveTreeSection = (
+  menuObj,
+  nodePage,
+  nodeSection,
+  nodeContainer,
+  itemPage,
+  itemSection,
+  itemContainer
+) => dispatch => {
+  let tempObj = menuObj.map(i => i);
+
+  let same;
+
+  ///check for same array
+  //if same section and both have null container
+  //if they have the same length address
+  ///////if the container address is length 1 check for same section
+  ///////length longer than 1, compare addresses up to (containerLocation.length - 2)
+  ////////////slice off the last value of containerLocation in a tempArr and compare addresses
+  if (nodeContainer === null && itemContainer === null) {
+    same = true;
+  } else if (nodeContainer === null || itemContainer === null) {
+    same = false;
+  } else {
+    ///both have container location
+    if (nodeContainer.length !== itemContainer.length) {
+      //addresses are different length
+      same = false;
+    } else {
+      //addresses are same length
+      if (nodeContainer.length === 1) {
+        ///addresses are only 1 long
+        if (nodeSection === itemSection) {
+          same = true;
+        } else same = false;
+      } else {
+        ///addresses are the same length and longer than 1
+        // check up to the last value for a deviation in the
+        //address
+        let tempNodeContainer = nodeContainer.map(e => {
+          return { e };
+        });
+        let tempItemContainer = itemContainer.map(e => {
+          return { e };
+        });
+        tempNodeContainer.splice(tempNodeContainer.length - 1, 1);
+        tempItemContainer.splice(tempItemContainer.length - 1, 1);
+        let isSame = true;
+        tempNodeContainer.forEach((element, index) => {
+          if (element.e !== tempItemContainer[index].e) {
+            isSame = false;
+          }
+        });
+
+        if (isSame) {
+          same = true;
+        } else same = false;
+      }
+    }
+  }
+
+  let fromSectionArray = tempObj[itemPage].Content;
+  if (itemContainer !== null) {
+    fromSectionArray = fromSectionArray[itemSection].Value;
+    if (itemContainer.length > 1) {
+      //Container address is longer than 1. Splice off the last value of the
+      //address and forEach to the right array
+      let tempItemContainer = itemContainer.map(e => {
+        return { e };
+      });
+      tempItemContainer.splice(tempItemContainer.length - 1, 1);
+      tempItemContainer.forEach((element, index) => {
+        fromSectionArray = fromSectionArray[element.e].Value;
+      });
+    }
+  }
+
+  if (same) {
+    //Movement is occuring only within one array, be a little more careful
+    //if the endpoint address is more than 1 higher we're moving forward
+    //if the endpoint address is the same or 1 higher than no change
+    // if the endpoint is less than we are moving backwards
+    let direction = "unkown";
+    if (itemContainer === null) {
+      //No container address, compare sections for address
+      if (nodeSection < itemSection) {
+        direction = "backwards";
+      } else if (nodeSection - itemSection > 1) {
+        direction = "forward";
+      }
+    } else {
+      //Containers do have an address check the endpoints
+      let nodeEndpoint;
+      let itemEndpoint;
+      nodeEndpoint = nodeContainer[nodeContainer.length - 1];
+      itemEndpoint = itemContainer[itemContainer.length - 1];
+      if (nodeEndpoint < itemEndpoint) {
+        direction = "backwards";
+      } else if (nodeEndpoint - itemEndpoint > 1) {
+        direction = "forward";
+      }
+    }
+    if (direction === "backwards") {
+      //direction is backwards.
+      let tempSection;
+      let sectionArray = tempObj[nodePage].Content;
+      if (itemContainer === null) {
+        tempSection = sectionArray.splice(itemSection, 1);
+        sectionArray.splice(nodeSection, 0, tempSection[0]);
+      } else {
+        //use last address position
+        let nodeEndpoint;
+        let itemEndpoint;
+        nodeEndpoint = nodeContainer[nodeContainer.length - 1];
+        itemEndpoint = itemContainer[itemContainer.length - 1];
+        //UPDATE SECTION
+        sectionArray = sectionArray[itemSection].Value;
+        let tempAddressArray = nodeContainer.map(e => {
+          return e;
+        });
+        tempAddressArray.splice(tempAddressArray.length - 1, 1);
+        tempAddressArray.forEach((element, index) => {
+          sectionArray = sectionArray[tempAddressArray[index]].Value;
+        });
+        //
+        tempSection = sectionArray.splice(itemEndpoint, 1);
+        sectionArray.splice(nodeEndpoint, 0, tempSection[0]);
+      }
+    } else if (direction === "forward") {
+      //direction is forward
+      let tempSection;
+      let sectionArray = tempObj[nodePage].Content;
+      if (itemContainer === null) {
+        tempSection = sectionArray.splice(itemSection, 1);
+        sectionArray.splice(nodeSection - 1, 0, tempSection[0]);
+      } else {
+        //use last address position
+        let nodeEndpoint;
+        let itemEndpoint;
+        nodeEndpoint = nodeContainer[nodeContainer.length - 1];
+        itemEndpoint = itemContainer[itemContainer.length - 1];
+        //UPDATE SECTION
+        sectionArray = sectionArray[itemSection].Value;
+        let tempAddressArray = nodeContainer.map(e => {
+          return e;
+        });
+        tempAddressArray.splice(tempAddressArray.length - 1, 1);
+        tempAddressArray.forEach((element, index) => {
+          sectionArray = sectionArray[tempAddressArray[index]].Value;
+        });
+        //
+        tempSection = sectionArray.splice(itemEndpoint, 1);
+        sectionArray.splice(nodeEndpoint - 1, 0, tempSection[0]);
+      }
+    }
+  } else {
+    //Movement is occuring across different arrays, be more straightforward
+    //splice value from
+    let toSectionArray = tempObj[nodePage].Content;
+    if (nodeContainer !== null) {
+      toSectionArray = toSectionArray[nodeSection].Value;
+      if (nodeContainer.length > 1) {
+        //Container address is longer than 1. Splice off the last value of the
+        //address and forEach to the right array
+        let tempNodeContainer = nodeContainer.map(e => {
+          return { e };
+        });
+        tempNodeContainer.splice(tempNodeContainer.length - 1, 1);
+        tempNodeContainer.forEach((element, index) => {
+          toSectionArray = toSectionArray[element.e].Value;
+        });
+      }
+    }
+    let tempSection;
+    if (itemContainer !== null) {
+      tempSection = fromSectionArray.splice(
+        itemContainer[itemContainer.length - 1],
+        1
+      );
+    } else {
+      tempSection = fromSectionArray.splice(itemSection, 1);
+    }
+    if (nodeContainer !== null) {
+      toSectionArray.splice(
+        nodeContainer[nodeContainer.length - 1],
+        0,
+        tempSection[0]
+      );
+    } else {
+      toSectionArray.splice(nodeSection, 0, tempSection[0]);
+    }
+  }
+
+  dispatch(setMenuArr(tempObj));
 };

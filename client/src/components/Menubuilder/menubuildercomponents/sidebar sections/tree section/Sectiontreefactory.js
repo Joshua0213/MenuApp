@@ -25,6 +25,7 @@ class Sectiontreefactory extends Component {
           id={pageLocation + "p" + sectionLocation + "s" + idTag}
           dragItem={this.props.dragItem}
           changeDragItem={this.props.changeDragItem}
+          cancelDrag={this.props.cancelDrag}
           isParent={false}
           containerLocation={containerLocation}
           sectionLocation={sectionLocation}
@@ -38,9 +39,14 @@ class Sectiontreefactory extends Component {
           dragItem={this.props.dragItem}
           depth={this.props.depth}
           changeDragItem={this.props.changeDragItem}
+          cancelDrag={this.props.cancelDrag}
           containerLocation={containerLocation}
           sectionLocation={sectionLocation}
           pageLocation={pageLocation}
+          dragPage={this.props.dragPage}
+          dragSection={this.props.dragSection}
+          dragContainer={this.props.dragContainer}
+          dragIsParent={this.props.dragIsParent}
         />
       );
     }
