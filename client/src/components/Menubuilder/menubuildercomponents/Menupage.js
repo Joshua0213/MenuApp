@@ -3,40 +3,43 @@ import { connect } from "react-redux";
 
 import Sectionfactory from "./page sections/Sectionfactory";
 import Addsection from "./page sections/Addsection";
-import Addsectioncanvascontainer from "./page sections/AddCanvas components/Addsectioncanvascontainer";
 
 class Menupage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addCanvasOpen: false,
-      opener: 999999,
-      openTo: "start"
+      dragBool: false,
+      dragPage: null,
+      dragSection: null,
+      dragContainer: null,
+      dragIsParent: null
     };
-    this.toggleAddCanvas = this.toggleAddCanvas.bind(this);
-    this.openSectionToAdd = this.openSectionToAdd.bind(this);
+    this.changeDragItem = this.changeDragItem.bind(this);
+    this.cancelDrag = this.cancelDrag.bind(this);
   }
 
-  openSectionToAdd(t) {
+  changeDragItem(pageLocation, sectionLocation, containerLocation, parentage) {
     this.setState(() => {
-      return { openTo: t };
+      return {
+        dragBool: true,
+        dragPage: pageLocation,
+        dragSection: sectionLocation,
+        dragContainer: containerLocation,
+        dragIsParent: parentage
+      };
     });
   }
 
-  toggleAddCanvas(Opened, opener) {
-    this.setState(prevState => {
-      return { addCanvasOpen: !prevState.addCanvasOpen };
+  cancelDrag() {
+    this.setState(() => {
+      return {
+        dragBool: false,
+        dragPage: null,
+        dragSection: null,
+        dragContainer: null,
+        dragIsParent: null
+      };
     });
-
-    if (Opened) {
-      this.setState(prevState => {
-        return { opener: opener };
-      });
-    } else {
-      this.setState(prevState => {
-        return { opener: 99999 };
-      });
-    }
   }
 
   render() {
@@ -60,28 +63,21 @@ class Menupage extends Component {
     let pageStyle = {
       backgroundColor: `${currentBackgroundColor}`
     };
-    if (this.state.opener === 0) {
-      sections.push(
-        <Addsectioncanvascontainer
-          key={"addCanvas"}
-          toggleCanvas={this.toggleAddCanvas}
-          openTo={this.state.openTo}
-          openSectionToAdd={this.openSectionToAdd}
-          pageLocation={MyFocus}
-          location={0}
-        />
-      );
-    } else {
-      sections.push(
-        <Addsection
-          key={"a" + 0}
-          location={0}
-          toggleCanvas={this.toggleAddCanvas}
-          opener={this.state.opener}
-          openSectionToAdd={this.openSectionToAdd}
-        />
-      );
-    }
+
+    sections.push(
+      <Addsection
+        key={"a" + 0}
+        location={0}
+        dragPage={this.state.dragPage}
+        dragSection={this.state.dragSection}
+        dragContainer={this.state.dragContainer}
+        dragIsParent={this.state.dragIsParent}
+        pageLocation={MyFocus}
+        sectionLocation={0}
+        containerLocation={null}
+      />
+    );
+
     pageContentArray.forEach((element, index) => {
       sections.push(
         <Sectionfactory
@@ -89,30 +85,29 @@ class Menupage extends Component {
           pageLocation={MyFocus}
           sectionLocation={index}
           containerLocation={null}
+          dragBool={this.state.dragBool}
+          changeDragItem={this.changeDragItem}
+          cancelDrag={this.cancelDrag}
+          dragPage={this.state.dragPage}
+          dragSection={this.state.dragSection}
+          dragContainer={this.state.dragContainer}
+          dragIsParent={this.state.dragIsParent}
         />
       );
-      if (this.state.opener === index + 1) {
-        sections.push(
-          <Addsectioncanvascontainer
-            key={"addCanvas"}
-            toggleCanvas={this.toggleAddCanvas}
-            openTo={this.state.openTo}
-            openSectionToAdd={this.openSectionToAdd}
-            pageLocation={MyFocus}
-            location={index + 1}
-          />
-        );
-      } else {
-        sections.push(
-          <Addsection
-            key={"a" + (index + 1)}
-            location={index + 1}
-            toggleCanvas={this.toggleAddCanvas}
-            opener={this.state.opener}
-            openSectionToAdd={this.openSectionToAdd}
-          />
-        );
-      }
+
+      sections.push(
+        <Addsection
+          key={"a" + (index + 1)}
+          location={index + 1}
+          dragPage={this.state.dragPage}
+          dragSection={this.state.dragSection}
+          dragContainer={this.state.dragContainer}
+          dragIsParent={this.state.dragIsParent}
+          pageLocation={MyFocus}
+          sectionLocation={index + 1}
+          containerLocation={null}
+        />
+      );
     });
 
     if (focus !== MyFocus) {

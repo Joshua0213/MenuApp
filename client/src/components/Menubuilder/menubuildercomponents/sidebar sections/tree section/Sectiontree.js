@@ -42,11 +42,6 @@ class Sectiontree extends Component {
     });
   }
 
-  //ToDo list
-  //dragnodes need to exist in between each item
-  //dragnodes need to know thier parent container
-  //containers
-
   render() {
     let sections = [];
     let { menuArr, pageFocus } = this.props.menuArr;

@@ -230,16 +230,12 @@ class Sectiontreedragnode extends Component {
           e.preventDefault();
           this.dragEnter();
         }}
-        onDragLeave={() => {
-          this.dragExit();
-        }}
+        onDragLeave={this.dragExit}
         onDragOver={e => {
           e.preventDefault();
           this.dragEnter();
         }}
-        onDrop={() => {
-          this.dragDrop();
-        }}
+        onDrop={this.dragDrop}
       ></div>
     );
   }

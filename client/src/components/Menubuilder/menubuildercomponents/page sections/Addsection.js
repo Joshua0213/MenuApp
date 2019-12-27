@@ -1,19 +1,35 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { moveTreeSection } from "../../../../actions/menubuilderActions";
 
 class Addsection extends Component {
   constructor(props) {
     super(props);
-    this.toggler = this.toggler.bind(this);
     this.mouseExit = this.mouseExit.bind(this);
     this.mouseEntered = this.mouseEntered.bind(this);
     this.state = {
       mouseOver: false
     };
+
+    this.moveTreeSection = this.moveTreeSection.bind(this);
+    this.dragDrop = this.dragDrop.bind(this);
   }
 
-  toggler() {
-    this.props.openSectionToAdd("start");
-    this.props.toggleCanvas(1, this.props.location);
+  moveTreeSection() {
+    this.props.moveTreeSection(
+      this.props.menuArr.menuArr,
+      this.props.pageLocation,
+      this.props.sectionLocation,
+      this.props.containerLocation,
+      this.props.dragPage,
+      this.props.dragSection,
+      this.props.dragContainer
+    );
+  }
+
+  dragDrop() {
+    this.moveTreeSection();
   }
 
   mouseExit() {
@@ -26,29 +42,52 @@ class Addsection extends Component {
 
   render() {
     let toggleClick = this.toggler;
-    let content;
-    let classes =
-      "text-center text-sm opacity-0 relative z-50 w-6/12 rounded-full hover:opacity-100 cursor-pointer";
-
-    if (this.state.mouseOver) {
-      content = <div></div>;
-      classes += " bg-blue-500 h-4 -mt-2 -mb-2";
-    } else {
-      content = "";
-      classes += " bg-blue-400 h-4 -mt-2 -mb-2";
+    let classes = "text-center text-sm relative z-50 w-11/12 rounded";
+    let outline = "none";
+    let opacity = 1;
+    let validMove = true;
+    if (this.props.containerLocation !== null) {
+      validMove = false;
     }
+    if (this.props.treeFocus.pageIsDragging && validMove) {
+      classes += "  h-2 -mt-1 -mb-1";
+
+      outline = "1px dotted Black";
+
+      if (!this.state.mouseOver) {
+        opacity = 0.2;
+      }
+    }
+    let styles = {
+      backgroundColor: "#66ff00",
+      outline: `${outline}`,
+      opacity: `${opacity}`,
+      borderRadius: "5px"
+    };
 
     return (
       <div
         className={classes}
-        onMouseEnter={this.mouseEntered}
-        onMouseLeave={this.mouseExit}
+        style={styles}
         onClick={toggleClick}
-      >
-        {content}
-      </div>
+        onDragLeave={this.mouseExit}
+        onDragEnter={e => {
+          e.preventDefault();
+          this.mouseEntered();
+        }}
+        onDragOver={e => {
+          e.preventDefault();
+          this.mouseEntered();
+        }}
+        onDrop={this.dragDrop}
+      ></div>
     );
   }
 }
 
-export default Addsection;
+const mapStateToProps = state => ({
+  menuArr: state.menuarr,
+  treeFocus: state.treefocus
+});
+
+export default connect(mapStateToProps, { moveTreeSection })(Addsection);

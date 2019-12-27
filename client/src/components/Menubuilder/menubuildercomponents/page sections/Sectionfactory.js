@@ -26,6 +26,13 @@ class Sectionfactory extends Component {
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
           containerLocation={containerLocation}
+          dragBool={this.props.dragBool}
+          changeDragItem={this.props.changeDragItem}
+          cancelDrag={this.props.cancelDrag}
+          dragPage={this.props.dragPage}
+          dragSection={this.props.dragSection}
+          dragContainer={this.props.dragContainer}
+          dragIsParent={this.props.dragIsParent}
         />
       );
     } else if (sectionType === "spacer") {
@@ -34,6 +41,13 @@ class Sectionfactory extends Component {
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
           containerLocation={containerLocation}
+          dragBool={this.props.dragBool}
+          changeDragItem={this.props.changeDragItem}
+          cancelDrag={this.props.cancelDrag}
+          dragPage={this.props.dragPage}
+          dragSection={this.props.dragSection}
+          dragContainer={this.props.dragContainer}
+          dragIsParent={this.props.dragIsParent}
         />
       );
     } else if (sectionType === "container") {
@@ -42,6 +56,13 @@ class Sectionfactory extends Component {
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
           containerLocation={containerLocation}
+          dragBool={this.props.dragBool}
+          changeDragItem={this.props.changeDragItem}
+          cancelDrag={this.props.cancelDrag}
+          dragPage={this.props.dragPage}
+          dragSection={this.props.dragSection}
+          dragContainer={this.props.dragContainer}
+          dragIsParent={this.props.dragIsParent}
         />
       );
     }
