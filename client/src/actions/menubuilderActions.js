@@ -67,7 +67,7 @@ export const getMenuObj = () => {
             },
             {
               Type: "header",
-              Value: "Other Header",
+              Value: "Broken Header",
               Settings: {
                 fontSize: "20px",
                 InheritfontSize: false,
@@ -120,47 +120,11 @@ export const getMenuObj = () => {
                 //
                 //
                 {
-                  Type: "header",
-                  Value: "Other Header",
-                  Settings: {
-                    fontSize: "20px",
-                    InheritfontSize: false,
-                    backgroundColor: "#FFFBFB",
-                    width: "70",
-                    justifySelf: "center",
-                    hasBackgroundColor: true,
-                    borderStyle: "solid",
-                    widthAuto: false,
-                    borderWidth: "3",
-                    borderColor: "#927F73",
-                    borderTop: "0",
-                    borderBottom: "0",
-                    borderLeft: "0",
-                    borderRight: "0",
-                    borderControl: false,
-                    margin: "6",
-                    marginTop: "2",
-                    marginBottom: "3",
-                    marginLeft: "4",
-                    marginRight: "5",
-                    marginControl: false,
-                    padding: "2",
-                    paddingTop: "2",
-                    paddingBottom: "2",
-                    paddingLeft: "2",
-                    paddingRight: "2",
-                    paddingControl: false,
-                    zIndex: "2",
-                    borderRadius: "0",
-                    borderRadiusTopLeft: "0",
-                    borderRadiusTopRight: "0",
-                    borderRadiusBottomLeft: "0",
-                    borderRadiusBottomRight: "0",
-                    borderRadiusControl: false
-                  }
+                  Type: "column"
                 },
                 //
                 //
+                { Type: "column" },
                 //
                 {
                   Type: "header",
@@ -211,12 +175,12 @@ export const getMenuObj = () => {
                 fontSize: "20px",
                 InheritfontSize: false,
                 backgroundColor: "#FFFBFB",
-                width: "70",
+                width: "100",
                 justifySelf: "center",
-                hasBackgroundColor: true,
+                hasBackgroundColor: false,
                 borderStyle: "solid",
                 widthAuto: false,
-                borderWidth: "3",
+                borderWidth: "0",
                 borderColor: "#927F73",
                 borderTop: "0",
                 borderBottom: "0",
@@ -650,7 +614,7 @@ export const createNewContainer = (
   let tempArr = menuArr.map(i => i);
   tempArr[pageLocation].Content.splice(sectionLocation, 0, {
     Type: "container",
-    Value: [],
+    Value: [{ Type: "column" }, { Type: "column" }, { Type: "column" }],
     Settings: {
       fontSize: "40px",
       InheritfontSize: true,
@@ -813,7 +777,7 @@ export const moveTreeSection = (
   itemContainer
 ) => dispatch => {
   let tempObj = menuObj.map(i => i);
-
+  console.log(nodeContainer, itemContainer);
   let same;
 
   ///check for same array
@@ -863,7 +827,6 @@ export const moveTreeSection = (
       }
     }
   }
-
   let fromSectionArray = tempObj[itemPage].Content;
   if (itemContainer !== null) {
     fromSectionArray = fromSectionArray[itemSection].Value;
@@ -881,6 +844,7 @@ export const moveTreeSection = (
   }
 
   if (same) {
+    console.log("same");
     //Movement is occuring only within one array, be a little more careful
     //if the endpoint address is more than 1 higher we're moving forward
     //if the endpoint address is the same or 1 higher than no change
@@ -906,6 +870,7 @@ export const moveTreeSection = (
       }
     }
     if (direction === "backwards") {
+      console.log("backwards");
       //direction is backwards.
       let tempSection;
       let sectionArray = tempObj[nodePage].Content;
@@ -932,6 +897,7 @@ export const moveTreeSection = (
         sectionArray.splice(nodeEndpoint, 0, tempSection[0]);
       }
     } else if (direction === "forward") {
+      console.log("Forward");
       //direction is forward
       let tempSection;
       let sectionArray = tempObj[nodePage].Content;
@@ -980,7 +946,8 @@ export const moveTreeSection = (
     if (itemContainer !== null) {
       tempSection = fromSectionArray.splice(
         itemContainer[itemContainer.length - 1],
-        1
+        1,
+        { Type: "column" }
       );
     } else {
       tempSection = fromSectionArray.splice(itemSection, 1);
@@ -988,7 +955,7 @@ export const moveTreeSection = (
     if (nodeContainer !== null) {
       toSectionArray.splice(
         nodeContainer[nodeContainer.length - 1],
-        0,
+        1,
         tempSection[0]
       );
     } else {

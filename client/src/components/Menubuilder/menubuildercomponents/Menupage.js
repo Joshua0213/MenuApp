@@ -14,33 +14,33 @@ class Menupage extends Component {
       dragContainer: null,
       dragIsParent: null
     };
-    this.changeDragItem = this.changeDragItem.bind(this);
-    this.cancelDrag = this.cancelDrag.bind(this);
+    // this.changeDragItem = this.changeDragItem.bind(this);
+    // this.cancelDrag = this.cancelDrag.bind(this);
   }
 
-  changeDragItem(pageLocation, sectionLocation, containerLocation, parentage) {
-    this.setState(() => {
-      return {
-        dragBool: true,
-        dragPage: pageLocation,
-        dragSection: sectionLocation,
-        dragContainer: containerLocation,
-        dragIsParent: parentage
-      };
-    });
-  }
+  // changeDragItem(pageLocation, sectionLocation, containerLocation, parentage) {
+  //   this.setState(() => {
+  //     return {
+  //       dragBool: true,
+  //       dragPage: pageLocation,
+  //       dragSection: sectionLocation,
+  //       dragContainer: containerLocation,
+  //       dragIsParent: parentage
+  //     };
+  //   });
+  // }
 
-  cancelDrag() {
-    this.setState(() => {
-      return {
-        dragBool: false,
-        dragPage: null,
-        dragSection: null,
-        dragContainer: null,
-        dragIsParent: null
-      };
-    });
-  }
+  // cancelDrag() {
+  //   this.setState(() => {
+  //     return {
+  //       dragBool: false,
+  //       dragPage: null,
+  //       dragSection: null,
+  //       dragContainer: null,
+  //       dragIsParent: null
+  //     };
+  //   });
+  // }
 
   render() {
     let classes = "text-4xl flex flex-col h-full items-center ";
@@ -75,6 +75,7 @@ class Menupage extends Component {
         pageLocation={MyFocus}
         sectionLocation={0}
         containerLocation={null}
+        cancelDrag={this.cancelDrag}
       />
     );
 
@@ -106,6 +107,7 @@ class Menupage extends Component {
           pageLocation={MyFocus}
           sectionLocation={index + 1}
           containerLocation={null}
+          cancelDrag={this.cancelDrag}
         />
       );
     });
@@ -127,7 +129,8 @@ class Menupage extends Component {
 
 const mapStateToProps = state => ({
   menuArr: state.menuarr,
-  globalState: state.globalstyles
+  globalState: state.globalstyles,
+  treeFocus: state.treefocus
 });
 
 export default connect(mapStateToProps, {})(Menupage);

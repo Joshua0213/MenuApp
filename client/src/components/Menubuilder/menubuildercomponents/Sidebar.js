@@ -8,7 +8,7 @@ import Displayicons from "./sidebar sections/sidebar section common/Displayicons
 import Brightnesstoggle from "./sidebar sections/sidebar section common/Brightnesstoggle";
 import Sidebarnavbar from "./sidebar sections/Sidebarnavbar";
 import Sidebarmainpage from "./sidebar sections/Sidebarmainpage";
-import Sectiontreecanvas from "./sidebar sections/tree section/Sectiontreecanvas";
+import Elements from "./sidebar sections/elements/Elements";
 
 import { getMenuArr } from "../../../actions/menubuilderActions";
 
@@ -16,7 +16,7 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: "Tree"
+      activeTab: "Elements"
     };
     this.changeTabClick = this.changeTabClick.bind(this);
   }
@@ -41,8 +41,11 @@ class Sidebar extends Component {
       case "Main":
         mainContent = <Sidebarmainpage />;
         break;
-      case "Tree":
-        mainContent = <Sectiontreecanvas />;
+      // case "Tree":
+      //   mainContent = <Sectiontreecanvas />;
+      //   break;
+      case "Elements":
+        mainContent = <Elements />;
         break;
 
       default:

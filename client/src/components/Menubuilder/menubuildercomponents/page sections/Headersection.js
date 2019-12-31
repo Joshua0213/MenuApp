@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { deleteSection } from "../../../../actions/menubuilderActions";
 import {
   setTreeHoverFocusFromPage,
-  togglePageIsDragging
+  togglePageIsDragging,
+  setTreeDragFocus
 } from "../../../../actions/treefocusActions";
 
 class Headersection extends Component {
@@ -118,17 +119,16 @@ class Headersection extends Component {
   dragStart() {
     this.props.togglePageIsDragging(true);
     let { pageLocation, sectionLocation, containerLocation } = this.props;
-    this.props.changeDragItem(
+    this.props.setTreeDragFocus(
       pageLocation,
       sectionLocation,
-      containerLocation,
-      false
+      containerLocation
     );
   }
 
   dragEnd() {
     this.props.togglePageIsDragging(false);
-    this.props.cancelDrag();
+    this.props.setTreeDragFocus(null, null, null);
   }
 
   mouseEnter() {
@@ -192,7 +192,6 @@ class Headersection extends Component {
           onDragStart={this.dragStart}
           onDragEnd={this.dragEnd}
           onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseExit}
           className="absolute bg-blue-500"
           style={{ zIndex: "9999" }}
         >
@@ -301,11 +300,6 @@ class Headersection extends Component {
       display: "flex",
       width: "auto",
       justifyContent: `${justifySelf}`,
-      // margin: `${margin}px`,
-      // marginTop: `${marginTop}px`,
-      // marginBottom: `${marginBottom}px`,
-      // marginRight: `${marginRight}px`,
-      // marginLeft: `${marginLeft}px`,
       position: "relative"
     };
     let headerStyle = {
@@ -343,7 +337,9 @@ class Headersection extends Component {
         <div className="cursor-text">{pagetitle}</div>
       </h1>
     );
-
+    if (sectionContent.Type !== "header") {
+      content = ""; // A container array was leaking through?
+    }
     return (
       <div
         onMouseEnter={this.mouseEnter}
@@ -369,5 +365,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   deleteSection,
   setTreeHoverFocusFromPage,
-  togglePageIsDragging
+  togglePageIsDragging,
+  setTreeDragFocus
 })(Headersection);

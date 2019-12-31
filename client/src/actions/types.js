@@ -27,3 +27,12 @@ export const SET_TREE_HOVER = "SET_TREE_HOVER";
 export const SET_TREE_FOCUS = "SET_TREE_FOCUS";
 export const TOGGLE_SETTINGS_OPEN = "TOGGLE_SETTINGS_OPEN";
 export const TOGGLE_PAGE_DRAGGING = "TOGGLE_PAGE_DRAGGING";
+export const SET_ELEMENT_TYPE = "SET_ELEMENT_TYPE";
+export const SET_TREE_DRAG = "SET_TREE_DRAG";
+
+//Page types start here
+
+export const SET_PAGE_WIDTH = "SET_PAGE_WIDTH";
+export const SET_PAGE_ARRAY = "SET_PAGE_ARRAY";
+export const GET_MENU_ARRAY = "GET_MENU_ARRAY";
+export const SET_PAGE_RENDER = "SET_PAGE_RENDER";

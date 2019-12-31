@@ -7,7 +7,7 @@ import {
   toggleSettingsOpen
 } from "../../../../../actions/treefocusActions";
 
-class Sectiontreeitem extends Component {
+class Sectiontreecolumnitem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -223,12 +223,7 @@ class Sectiontreeitem extends Component {
       );
     }
     let icon;
-    let dragStartVar = this.dragStart;
     let { name } = this.props;
-    if (name === "column") {
-      console.log("isColumn");
-      dragStartVar = null;
-    }
     let lowerName = name;
     let upperName = lowerName.charAt(0).toUpperCase() + lowerName.substring(1);
     if (this.props.isParent === true) {
@@ -266,13 +261,6 @@ class Sectiontreeitem extends Component {
             this.mouseEnter();
           }}
           onMouseLeave={this.mouseExit}
-          onDragStart={dragStartVar}
-          onDragEnd={() => {
-            this.dragEnd();
-          }}
-          onDrop={() => {
-            this.dragExit();
-          }}
           style={{ marginLeft: `${offset}px` }}
         >
           {icon}
@@ -283,7 +271,6 @@ class Sectiontreeitem extends Component {
               backgroundColor: `${this.state.bgColor}`,
               borderColor: `${borderColor}`
             }}
-            draggable
           >
             {upperName}
           </div>
@@ -303,4 +290,4 @@ export default connect(mapStateToProps, {
   setTreeHoverFocus,
   setTreeMainFocus,
   toggleSettingsOpen
-})(Sectiontreeitem);
+})(Sectiontreecolumnitem);

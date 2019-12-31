@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Headersection from "./Headersection";
 import Spacersection from "./SpacerSection";
 import Containersection from "./Containersection";
+import Columnsection from "./Columnsection";
 
 class Sectionfactory extends Component {
   render() {
@@ -19,20 +20,12 @@ class Sectionfactory extends Component {
 
     let sectionType = sectionContent.Type;
     let content = "";
-
     if (sectionType === "header") {
       content = (
         <Headersection
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
           containerLocation={containerLocation}
-          dragBool={this.props.dragBool}
-          changeDragItem={this.props.changeDragItem}
-          cancelDrag={this.props.cancelDrag}
-          dragPage={this.props.dragPage}
-          dragSection={this.props.dragSection}
-          dragContainer={this.props.dragContainer}
-          dragIsParent={this.props.dragIsParent}
         />
       );
     } else if (sectionType === "spacer") {
@@ -41,13 +34,6 @@ class Sectionfactory extends Component {
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
           containerLocation={containerLocation}
-          dragBool={this.props.dragBool}
-          changeDragItem={this.props.changeDragItem}
-          cancelDrag={this.props.cancelDrag}
-          dragPage={this.props.dragPage}
-          dragSection={this.props.dragSection}
-          dragContainer={this.props.dragContainer}
-          dragIsParent={this.props.dragIsParent}
         />
       );
     } else if (sectionType === "container") {
@@ -56,15 +42,18 @@ class Sectionfactory extends Component {
           pageLocation={this.props.pageLocation}
           sectionLocation={this.props.sectionLocation}
           containerLocation={containerLocation}
-          dragBool={this.props.dragBool}
-          changeDragItem={this.props.changeDragItem}
-          cancelDrag={this.props.cancelDrag}
-          dragPage={this.props.dragPage}
-          dragSection={this.props.dragSection}
-          dragContainer={this.props.dragContainer}
-          dragIsParent={this.props.dragIsParent}
         />
       );
+    } else if (sectionType === "column") {
+      content = (
+        <Columnsection
+          pageLocation={this.props.pageLocation}
+          sectionLocation={this.props.sectionLocation}
+          containerLocation={containerLocation}
+        />
+      );
+    } else {
+      console.log(sectionType);
     }
 
     return <div className="w-full">{content}</div>;

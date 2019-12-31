@@ -17,6 +17,7 @@ class SidebarSectionsItem extends Component {
     let { Value } = this.props;
     let { pageFocus, menuArr } = this.props.menuArr;
     if (upper === "Container") {
+      upper = "Columns";
       let numberOfSections =
         menuArr[pageFocus].Content[this.props.myLocation].Value.length;
       Value = `${numberOfSections} Sections`;
@@ -28,9 +29,9 @@ class SidebarSectionsItem extends Component {
       tag = "px";
     }
     if (this.props.sectionLocation === this.props.myLocation) {
-      classes += "  bg-gray-300 border-gray-500";
+      classes += " bg-gray-300 border-gray-500";
     } else {
-      classes += "  bg-gray-200";
+      classes += " bg-gray-200";
     }
     return (
       <div className={classes} onClick={this.toggleFocus}>

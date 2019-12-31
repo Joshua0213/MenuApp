@@ -2,12 +2,20 @@ import {
   SET_TREE_HOVER,
   SET_TREE_FOCUS,
   TOGGLE_SETTINGS_OPEN,
-  TOGGLE_PAGE_DRAGGING
+  TOGGLE_PAGE_DRAGGING,
+  SET_ELEMENT_TYPE,
+  SET_TREE_DRAG
 } from "./types";
 
 const setHoverFocus = focusObj => {
   return {
     type: SET_TREE_HOVER,
+    payload: focusObj
+  };
+};
+const setDragFocus = focusObj => {
+  return {
+    type: SET_TREE_DRAG,
     payload: focusObj
   };
 };
@@ -30,6 +38,19 @@ export const setTreeHoverFocus = (
     containerLocation: containerLoc
   };
   dispatch(setHoverFocus(focusObj));
+};
+
+export const setTreeDragFocus = (
+  pageLoc,
+  sectionLoc,
+  containerLoc
+) => dispatch => {
+  let focusObj = {
+    pageLocation: pageLoc,
+    sectionLocation: sectionLoc,
+    containerLocation: containerLoc
+  };
+  dispatch(setDragFocus(focusObj));
 };
 
 export const setTreeMainFocus = (
@@ -55,6 +76,13 @@ export const togglePageIsDragging = boolean => {
   return {
     type: TOGGLE_PAGE_DRAGGING,
     payload: boolean
+  };
+};
+
+export const setElementType = type => {
+  return {
+    type: SET_ELEMENT_TYPE,
+    payload: type
   };
 };
 

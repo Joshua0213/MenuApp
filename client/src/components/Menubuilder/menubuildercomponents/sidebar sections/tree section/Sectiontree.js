@@ -12,7 +12,8 @@ class Sectiontree extends Component {
       dragPage: null,
       dragSection: null,
       dragContainer: null,
-      dragIsParent: null
+      dragIsParent: null,
+      dragNewType: null
     };
     this.changeDragItem = this.changeDragItem.bind(this);
     this.cancelDrag = this.cancelDrag.bind(this);
@@ -37,7 +38,8 @@ class Sectiontree extends Component {
         dragPage: null,
         dragSection: null,
         dragContainer: null,
-        dragIsParent: null
+        dragIsParent: null,
+        dragNewType: null
       };
     });
   }

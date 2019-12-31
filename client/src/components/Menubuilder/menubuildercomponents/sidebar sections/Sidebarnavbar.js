@@ -11,10 +11,15 @@ export default class Sidebarnavbar extends Component {
           changeTabClick={this.props.changeTabClick}
           name={"Main"}
         />
-        <Sidebarnavbartab
+        {/* <Sidebarnavbartab
           isToggled={this.props.activeTab === "Tree" ? true : false}
           changeTabClick={this.props.changeTabClick}
           name={"Tree"}
+        /> */}
+        <Sidebarnavbartab
+          isToggled={this.props.activeTab === "Elements" ? true : false}
+          changeTabClick={this.props.changeTabClick}
+          name={"Elements"}
         />
       </div>
     );

@@ -16,6 +16,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/Common/PrivateRoute";
 import { clearCurrentProfile } from "./actions/dashboardActions";
 import MenuBuilderwrapper from "./components/Menubuilder/MenuBuilderwrapper";
+import Pagebuilderwrapper from "./components/Pagebuilder/Pagebuilderwrapper";
 
 //Check for token
 if (localStorage.jwtToken) {
@@ -53,10 +54,15 @@ function App() {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
             <Switch>
-              <PrivateRoute
+              {/* <PrivateRoute
                 exact
                 path="/menubuilder"
                 component={MenuBuilderwrapper}
+              /> */}
+              <PrivateRoute
+                exact
+                path="/menubuilder"
+                component={Pagebuilderwrapper}
               />
             </Switch>
           </div>

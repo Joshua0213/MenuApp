@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Sectiontreeitem from "./Sectiontreeitem";
+import Sectiontreecolumnitem from "./Sectiontreecolumnitem";
 import Sectiontreecontainer from "./Sectiontreecontainer";
 
 class Sectiontreefactory extends Component {
@@ -18,7 +19,22 @@ class Sectiontreefactory extends Component {
       });
     }
     let { Type } = sectionContent;
-    if (Type !== "container") {
+    if (Type === "column") {
+      content = (
+        <Sectiontreecolumnitem
+          depth={this.props.depth}
+          id={pageLocation + "p" + sectionLocation + "s" + idTag}
+          dragItem={this.props.dragItem}
+          changeDragItem={this.props.changeDragItem}
+          cancelDrag={this.props.cancelDrag}
+          isParent={false}
+          containerLocation={containerLocation}
+          sectionLocation={sectionLocation}
+          pageLocation={pageLocation}
+          name={Type}
+        />
+      );
+    } else if (Type !== "container") {
       content = (
         <Sectiontreeitem
           depth={this.props.depth}

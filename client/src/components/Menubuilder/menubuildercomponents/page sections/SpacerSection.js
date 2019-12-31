@@ -93,7 +93,7 @@ class Spacersection extends Component {
       { picture: peopleEating17, xsize: "669", ysize: "1003" },
       { picture: peopleEating18, xsize: "768", ysize: "1152" },
       { picture: peopleEating19, xsize: "1051", ysize: "592" },
-      { picture: peopleEating20, xsize: "650", ysize: "1050" },
+      { picture: peopleEating20, xsize: "800", ysize: "800" },
       { picture: peopleEating21, xsize: "875", ysize: "583" },
       { picture: peopleEating22, xsize: "1123", ysize: "749" }
     ];

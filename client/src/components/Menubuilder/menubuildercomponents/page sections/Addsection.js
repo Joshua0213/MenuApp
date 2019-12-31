@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { moveTreeSection } from "../../../../actions/menubuilderActions";
+import {
+  moveTreeSection,
+  createNewContainer,
+  createNewHeader
+} from "../../../../actions/menubuilderActions";
+
+import {
+  togglePageIsDragging,
+  setTreeDragFocus
+} from "../../../../actions/treefocusActions";
 
 class Addsection extends Component {
   constructor(props) {
@@ -22,14 +31,41 @@ class Addsection extends Component {
       this.props.pageLocation,
       this.props.sectionLocation,
       this.props.containerLocation,
-      this.props.dragPage,
-      this.props.dragSection,
-      this.props.dragContainer
+      this.props.treeFocus.treeDragPage,
+      this.props.treeFocus.treeDragSection,
+      this.props.treeFocus.treeDragContainer
     );
   }
 
   dragDrop() {
-    this.moveTreeSection();
+    this.props.togglePageIsDragging(false);
+    if (this.props.treeFocus.treeDragPage !== null) {
+      this.moveTreeSection();
+    } else {
+      switch (this.props.treeFocus.newElementType) {
+        case "Columns":
+          this.props.createNewContainer(
+            this.props.menuArr.menuArr,
+            this.props.pageLocation,
+            this.props.sectionLocation
+          );
+          break;
+
+        case "Header":
+          this.props.createNewHeader(
+            this.props.menuArr.menuArr,
+            "New Header",
+            this.props.pageLocation,
+            this.props.sectionLocation
+          );
+          break;
+
+        default:
+          break;
+      }
+    }
+    this.setState({ mouseOver: false });
+    this.props.setTreeDragFocus(null, null, null);
   }
 
   mouseExit() {
@@ -46,14 +82,15 @@ class Addsection extends Component {
     let outline = "none";
     let opacity = 1;
     let validMove = true;
+    let heightVar = "0px";
     if (this.props.containerLocation !== null) {
       validMove = false;
     }
     if (this.props.treeFocus.pageIsDragging && validMove) {
-      classes += "  h-2 -mt-1 -mb-1";
+      classes += " h-2 -mt-1 -mb-1";
 
       outline = "1px dotted Black";
-
+      heightVar = "50px";
       if (!this.state.mouseOver) {
         opacity = 0.2;
       }
@@ -80,7 +117,16 @@ class Addsection extends Component {
           this.mouseEntered();
         }}
         onDrop={this.dragDrop}
-      ></div>
+      >
+        <div
+          style={{
+            height: heightVar,
+            width: "100%",
+            position: "absolute",
+            marginTop: "-20px"
+          }}
+        ></div>
+      </div>
     );
   }
 }
@@ -90,4 +136,10 @@ const mapStateToProps = state => ({
   treeFocus: state.treefocus
 });
 
-export default connect(mapStateToProps, { moveTreeSection })(Addsection);
+export default connect(mapStateToProps, {
+  moveTreeSection,
+  createNewContainer,
+  createNewHeader,
+  togglePageIsDragging,
+  setTreeDragFocus
+})(Addsection);

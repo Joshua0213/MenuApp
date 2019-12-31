@@ -5,7 +5,8 @@ import Sectionfactory from "./Sectionfactory";
 
 import {
   setTreeHoverFocusFromPage,
-  togglePageIsDragging
+  togglePageIsDragging,
+  setTreeDragFocus
 } from "../../../../actions/treefocusActions";
 
 class Containersection extends Component {
@@ -110,17 +111,16 @@ class Containersection extends Component {
   dragStart() {
     this.props.togglePageIsDragging(true);
     let { pageLocation, sectionLocation, containerLocation } = this.props;
-    this.props.changeDragItem(
+    this.props.setTreeDragFocus(
       pageLocation,
       sectionLocation,
-      containerLocation,
-      false
+      containerLocation
     );
   }
 
   dragEnd() {
     this.props.togglePageIsDragging(false);
-    this.props.cancelDrag();
+    this.props.setTreeDragFocus(null, null, null);
   }
 
   mouseEnter() {
@@ -165,7 +165,6 @@ class Containersection extends Component {
           onDragStart={this.dragStart}
           onDragEnd={this.dragEnd}
           onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseExit}
           className="absolute bg-blue-500"
           style={{ zIndex: "9999" }}
         >
@@ -270,6 +269,7 @@ class Containersection extends Component {
       marginRight: `${marginRight}px`,
       marginLeft: `${marginLeft}px`,
       position: "relative",
+      alignItems: "center",
 
       backgroundColor: `${backgroundColor}`,
       width: `${width}`,
@@ -304,24 +304,20 @@ class Containersection extends Component {
         return i;
       });
     }
-
-    sectionContent.Value.forEach((element, index) => {
-      sections.push(
-        <Sectionfactory
-          key={index}
-          pageLocation={pageLocation}
-          sectionLocation={sectionLocation}
-          containerLocation={[...tempArr, index]}
-          dragBool={this.props.dragBool}
-          changeDragItem={this.props.changeDragItem}
-          cancelDrag={this.props.cancelDrag}
-          dragPage={this.props.dragPage}
-          dragSection={this.props.dragSection}
-          dragContainer={this.props.dragContainer}
-          dragIsParent={this.props.dragIsParent}
-        />
-      );
-    });
+    if (sectionContent.Type === "container") {
+      sectionContent.Value.forEach((element, index) => {
+        sections.push(
+          <Sectionfactory
+            key={index}
+            pageLocation={pageLocation}
+            sectionLocation={sectionLocation}
+            containerLocation={[...tempArr, index]}
+          />
+        );
+      });
+    } else {
+      console.log("Alarm");
+    }
 
     return (
       <div
@@ -345,5 +341,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   setTreeHoverFocusFromPage,
-  togglePageIsDragging
+  togglePageIsDragging,
+  setTreeDragFocus
 })(Containersection);
