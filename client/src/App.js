@@ -16,6 +16,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/Common/PrivateRoute";
 import { clearCurrentProfile } from "./actions/dashboardActions";
 import MenuBuilderwrapper from "./components/Menubuilder/MenuBuilderwrapper";
+//eslint-disable-next-line
 import Pagebuilderwrapper from "./components/Pagebuilder/Pagebuilderwrapper";
 
 //Check for token
@@ -54,16 +55,16 @@ function App() {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
             <Switch>
-              {/* <PrivateRoute
-                exact
-                path="/menubuilder"
-                component={MenuBuilderwrapper}
-              /> */}
               <PrivateRoute
                 exact
                 path="/menubuilder"
-                component={Pagebuilderwrapper}
+                component={MenuBuilderwrapper}
               />
+              {/* <PrivateRoute
+                exact
+                path="/menubuilder"
+                component={Pagebuilderwrapper}
+              /> */}
             </Switch>
           </div>
           <div className=" z-30 relative ">

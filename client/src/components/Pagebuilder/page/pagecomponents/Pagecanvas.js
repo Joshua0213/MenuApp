@@ -3,7 +3,15 @@ import { connect } from "react-redux";
 
 class Pagecanvas extends Component {
   render() {
-    return <div>Page Canvas</div>;
+    return (
+      <div
+        style={{
+          height: "100%"
+        }}
+      >
+        Page Canvas
+      </div>
+    );
   }
 }
 

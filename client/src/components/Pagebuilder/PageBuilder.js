@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import { setPageWidth } from "../../actions/pageActions";
 
-import Spinner from "../Common/Spinner";
 import Sidebar from "./sidebar/Sidebar";
 import Page from "./page/Page";
 
@@ -56,7 +55,7 @@ class PageBuilder extends Component {
           }}
           draggable
         ></div>
-        <div onDragOver={this.onDrag} style={{ width: "100%" }}>
+        <div onDragOver={this.onDrag} style={{ width: "100%", height: "full" }}>
           <Page />
         </div>
       </div>

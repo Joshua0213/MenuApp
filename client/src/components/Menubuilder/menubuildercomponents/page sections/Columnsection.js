@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 
 import {
   togglePageIsDragging,
-  setTreeDragFocus,
-  setElementType
+  setTreeDragFocus
 } from "../../../../actions/treefocusActions";
 import {
   createNewContainer,

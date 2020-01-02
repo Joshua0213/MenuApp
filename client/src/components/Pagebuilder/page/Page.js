@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Pagenavbar from "./pagecomponents/Pagenavbar";
 import Pagecanvas from "./pagecomponents/Pagecanvas";
+import Motivation from "../../Menubuilder/menubuildercomponents/page sections/Motivation";
 
 class Page extends Component {
   render() {
@@ -12,9 +13,15 @@ class Page extends Component {
       navbar = <></>;
     }
     return (
-      <div id="Page">
+      <div
+        id="Page"
+        style={{
+          height: "100%"
+        }}
+      >
         {navbar}
         <Pagecanvas />
+        <Motivation />
       </div>
     );
   }
