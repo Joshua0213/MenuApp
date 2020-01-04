@@ -15,7 +15,7 @@ const initialState = {
   pageRender: null,
   brightness: "light",
   displaySize: "large",
-  sidebarDisplay: "Main",
+  sidebarDisplay: "Elements",
   pageFocus: 0,
   isDragging: null,
   needToSave: false,
