@@ -25,12 +25,32 @@ class Sectionfactory extends Component {
     }
 
     if (section.Type === "Container") {
-      element = <Container address={address} width={width} height={height} />;
+      element = (
+        <Container
+          address={address}
+          width={width}
+          height={height}
+          parentFlex={this.props.parentFlex}
+        />
+      );
     } else if (section.Type === "Column") {
-      element = <Column address={address} width={width} height={height} />;
+      element = (
+        <Column
+          address={address}
+          width={width}
+          height={height}
+          parentFlex={this.props.parentFlex}
+        />
+      );
     } else {
       element = (
-        <Elementwrapper address={address} width={width} height={height} />
+        ///give element wrapper parent flex direction
+        <Elementwrapper
+          address={address}
+          width={width}
+          height={height}
+          parentFlex={this.props.parentFlex}
+        />
       );
     }
 

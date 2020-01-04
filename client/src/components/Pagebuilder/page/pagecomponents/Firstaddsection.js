@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { createMenuSection } from "../../../../actions/pageActions";
+import {
+  createMenuSection,
+  setSettingsFocus,
+  setSidebarDisplay,
+  setPageDragging
+} from "../../../../actions/pageActions";
 
 class Firstaddsection extends Component {
   constructor(props) {
@@ -23,21 +28,34 @@ class Firstaddsection extends Component {
   }
 
   dragDrop() {
-    let { address, Page } = this.props;
+    let {
+      address,
+      Page,
+      setSettingsFocus,
+      setSidebarDisplay,
+      setPageDragging
+    } = this.props;
     let { isDragging, pageArray, pageFocus } = Page;
-    if (isDragging[0] === "create") {
-      this.props.createMenuSection(
-        pageArray,
-        isDragging[1],
-        address,
-        pageFocus
-      );
+    if (isDragging === null) {
+      return;
+    } else {
+      setPageDragging(null);
+      setSettingsFocus(null);
+      setSidebarDisplay("Settings");
+      if (isDragging[0] === "create") {
+        this.props.createMenuSection(
+          pageArray,
+          isDragging[1],
+          address,
+          pageFocus
+        );
+      }
+      this.setState(() => {
+        return {
+          draggedOver: false
+        };
+      });
     }
-    this.setState(() => {
-      return {
-        draggedOver: false
-      };
-    });
   }
 
   dragExit() {
@@ -97,4 +115,9 @@ const mapStateToProps = state => ({
   Page: state.page
 });
 
-export default connect(mapStateToProps, { createMenuSection })(Firstaddsection);
+export default connect(mapStateToProps, {
+  createMenuSection,
+  setSettingsFocus,
+  setSidebarDisplay,
+  setPageDragging
+})(Firstaddsection);

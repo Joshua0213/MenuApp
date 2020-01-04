@@ -8,7 +8,7 @@ class PageBuilder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarWidth: 350
+      sidebarWidth: 450
     };
     this.onDrag = this.onDrag.bind(this);
   }

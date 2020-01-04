@@ -11,13 +11,26 @@ class Headerelement extends Component {
     };
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
+
+    this.mouseEnter = this.mouseEnter.bind(this);
+    this.mouseExit = this.mouseExit.bind(this);
+  }
+
+  mouseEnter() {
+    let { brightness } = this.props.Page;
+    this.setState({
+      bgColor: brightness === "light" ? "#90cdf4" : "#2c5282"
+    });
+  }
+  mouseExit() {
+    this.setState({ bgColor: "" });
   }
 
   startDrag() {
     let { brightness } = this.props.Page;
     this.props.setPageDragging(["create", "Header"]);
     this.setState({
-      bgColor: brightness === "light" ? "LightBlue" : "#2c5282"
+      bgColor: brightness === "light" ? "#90cdf4" : "#2c5282"
     });
   }
 
@@ -41,6 +54,8 @@ class Headerelement extends Component {
         draggable
         onDragStart={this.startDrag}
         onDragEnd={this.endDrag}
+        onMouseEnter={this.mouseEnter}
+        onMouseLeave={this.mouseExit}
       >
         Header
       </div>

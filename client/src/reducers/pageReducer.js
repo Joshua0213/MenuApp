@@ -6,7 +6,8 @@ import {
   SET_SIDEBAR_DISPLAY,
   SET_PAGE_FOCUS,
   SET_PAGE_DRAGGING,
-  SET_PAGE_SAVE
+  SET_PAGE_SAVE,
+  SET_SETTINGS_FOCUS
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         pageArray: action.payload
+      };
+    case SET_SETTINGS_FOCUS:
+      return {
+        ...state,
+        settingsFocus: action.payload
       };
     case SET_PAGE_SAVE:
       return {

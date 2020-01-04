@@ -7,13 +7,21 @@ import {
   SET_SIDEBAR_DISPLAY,
   SET_PAGE_FOCUS,
   SET_PAGE_DRAGGING,
-  SET_PAGE_SAVE
+  SET_PAGE_SAVE,
+  SET_SETTINGS_FOCUS
 } from "./types";
 
 export const setPageDragging = isDragging => {
   return {
     type: SET_PAGE_DRAGGING,
     payload: isDragging
+  };
+};
+
+export const setSettingsFocus = focus => {
+  return {
+    type: SET_SETTINGS_FOCUS,
+    payload: focus
   };
 };
 
@@ -132,7 +140,8 @@ const createNewContainer = (menuArray, address, page) => dispatch => {
       flexDirection: "row"
     },
     Width: [33.3, 33.3, 33.3],
-    Height: []
+    Height: [33.3, 33.3, 33.3],
+    displayToggle: "small"
   };
   let sectionArray = menuArray[page].Sections;
   if (address.length > 1) {
@@ -149,7 +158,7 @@ const createNewContainer = (menuArray, address, page) => dispatch => {
       marginBottom: "",
       flexDirection: "column"
     };
-    newContainer.Width = [];
+    newContainer.Width = [33.3, 33.3, 33.3];
     newContainer.Height = [33.3, 33.3, 33.3];
     sectionArray.splice(address[address.length - 1], 1, newContainer);
   } else {

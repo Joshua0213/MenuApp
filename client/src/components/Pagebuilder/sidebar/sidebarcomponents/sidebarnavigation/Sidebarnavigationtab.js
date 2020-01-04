@@ -44,7 +44,7 @@ class Sidebarnavigationtab extends Component {
   }
 
   render() {
-    let bgColor = "#ebf8ff";
+    let bgColor = "";
     let borderColor = "#90cdf4";
     let cursor = "pointer";
     let { name, Page } = this.props;

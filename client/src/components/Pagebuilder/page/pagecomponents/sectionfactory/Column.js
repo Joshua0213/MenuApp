@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { createMenuSection } from "../../../../../actions/pageActions";
+import {
+  createMenuSection,
+  setSettingsFocus,
+  setSidebarDisplay,
+  setPageDragging
+} from "../../../../../actions/pageActions";
 
 class Column extends Component {
   constructor(props) {
@@ -23,11 +28,33 @@ class Column extends Component {
   }
 
   dragDrop() {
-    let { address, Page } = this.props;
+    let {
+      address,
+      Page,
+      setSettingsFocus,
+      setSidebarDisplay,
+      setPageDragging
+    } = this.props;
     let { isDragging, pageArray, pageFocus } = Page;
-    if (address.length < 4) {
-      if (isDragging[1] === "Container") {
-        if (address.length < 3) {
+    if (isDragging === null) {
+      return;
+    } else {
+      setPageDragging(null);
+      setSettingsFocus(address);
+      setSidebarDisplay("Settings");
+      if (address.length < 4) {
+        if (isDragging[1] === "Container") {
+          if (address.length < 3) {
+            if (isDragging[0] === "create") {
+              this.props.createMenuSection(
+                pageArray,
+                isDragging[1],
+                address,
+                pageFocus
+              );
+            }
+          }
+        } else {
           if (isDragging[0] === "create") {
             this.props.createMenuSection(
               pageArray,
@@ -37,22 +64,13 @@ class Column extends Component {
             );
           }
         }
-      } else {
-        if (isDragging[0] === "create") {
-          this.props.createMenuSection(
-            pageArray,
-            isDragging[1],
-            address,
-            pageFocus
-          );
-        }
       }
+      this.setState(() => {
+        return {
+          draggedOver: false
+        };
+      });
     }
-    this.setState(() => {
-      return {
-        draggedOver: false
-      };
-    });
   }
 
   dragExit() {
@@ -167,4 +185,9 @@ const mapStateToProps = state => ({
   Page: state.page
 });
 
-export default connect(mapStateToProps, { createMenuSection })(Column);
+export default connect(mapStateToProps, {
+  createMenuSection,
+  setSettingsFocus,
+  setSidebarDisplay,
+  setPageDragging
+})(Column);

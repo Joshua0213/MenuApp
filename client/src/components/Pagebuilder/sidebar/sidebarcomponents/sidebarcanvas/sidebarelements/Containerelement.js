@@ -11,6 +11,18 @@ class Containerelement extends Component {
     };
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
+    this.mouseEnter = this.mouseEnter.bind(this);
+    this.mouseExit = this.mouseExit.bind(this);
+  }
+
+  mouseEnter() {
+    let { brightness } = this.props.Page;
+    this.setState({
+      bgColor: brightness === "light" ? "#90cdf4" : "#2c5282"
+    });
+  }
+  mouseExit() {
+    this.setState({ bgColor: "" });
   }
 
   startDrag() {
@@ -41,6 +53,8 @@ class Containerelement extends Component {
         draggable
         onDragStart={this.startDrag}
         onDragEnd={this.endDrag}
+        onMouseEnter={this.mouseEnter}
+        onMouseLeave={this.mouseExit}
       >
         Columns
       </div>

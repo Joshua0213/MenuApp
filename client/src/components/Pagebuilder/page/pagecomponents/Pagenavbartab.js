@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { setPageFocus } from "../../../../actions/pageActions";
+import {
+  setPageFocus,
+  setSettingsFocus
+} from "../../../../actions/pageActions";
 
 class Pagenavbartab extends Component {
   constructor(props) {
@@ -10,7 +13,9 @@ class Pagenavbartab extends Component {
   }
 
   changeFocus() {
-    this.props.setPageFocus(this.props.index);
+    let { setPageFocus, setSettingsFocus } = this.props;
+    setSettingsFocus(null);
+    setPageFocus(this.props.index);
   }
 
   render() {
@@ -30,4 +35,6 @@ const mapStateToProps = state => ({
   Page: state.page
 });
 
-export default connect(mapStateToProps, { setPageFocus })(Pagenavbartab);
+export default connect(mapStateToProps, { setPageFocus, setSettingsFocus })(
+  Pagenavbartab
+);

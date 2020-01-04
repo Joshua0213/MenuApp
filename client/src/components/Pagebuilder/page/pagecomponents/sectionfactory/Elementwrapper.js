@@ -21,7 +21,7 @@ class Elementwrapper extends Component {
   }
 
   render() {
-    let { width, height, address, Page } = this.props;
+    let { width, height, address, Page, parentFlex } = this.props;
     let { pageArray, pageFocus } = Page;
     let cWidth = "100%";
     // eslint-disable-next-line
@@ -31,6 +31,11 @@ class Elementwrapper extends Component {
         cWidth = `${width[address.length - 1]}%`;
       } else {
         cHeight = height[address.length - 1];
+      }
+    }
+    if (parentFlex !== undefined) {
+      if (parentFlex[0] === "column") {
+        cWidth = "100%";
       }
     }
     let content;
