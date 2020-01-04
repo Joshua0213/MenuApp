@@ -1,28 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { setPageWidth } from "../../actions/pageActions";
-
 import Sidebar from "./sidebar/Sidebar";
 import Page from "./page/Page";
 
 class PageBuilder extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      sidebarWidth: 350
+    };
     this.onDrag = this.onDrag.bind(this);
   }
 
   onDrag(e) {
-    let mousePos = e.clientX;
-    if (mousePos < 30) {
-      return;
-    } else {
-      if (mousePos < 150) {
-        this.props.setPageWidth(150);
-      } else if (mousePos > 500) {
-        this.props.setPageWidth(500);
+    if (!this.props.Page.isDragging) {
+      let mousePos = e.clientX;
+      if (mousePos < 30) {
+        return;
       } else {
-        this.props.setPageWidth(mousePos);
+        if (mousePos < 150) {
+          this.setState({ sidebarWidth: 150 });
+        } else if (mousePos > 500) {
+          this.setState({ sidebarWidth: 500 });
+        } else {
+          this.setState({ sidebarWidth: mousePos });
+        }
       }
     }
   }
@@ -33,15 +36,14 @@ class PageBuilder extends Component {
         id="Page_Builder"
         style={{
           display: "flex",
-          minHeight: "90vh"
+          minHeight: "80vh"
         }}
       >
         <div
           id="Sidebar_Width"
           style={{
-            width: `${this.props.Page.pageWidth}px`
+            width: `${this.state.sidebarWidth}px`
           }}
-          onDragOver={this.onDrag}
         >
           <Sidebar />
         </div>
@@ -50,12 +52,14 @@ class PageBuilder extends Component {
           style={{
             height: "full",
             width: "5px",
-            backgroundColor: "Dodgerblue",
+            backgroundColor:
+              this.props.Page.brightness === "light" ? "#90cdf4" : "#1a202c",
             cursor: "e-resize"
           }}
           draggable
+          onDrag={this.onDrag}
         ></div>
-        <div onDragOver={this.onDrag} style={{ width: "100%", height: "full" }}>
+        <div id="Page_Wrapper" style={{ width: "100%" }}>
           <Page />
         </div>
       </div>
@@ -67,4 +71,4 @@ const mapStateToProps = state => ({
   Page: state.page
 });
 
-export default connect(mapStateToProps, { setPageWidth })(PageBuilder);
+export default connect(mapStateToProps, {})(PageBuilder);

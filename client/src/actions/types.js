@@ -32,7 +32,12 @@ export const SET_TREE_DRAG = "SET_TREE_DRAG";
 
 //Page types start here
 
-export const SET_PAGE_WIDTH = "SET_PAGE_WIDTH";
 export const SET_PAGE_ARRAY = "SET_PAGE_ARRAY";
 export const GET_MENU_ARRAY = "GET_MENU_ARRAY";
 export const SET_PAGE_RENDER = "SET_PAGE_RENDER";
+export const SET_PAGE_BRIGHTNESS = "SET_PAGE_BRIGHTNESS";
+export const SET_PAGE_SIZE = "SET_PAGE_SIZE";
+export const SET_SIDEBAR_DISPLAY = "SET_SIDEBAR_DISPLAY";
+export const SET_PAGE_FOCUS = "SET_PAGE_FOCUS";
+export const SET_PAGE_DRAGGING = "SET_PAGE_DRAGGING";
+export const SET_PAGE_SAVE = "SET_PAGE_SAVE";

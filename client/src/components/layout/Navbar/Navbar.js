@@ -21,17 +21,23 @@ class Navbar extends Component {
     const authLinks = (
       <ul className=" flex flex-row justify-end items-end">
         <li className=" px-2 text-white text-lg">Welcome back, {upper}!</li>
-        <li className="px-2 hover:text-white text-lg">
-          <Link className="nav-link" to="/dashboard">
+        <li className="px-2 text-lg">
+          <Link
+            className="nav-link text-gray-200 hover:text-green-200"
+            to="/dashboard"
+          >
             Dashboard
           </Link>
         </li>
         <li className="px-2 hover:text-white text-lg">
-          <Link className="nav-link" to="/menubuilder">
+          <Link
+            className="nav-link text-gray-200 hover:text-green-200"
+            to="/menubuilder"
+          >
             Menu Builder
           </Link>
         </li>
-        <li className=" px-2 hover:text-white text-lg ">
+        <li className=" px-2 text-gray-200 hover:text-green-200 text-lg ">
           <a href="/" onClick={this.onLogoutClick.bind(this)} className="  ">
             Logout
           </a>
@@ -42,12 +48,18 @@ class Navbar extends Component {
     const guestLinks = (
       <ul className="flex flex-row justify-end">
         <li className="px-2 hover:text-white">
-          <Link className="nav-link" to="/register">
+          <Link
+            className="nav-link text-gray-200 hover:text-green-200"
+            to="/register"
+          >
             Sign Up
           </Link>
         </li>
         <li className="px-2 hover:text-white">
-          <Link className="nav-link" to="/login">
+          <Link
+            className="nav-link text-gray-200 hover:text-green-200"
+            to="/login"
+          >
             Login
           </Link>
         </li>
@@ -56,12 +68,18 @@ class Navbar extends Component {
 
     return (
       <nav
-        id="mainNavbar"
-        className=" bg-main-primary z-50 p-2 pt-2 flex flex-col"
+        id="Navbar"
+        className=" bg-main-primary z-50 p-2 pt-4 pb-4 flex flex-col"
+        style={{
+          backgroundColor: "Dodgerblue"
+        }}
       >
-        <div className="self-center w-10/12 flex flex-row justify-between ">
-          <div className=" flex text-white ">
-            <Link className="text-lg text-gray-200 hover:text-white" to="/">
+        <div
+          id="Navbar_Container"
+          className="self-center w-10/12 flex flex-row justify-between "
+        >
+          <div id="Navbar_Logo" className=" flex text-white ">
+            <Link className="text-lg text-gray-200 hover:text-green-200" to="/">
               MenuMaker
             </Link>
           </div>
@@ -74,7 +92,10 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="flex justify-center flex-col text-gray-500 ">
+          <div
+            id="Navbar_links"
+            className="flex justify-center flex-col text-gray-500 "
+          >
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </div>

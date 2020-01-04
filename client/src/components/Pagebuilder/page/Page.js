@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import Pagenavbar from "./pagecomponents/Pagenavbar";
 import Pagecanvas from "./pagecomponents/Pagecanvas";
 import Motivation from "../../Menubuilder/menubuildercomponents/page sections/Motivation";
+import Transparency500 from "../../../img/Transparency500.png";
+import TransparencyDark640 from "../../../img/TransparencyDark640.png";
 
 class Page extends Component {
   render() {
@@ -16,7 +18,14 @@ class Page extends Component {
       <div
         id="Page"
         style={{
-          height: "100%"
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundImage:
+            this.props.Page.brightness === "light"
+              ? `url('${Transparency500}')`
+              : `url('${TransparencyDark640}')`
         }}
       >
         {navbar}

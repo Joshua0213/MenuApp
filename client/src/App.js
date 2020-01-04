@@ -15,6 +15,7 @@ import Menu from "./components/Menu/Menu";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/Common/PrivateRoute";
 import { clearCurrentProfile } from "./actions/dashboardActions";
+//eslint-disable-next-line
 import MenuBuilderwrapper from "./components/Menubuilder/MenuBuilderwrapper";
 //eslint-disable-next-line
 import Pagebuilderwrapper from "./components/Pagebuilder/Pagebuilderwrapper";
@@ -44,10 +45,10 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App">
+        <div id="Main_App" className="App">
           <Navbar />
           <Route exact path="/" component={Landingpage} />
-          <div className="Routecontainer">
+          <div id="Route_Container" className="Routecontainer">
             <Route exact path="/register" component={Register} />
             <Route exact path="/menu/:handle" component={Menu} />
             <Route exact path="/login" component={Login} />
@@ -55,19 +56,19 @@ function App() {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
             <Switch>
-              <PrivateRoute
-                exact
-                path="/menubuilder"
-                component={MenuBuilderwrapper}
-              />
               {/* <PrivateRoute
                 exact
                 path="/menubuilder"
-                component={Pagebuilderwrapper}
+                component={MenuBuilderwrapper}
               /> */}
+              <PrivateRoute
+                exact
+                path="/menubuilder"
+                component={Pagebuilderwrapper}
+              />
             </Switch>
           </div>
-          <div className=" z-30 relative ">
+          <div id="Footer" className=" z-30 relative ">
             <Footer />
           </div>
         </div>

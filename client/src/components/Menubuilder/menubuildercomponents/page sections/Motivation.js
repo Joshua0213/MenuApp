@@ -27,43 +27,60 @@ import peopleEating23 from "../../../../img/peopleEating23.jpg";
 import peopleEating24 from "../../../../img/peopleEating24.jpg";
 
 export default class Motivation extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      picArray: [
+        { picture: peopleEating, xsize: "534", ysize: "800" },
+        { picture: peopleEating1, xsize: "800", ysize: "800" },
+        { picture: peopleEating2, xsize: "640", ysize: "960" },
+        { picture: peopleEating3, xsize: "800", ysize: "800" },
+        { picture: peopleEating4, xsize: "600", ysize: "759" },
+        { picture: peopleEating5, xsize: "600", ysize: "750" },
+        { picture: peopleEating6, xsize: "600", ysize: "750" },
+        { picture: peopleEating7, xsize: "960", ysize: "640" },
+        { picture: peopleEating8, xsize: "600", ysize: "750" },
+        { picture: peopleEating9, xsize: "600", ysize: "450" },
+        { picture: peopleEating10, xsize: "947", ysize: "632" },
+        { picture: peopleEating11, xsize: "730", ysize: "378" },
+        { picture: peopleEating12, xsize: "758", ysize: "1050" },
+        { picture: peopleEating13, xsize: "570", ysize: "855" },
+        { picture: peopleEating14, xsize: "828", ysize: "817" },
+        { picture: peopleEating15, xsize: "640", ysize: "918" },
+        { picture: peopleEating16, xsize: "557", ysize: "836" },
+        { picture: peopleEating17, xsize: "669", ysize: "1003" },
+        { picture: peopleEating18, xsize: "640", ysize: "530" },
+        { picture: peopleEating19, xsize: "750", ysize: "928" },
+        { picture: peopleEating20, xsize: "800", ysize: "800" },
+        { picture: peopleEating21, xsize: "875", ysize: "583" },
+        { picture: peopleEating22, xsize: "898", ysize: "600" },
+        { picture: peopleEating23, xsize: "960", ysize: "540" },
+        { picture: peopleEating24, xsize: "708", ysize: "750" }
+      ],
+      arrayValue: 0
+    };
+  }
+
+  componentDidMount() {
+    this.setState(() => {
+      return {
+        arrayValue: Math.floor(Math.random() * this.state.picArray.length)
+      };
+    });
+  }
+
   render() {
-    let picArray = [
-      { picture: peopleEating, xsize: "534", ysize: "800" },
-      { picture: peopleEating1, xsize: "800", ysize: "800" },
-      { picture: peopleEating2, xsize: "800", ysize: "1200" },
-      { picture: peopleEating3, xsize: "1001", ysize: "1001" },
-      { picture: peopleEating4, xsize: "600", ysize: "759" },
-      { picture: peopleEating5, xsize: "600", ysize: "750" },
-      { picture: peopleEating6, xsize: "600", ysize: "750" },
-      { picture: peopleEating7, xsize: "960", ysize: "640" },
-      { picture: peopleEating8, xsize: "600", ysize: "750" },
-      { picture: peopleEating9, xsize: "600", ysize: "450" },
-      { picture: peopleEating10, xsize: "1184", ysize: "790" },
-      { picture: peopleEating11, xsize: "730", ysize: "378" },
-      { picture: peopleEating12, xsize: "758", ysize: "1050" },
-      { picture: peopleEating13, xsize: "570", ysize: "855" },
-      { picture: peopleEating14, xsize: "828", ysize: "817" },
-      { picture: peopleEating15, xsize: "640", ysize: "918" },
-      { picture: peopleEating16, xsize: "557", ysize: "836" },
-      { picture: peopleEating17, xsize: "669", ysize: "1003" },
-      { picture: peopleEating18, xsize: "640", ysize: "530" },
-      { picture: peopleEating19, xsize: "750", ysize: "928" },
-      { picture: peopleEating20, xsize: "800", ysize: "800" },
-      { picture: peopleEating21, xsize: "875", ysize: "583" },
-      { picture: peopleEating22, xsize: "1123", ysize: "749" },
-      { picture: peopleEating23, xsize: "960", ysize: "540" },
-      { picture: peopleEating24, xsize: "708", ysize: "750" }
-    ];
-    let arrayValue = 0;
-    arrayValue = Math.floor(Math.random() * picArray.length);
+    let { picArray, arrayValue } = this.state;
+    let width = "80%";
     return (
       <>
         <div
           style={{
             height: `${picArray[arrayValue].ysize}px`,
-            width: `${picArray[arrayValue].xsize}px`,
-            backgroundImage: `url('${picArray[arrayValue].picture}')`
+            //width: `${picArray[arrayValue].xsize}px`,
+            width: width,
+            backgroundImage: `url('${picArray[arrayValue].picture}')`,
+            backgroundPosition: "center"
           }}
         ></div>{" "}
         <div>{arrayValue}</div>{" "}

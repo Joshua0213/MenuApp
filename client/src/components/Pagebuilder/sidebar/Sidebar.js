@@ -1,13 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import Sidebaricons from "./sidebarcomponents/Sidebaricons";
-import Sidebarnavigation from "./sidebarcomponents/Sidebarnavigation";
-import Sidebarcanvas from "./sidebarcomponents/Sidebarcanvas";
+import Sidebaricons from "./sidebarcomponents/sidebaricons/Sidebaricons";
+import Sidebarnavigation from "./sidebarcomponents/sidebarnavigation/Sidebarnavigation";
+import Sidebarcanvas from "./sidebarcomponents/sidebarcanvas/Sidebarcanvas";
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
   render() {
     return (
-      <div>
+      <div
+        id="Sidebar"
+        style={{
+          backgroundColor:
+            this.props.Page.brightness === "light" ? "#ebf8ff" : "#2a4365",
+          height: "100%",
+          color: this.props.Page.brightness === "light" ? "" : "white"
+        }}
+      >
         <Sidebaricons />
         <Sidebarnavigation />
         <Sidebarcanvas />
@@ -15,3 +24,9 @@ export default class Sidebar extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  Page: state.page
+});
+
+export default connect(mapStateToProps, {})(Sidebar);
