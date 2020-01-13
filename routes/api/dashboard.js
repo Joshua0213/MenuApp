@@ -22,13 +22,37 @@ router.get(
         if (profile) {
           res.json(profile.mainheader);
         } else {
-          const profileFields = { mainheader: "My menu" };
+          const profileFields = {
+            user: req.user.id,
+            mainheader: "My menu",
+            menuObject: {
+              type: Object,
+              default: {
+                menuArray: [
+                  {
+                    Title: "Lunch",
+                    Sections: [],
+                    Settings: {
+                      backgroundColor: "Cornsilk"
+                    }
+                  }
+                ]
+              }
+            },
+            images: {
+              type: Array,
+              default: []
+            }
+          };
 
           const profileDoc = new Profile(profileFields);
-          profileDoc.save().then(profile => res.json(profile.mainheader));
+          profileDoc.save().then(profile => {
+            res.json(profile.mainheader);
+          });
         }
       })
       .catch(err => {
+        console.log(err);
         res.json(err);
       });
   }

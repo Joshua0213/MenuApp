@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { setSettingsFocus } from "../../../../../actions/pageActions";
+
 import Header from "./elements/Header";
 
 class Elementwrapper extends Component {
@@ -11,6 +13,17 @@ class Elementwrapper extends Component {
     };
     this.mouseEnter = this.mouseEnter.bind(this);
     this.mouseExit = this.mouseExit.bind(this);
+    this.newSettingsFocus = this.newSettingsFocus.bind(this);
+  }
+
+  newSettingsFocus() {
+    let { address, setSettingsFocus, Page } = this.props;
+    let { settingsFocus } = Page;
+    if (settingsFocus !== null) {
+      setSettingsFocus(null);
+    } else {
+      setSettingsFocus(address);
+    }
   }
 
   mouseEnter() {
@@ -52,7 +65,6 @@ class Elementwrapper extends Component {
       });
     }
     if (this.state.hovered) {
-      options = "Options";
     }
     switch (section.Type) {
       case "Header":
@@ -81,6 +93,7 @@ class Elementwrapper extends Component {
             alignSelf: "flex-start"
           }}
           onMouseEnter={this.mouseEnter}
+          onClick={this.newSettingsFocus}
         >
           {options}
         </div>
@@ -93,4 +106,4 @@ const mapStateToProps = state => ({
   Page: state.page
 });
 
-export default connect(mapStateToProps, {})(Elementwrapper);
+export default connect(mapStateToProps, { setSettingsFocus })(Elementwrapper);

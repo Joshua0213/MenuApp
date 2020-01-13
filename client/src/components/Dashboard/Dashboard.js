@@ -54,7 +54,7 @@ class Dashboard extends Component {
       dashboardContent = 
       <div>
         <h3 className=" text-sm  ">Hello {user.name}</h3>
-        <h4>{newHeader ? newHeader : mainHeader}</h4>
+        <h4>{newHeader ? newHeader : 'mainHeader'}</h4>
         <form onSubmit={this.onSubmit}> 
                 <TextFieldGroupReactive
                   placeholder={mainHeader}

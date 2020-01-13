@@ -40,7 +40,7 @@ class Addsection extends Component {
       return;
     } else {
       setPageDragging(null);
-      setSettingsFocus(null);
+      setSettingsFocus(address);
       setSidebarDisplay("Settings");
       if (isDragging[0] === "create") {
         this.props.createMenuSection(

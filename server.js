@@ -9,6 +9,7 @@ const users = require("./routes/api/users");
 const dashboard = require("./routes/api/dashboard");
 const menus = require("./routes/api/menus");
 const menubuilder = require("./routes/api/menubuilder");
+//const uploads = require("./routes/api/uploads");
 
 const app = express();
 
@@ -54,11 +55,13 @@ app.use(passport.initialize());
 //Passport config
 require("./config/passport.js")(passport);
 
+app.use("/uploads", express.static("uploads"));
 // Use Routes
 app.use("/users", users);
 app.use("/dashboard", dashboard);
 app.use("/menu", menus);
 app.use("/menubuilder", menubuilder);
+//app.use("/uploads", uploads);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {

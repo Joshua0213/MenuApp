@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { setSidebarDisplay } from "../../../../../actions/pageActions";
+import {
+  setSidebarDisplay,
+  setSettingsFocus
+} from "../../../../../actions/pageActions";
 
 class Sidebarnavigationtab extends Component {
   constructor(props) {
@@ -16,6 +19,7 @@ class Sidebarnavigationtab extends Component {
   }
 
   onClick() {
+    this.props.setSettingsFocus(null);
     this.props.setSidebarDisplay(this.props.name);
   }
 
@@ -87,6 +91,7 @@ const mapStateToProps = state => ({
   Page: state.page
 });
 
-export default connect(mapStateToProps, { setSidebarDisplay })(
-  Sidebarnavigationtab
-);
+export default connect(mapStateToProps, {
+  setSidebarDisplay,
+  setSettingsFocus
+})(Sidebarnavigationtab);

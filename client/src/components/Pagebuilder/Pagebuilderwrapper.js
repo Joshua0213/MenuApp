@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getMenuArray, setPageRender } from "../../actions/pageActions";
+import { getMenuArray } from "../../actions/pageActions";
 
 import Spinner from "../Common/Spinner";
 import PageBuilder from "./PageBuilder";
@@ -9,7 +9,10 @@ import PageBuilder from "./PageBuilder";
 class Pagebuilderwrapper extends Component {
   render() {
     let content;
-    if (this.props.pageMenu.pageLoading === true) {
+    if (
+      this.props.pageMenu.pageLoading === true ||
+      this.props.Page.imageArray === null
+    ) {
       this.props.getMenuArray();
       content = <Spinner />;
     } else {
@@ -29,9 +32,8 @@ class Pagebuilderwrapper extends Component {
 }
 
 const mapStateToProps = state => ({
-  pageMenu: state.pagemenu
+  pageMenu: state.pagemenu,
+  Page: state.page
 });
 
-export default connect(mapStateToProps, { getMenuArray, setPageRender })(
-  Pagebuilderwrapper
-);
+export default connect(mapStateToProps, { getMenuArray })(Pagebuilderwrapper);

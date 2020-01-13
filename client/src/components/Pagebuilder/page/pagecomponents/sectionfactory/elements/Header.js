@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { setSettingsFocus } from "../../../../../../actions/pageActions";
+import {
+  setSettingsFocus,
+  setSidebarDisplay
+} from "../../../../../../actions/pageActions";
 
 class Header extends Component {
   constructor(props) {
@@ -10,14 +13,11 @@ class Header extends Component {
   }
 
   newSettingsFocus() {
-    let { address, setSettingsFocus, Page } = this.props;
+    let { Page, address, setSettingsFocus, setSidebarDisplay } = this.props;
     let { settingsFocus } = Page;
+    setSidebarDisplay("Settings");
     if (settingsFocus !== null) {
-      if (address.toString() === settingsFocus.toString()) {
-        setSettingsFocus(null);
-      } else {
-        setSettingsFocus(address);
-      }
+      setSettingsFocus(null);
     } else {
       setSettingsFocus(address);
     }
@@ -43,12 +43,56 @@ class Header extends Component {
         section = section.Content[e];
       });
     }
+    let { Settings } = section;
+    let {
+      tuneBorder,
+      tuneBorderRadius,
+      tuneMargin,
+      tunePadding,
+      hasBackgroundColor,
+      backgroundColor,
+      borderSettings,
+      borderRadiusSettings,
+      marginSettings,
+      paddingSettings
+    } = section.extraSettings;
+    if (tuneBorder) {
+      Settings = {
+        ...Settings,
+        ...borderSettings
+      };
+    }
+    if (tuneBorderRadius) {
+      Settings = {
+        ...Settings,
+        ...borderRadiusSettings
+      };
+    }
+    if (tuneMargin) {
+      Settings = {
+        ...Settings,
+        ...marginSettings
+      };
+    }
+    if (tunePadding) {
+      Settings = {
+        ...Settings,
+        ...paddingSettings
+      };
+    }
+    if (hasBackgroundColor) {
+      Settings = {
+        ...Settings,
+        backgroundColor: backgroundColor
+      };
+    }
     return (
       <h1
         onClick={this.newSettingsFocus}
         style={{
-          ...section.Settings,
-          outline: outline
+          ...Settings,
+          outline: outline,
+          cursor: "pointer"
         }}
       >
         {section.Value}
@@ -60,4 +104,7 @@ const mapStateToProps = state => ({
   Page: state.page
 });
 
-export default connect(mapStateToProps, { setSettingsFocus })(Header);
+export default connect(mapStateToProps, {
+  setSettingsFocus,
+  setSidebarDisplay
+})(Header);

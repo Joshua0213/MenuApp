@@ -7,7 +7,8 @@ import {
   SET_PAGE_FOCUS,
   SET_PAGE_DRAGGING,
   SET_PAGE_SAVE,
-  SET_SETTINGS_FOCUS
+  SET_SETTINGS_FOCUS,
+  SET_IMAGE_ARRAY
 } from "../actions/types";
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
   pageFocus: 0,
   isDragging: null,
   needToSave: false,
-  settingsFocus: null
+  settingsFocus: null,
+  imageArray: null
 };
 
 export default function(state = initialState, action) {
@@ -28,6 +30,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         pageArray: action.payload
+      };
+    case SET_IMAGE_ARRAY:
+      return {
+        ...state,
+        imageArray: action.payload
       };
     case SET_SETTINGS_FOCUS:
       return {

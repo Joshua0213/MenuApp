@@ -20,6 +20,26 @@ const UserSchema = new Schema({
     type: Date,
     required: true,
     default: Date.now
+  },
+  menuObject: {
+    type: Object,
+    default: {
+      menuArray: [
+        {
+          Title: "Lunch",
+          Sections: [],
+          Settings: {
+            backgroundColor: "Cornsilk"
+          }
+        }
+      ]
+    },
+    required: true
+  },
+  images: {
+    type: Array,
+    default: [],
+    required: true
   }
 });
 

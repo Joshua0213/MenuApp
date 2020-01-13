@@ -14,6 +14,23 @@ const ProfileSchema = new Schema({
   handle: {
     type: String,
     default: ""
+  },
+  menuObject: {
+    type: Object,
+    default: {
+      menuArray: [
+        {
+          Title: "Lunch",
+          Sections: [],
+          Settings: {
+            backgroundColor: "Cornsilk"
+          }
+        }
+      ]
+    }
+  },
+  images: {
+    type: Array
   }
 });
 

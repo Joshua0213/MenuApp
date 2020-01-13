@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import Pagenavbar from "./pagecomponents/Pagenavbar";
 import Pagecanvas from "./pagecomponents/Pagecanvas";
-import Motivation from "../../Menubuilder/menubuildercomponents/page sections/Motivation";
 import Transparency500 from "../../../img/Transparency500.png";
 import TransparencyDark640 from "../../../img/TransparencyDark640.png";
 
@@ -14,6 +13,7 @@ class Page extends Component {
     if (pageArray.length === 1) {
       navbar = <></>;
     }
+
     return (
       <div
         id="Page"
@@ -30,7 +30,6 @@ class Page extends Component {
       >
         {navbar}
         <Pagecanvas />
-        <Motivation />
       </div>
     );
   }
