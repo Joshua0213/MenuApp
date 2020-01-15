@@ -9,15 +9,18 @@ class Marginsettings extends Component {
     this.state = {
       isOpen: false,
       prevMargin: 0,
-      newMargin: "",
+      newMargin: 0,
       prevMarginTop: 0,
-      newMargin: "",
+      newMarginTop: 0,
       prevMarginBottom: 0,
-      newMargin: ""
+      newMarginBottom: 0
     };
     this.toggleOpen = this.toggleOpen.bind(this);
     this.changeNewMargin = this.changeNewMargin.bind(this);
+    this.changeNewMarginTop = this.changeNewMarginTop.bind(this);
+    this.changeNewMarginBottom = this.changeNewMarginBottom.bind(this);
     this.toggleTuneMargin = this.toggleTuneMargin.bind(this);
+    this.submitNewMargin = this.submitNewMargin.bind(this);
   }
 
   componentDidMount() {
@@ -32,8 +35,11 @@ class Marginsettings extends Component {
     this.setState(() => {
       return {
         prevMargin: section.Settings.margin,
+        newMargin: section.Settings.margin,
         prevMarginTop: section.extraSettings.marginSettings.marginTop,
-        prevMarginBottom: section.extraSettings.marginSettings.marginBottom
+        newMarginTop: section.extraSettings.marginSettings.marginTop,
+        prevMarginBottom: section.extraSettings.marginSettings.marginBottom,
+        newMarginBottom: section.extraSettings.marginSettings.marginBottom
       };
     });
   }
@@ -61,6 +67,31 @@ class Marginsettings extends Component {
 
   changeNewMargin(e) {
     this.setState({ newMargin: e.target.value });
+  }
+  changeNewMarginTop(e) {
+    this.setState({ newMarginTop: e.target.value });
+  }
+  changeNewMarginBottom(e) {
+    this.setState({ newMarginBottom: e.target.value });
+  }
+
+  submitNewMargin(e) {
+    e.preventDefault();
+    let { Page, updateMenuSection } = this.props;
+    let { settingsFocus, pageArray, pageFocus } = Page;
+    let section = pageArray[pageFocus].Sections[settingsFocus[0]];
+    if (settingsFocus.length > 1) {
+      section = section.Content[settingsFocus[1]];
+      if (settingsFocus.length > 2) {
+        section = section.Content[settingsFocus[2]];
+      }
+    }
+    this.setState({ prevMargin: this.state.newMargin });
+    updateMenuSection(pageArray, pageFocus, settingsFocus, [
+      "Settings",
+      "margin",
+      `${this.state.newMargin}px`
+    ]);
   }
 
   render() {
@@ -108,14 +139,14 @@ class Marginsettings extends Component {
             <div>Margins</div>
             <div>-</div>
           </div>
-          <form
+          <div
             style={{
               display: "flex",
               flexDirection: "column"
             }}
           >
             {" "}
-            <div>
+            <form onSubmit={this.submitNewMargin}>
               {"Margin:  "}
               <input
                 type="number"
@@ -130,7 +161,7 @@ class Marginsettings extends Component {
                 onChange={this.changeNewMargin}
               />
               <span style={{ fontSize: "12px" }}>(px)</span>
-            </div>{" "}
+            </form>{" "}
             <div>
               <input
                 type="checkbox"
@@ -157,7 +188,7 @@ class Marginsettings extends Component {
                   placeholder={parseInt(
                     section.extraSettings.marginSettings.marginTop
                   )}
-                  onChange={this.changeNewMargin}
+                  onChange={this.changeNewMarginTop}
                 ></input>
                 <span style={{ fontSize: "12px" }}>(px)</span>
                 <div>
@@ -174,13 +205,13 @@ class Marginsettings extends Component {
                     placeholder={parseInt(
                       section.extraSettings.marginSettings.marginBottom
                     )}
-                    onChange={this.changeNewMargin}
+                    onChange={this.changeNewMarginBottom}
                   ></input>
                   <span style={{ fontSize: "12px" }}>(px)</span>
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </>
       );
     }
